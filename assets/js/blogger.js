@@ -3,9 +3,7 @@ var posts = [];
 $.get(
   ludablog_json_in_script,
   function (data) {
-    console.log(data.feed.entry);
     $.each(data.feed.entry, function (i, item) {
-
       var author = item.author[0].name.$t;
       var title = item.title.$t;
       var updated = item.updated.$t;
