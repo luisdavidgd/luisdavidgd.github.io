@@ -1,3 +1,5 @@
+this.get_about_me_page();
+
 var ludablog_json_in_script = "https://www.ludablog.com/feeds/posts/default?max-results=3&orderby=published&alt=json-in-script";
 var posts = [];
 $.get(
@@ -56,4 +58,16 @@ function formatDate(date) {
 
   //return day + ' de ' + monthNames[monthIndex] + ' de ' + year;
   return monthNames[monthIndex] + ' ' + day + ', ' + year;
+}
+
+function get_about_me_page() {
+  var blog_id = '5340269459019474440';
+  var page_id = '5440692623790182502';
+  var api_key = 'AIzaSyDYH8F2vTtzej0RhjfqX68-l-n00lo9414';
+  var about_me_page = 'https://www.googleapis.com/blogger/v3/blogs/' + blog_id + '/pages/' + page_id + '?key=' + api_key;
+  $.get(about_me_page, function (data) {
+    var about_me_html = $.parseHTML(data.content);
+    var about_me = $(about_me_html).filter('#about-me').html();
+    $('#about-me').html(about_me);
+  });
 }
