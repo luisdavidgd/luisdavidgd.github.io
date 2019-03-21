@@ -1,6 +1,6 @@
 var sheet_id = '1cX1s0w9xRWhaIzhW_gnbo30R-IwGfH1yPGNbJ3J1BjU';
 var sheet_name = 'luda.ga';
-var range = 'A1:B8';
+var range = 'A1:B20';
 var api_key = 'AIzaSyDYH8F2vTtzej0RhjfqX68-l-n00lo9414';
 var majorDimension = 'ROWS';
 
