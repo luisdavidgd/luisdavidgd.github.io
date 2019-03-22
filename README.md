@@ -1,6 +1,6 @@
 # luisdavidgd.github.io (luda.ga)
 
-This starts with Meetme HTML Template from one page love [pip](https://pip.pypa.io/en/stable/)
+This starts with [Meetme](http://preview.uideck.com/items/meetme/index.html) HTML Template.
 
 ## Custom Javascript
 
