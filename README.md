@@ -1,9 +1,9 @@
-# luisdavidgd.github.io (luda.ga)
+# luisdavidgd.github.io
+![Website](https://img.shields.io/website/https/luisdavidgd.github.io.svg?down_message=Down&label=Status&style=for-the-badge&up_message=Live)
 
 This starts with [Meetme](http://preview.uideck.com/items/meetme/index.html) HTML Template.
 
 ## Custom Javascript
-
 Bueno, para los scripts basicamente hay que referenciarlos desde el HTML
 ```html
 {...}
