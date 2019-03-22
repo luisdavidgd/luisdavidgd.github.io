@@ -2,8 +2,8 @@ var blog_id = '5340269459019474440';
 var about_page_id = '5440692623790182502';
 var api_key = 'AIzaSyDYH8F2vTtzej0RhjfqX68-l-n00lo9414';
 
-this.get_about_me_page();
-this.get_feeds();
+get_about_me_page();
+get_feeds();
 //this.get_latest_posts();
 
 function get_feeds() {
