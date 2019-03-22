@@ -47,9 +47,42 @@ function iniciarMap() {
 ```
 
 ### Blogger Pages
-Blogger API with credentials
+Blogger API with credentials in order to get a page content an then extract a specific paragraph with JavaScript
+``` javascript
+{...}
+function get_about_me_page() {
+  var about_me_page = 'https://www.googleapis.com/blogger/v3/blogs/' + blog_id + '/pages/' + about_page_id + '?fields=content&key=' + api_key;
+  $.get(about_me_page, function (data) {
+    var about_me_html = $.parseHTML(data.content);
+    var about_me = $(about_me_html).filter('#about-me').html();
+    $('#about-me').html(about_me);
+  });
+}
+```
 ### Blogger Feeds
-Blogger API without credentials
+Blogger API without credentials in order to get three last feeds.
+### Google Spreadsheet
+Google API for read spreadsheets, try to get a content data from spreadsheet range and then push them into a items array.
+``` javascript
+{...}
+function get_data() {
+    var items = [];
+    $.get(
+        url,
+        function (data) {
+            $.each(data.values, function (i, item) {
+                items.push('<li><span class="pro-title"> ' + item[0] + ' </span> <span class="pro-detail"> ' + item[1] + ' </span></li>');
+            });
+        },
+        "jsonp")
+        .done(function () {
+            $("<ul/>", {
+                class: "admin-profile",
+                html: items.join("")
+            }).appendTo(".about-profile");
+        });
+}
+```
 
 ## Assets
 
