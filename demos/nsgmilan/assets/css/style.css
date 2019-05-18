@@ -1385,7 +1385,7 @@ a:focus {
   background: #202125;
 }
 #services #service-3 {
-  background: url("../images/cover10.jpg") no-repeat fixed center;
+  background: url("../img/cover10.jpg") no-repeat fixed center;
   background-size: cover;
 }
 #services #service-3 .vertical-heading {
