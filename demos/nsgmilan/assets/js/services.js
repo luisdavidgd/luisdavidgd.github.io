@@ -3,10 +3,11 @@ $(".feature-link").click(function (e) {
 
     feature = $(this).parent().parent();
     image = feature.find('img').attr('src');
-    paragraph = feature.find('p').text();
+    content = feature.find('.modal-content').html();
 
     $("#myModalLabel").html($(this).text());
     $("#myModalImage").attr('src', image);
-    $("#myModalParagraph").html(paragraph);
+    $("#myModalContent").html(content);
+
     $("#serviceModal").modal('show');
 });
