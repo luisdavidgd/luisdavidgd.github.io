@@ -382,25 +382,26 @@ jQuery(document).ready(function () {
     var $portfolioTabs = {
         getAll: function () {
             var $load = $('#load');
-            $('#stats').removeClass('bottom').addClass('top');
+           // $('#stats').removeClass('bottom').addClass('top');
             $load.unbind();
-            $load.text('Load More....');
+            $load.text('Cargar más....');
             var $filter = $('.filter');
             $filter.hide('3000');
             $filter.each(function (index) {
-                if (index === 2) {
+                if (index === 6) {
                     return false;
                 }
-                $(this).addClass('even').show('3000');
+                //$(this).addClass('evens').show('3000');
+                $(this).show('3000');
 
 
             });
 
 
             $load.on('click', function () {
-                $filter.addClass('even');
+                //$filter.addClass('even');
                 $filter.show("3000");
-                $(this).text("No More Element..");
+                $(this).text("No hay más elementos.");
             });
         },
         getItems: function () {
@@ -416,12 +417,12 @@ jQuery(document).ready(function () {
                     //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
                     var $load = $('#load');
                     $load.unbind();
-                    $load.text('Load More....');
-                    $('#stats').removeClass('top').addClass('bottom');
+                    $load.text('Cargar más...');
+                    //$('#stats').removeClass('top').addClass('bottom');
                     $filter.not('.' + value).hide('3000');
                     $filter.removeClass('even');
                     $filter.filter('.' + value).each(function (index) {
-                        if (index === 2) {
+                        if (index === 3) {
                             return false;
                         }
                         $(this).show("3000");
@@ -429,7 +430,7 @@ jQuery(document).ready(function () {
                     });
                     $load.on('click', function () {
                         $filter.filter('.' + value).show("3000");
-                        $(this).text("No More Element..");
+                        $(this).text("No hay más elementos.");
                     });
 
                 }

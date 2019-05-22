@@ -1493,7 +1493,7 @@ a:focus {
 #portfolio #portfolio1 .block-container .filter .each-item {
   display: block;
   position: relative;
-  margin-top: 50px;
+  /*margin-top: 50px;*/
   overflow: hidden;
 }
 #portfolio #portfolio1 .block-container .filter .each-item:hover .cap1, #portfolio #portfolio1 .block-container .filter .each-item:hover .cap2 {
@@ -2445,4 +2445,9 @@ footer p span {
 
 .pt-1 {
   padding-top: 1rem;
+}
+
+.port-image{
+  width: 120 px;
+  height: 120 px;
 }
