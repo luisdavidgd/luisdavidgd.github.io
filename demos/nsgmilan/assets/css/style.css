@@ -2442,3 +2442,7 @@ footer p span {
 }
 
 /* news detail page styling end */
+
+.pt-1 {
+  padding-top: 1rem;
+}
