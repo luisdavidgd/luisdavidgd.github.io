@@ -269,6 +269,11 @@ a:focus {
   border-color: transparent;
   color: #ffffff;
 }
+.list-inline li:nth-child(4) a:hover {
+  background: #25d366; /* whatsapp color */
+  border-color: transparent;
+  color: #ffffff;
+}
 
 .owl-prev, .owl-next {
   display: inline-block;
@@ -657,7 +662,8 @@ a:focus {
   margin-right: 5px;
 }
 .navbar .navbar-header .navbar-brand {
-  width: 155px;
+  /* width: 155px; */
+  width: 200px;
   height: auto;
   padding: 7px 15px;
 }
@@ -668,7 +674,8 @@ a:focus {
 }
 @media screen and (max-width: 767px) {
   .navbar .navbar-header .navbar-brand {
-    width: 125px;
+    /* width: 125px; */
+    width: 180px;
   }
 }
 .navbar .navbar-header .navbar-brand img {
@@ -2133,6 +2140,11 @@ a:focus {
 #contact-us #contact-us2 .left-section .list-inline li:nth-child(3) a:hover {
   background: -webkit-radial-gradient(33% 100%, circle, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf);
   background: radial-gradient(circle at 33% 100%, #fed373 4%, #f15245 30%, #d92e7f 62%, #9b36b7 85%, #515ecf);
+  border-color: transparent;
+  color: #ffffff;
+}
+#contact-us #contact-us2 .left-section .list-inline li:nth-child(4) a:hover {
+  background: #25d366; /* whatsapp color */
   border-color: transparent;
   color: #ffffff;
 }
