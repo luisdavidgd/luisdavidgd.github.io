@@ -422,7 +422,7 @@ jQuery(document).ready(function () {
                     $filter.not('.' + value).hide('3000');
                     $filter.removeClass('even');
                     $filter.filter('.' + value).each(function (index) {
-                        if (index === 3) {
+                        if (index === 6) {
                             return false;
                         }
                         $(this).show("3000");
