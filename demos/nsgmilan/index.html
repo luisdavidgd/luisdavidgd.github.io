@@ -1421,7 +1421,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="right-section" id="form-elements">
-                            <form onsubmit="return false" method="post">
+                            <form action="assets/php/contact.php" method="post" class="ajax">
                                 <h4>Déjanos un mensaje</h4>
                                 <p>Completa correctamente los campos para poder responderte.</p>
                                 <div class="row">
@@ -1433,27 +1433,27 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Tu nombre"
-                                                required="required" id="name" name="name">
+                                                required="required" name="name">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <input type="email" class="form-control" placeholder="Correo electrónico"
-                                                required="required" id="email" name="email">
+                                                required="required" name="email">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Teléfono"
-                                                required="required" id="phone" name="phone">
+                                                required="required" name="phone">
                                         </div>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Asunto"
-                                                required="required" id="subject" name="subject">
+                                                required="required" name="subject">
                                         </div>
                                     </div>
 
@@ -1461,9 +1461,9 @@
 
                                 <div class="form-group">
                                     <textarea class="form-control" placeholder="Escribe aquí tu mensaje..."
-                                        required="required" id="message" name="message"></textarea>
+                                        required="required" name="message"></textarea>
                                 </div>
-                                <button type="submit" class="btn button" id="submit_btn">Enviar</button>
+                                <button type="submit" class="btn button">Enviar</button>
                             </form>
                         </div>
                     </div>
@@ -1551,7 +1551,7 @@
     <!-- Main custom script -->
     <script src="assets/js/script.js"></script>
     <script src="assets/js/services.js"></script>
-    <!-- Gmaps API -->
+    <script src="assets/js/contact.js"></script>
     <script src="assets/js/gmap.js"></script>
     <script
         src="//maps.googleapis.com/maps/api/js?key=AIzaSyAk4OFtr4OLLvte6CXCgDjYhd6jeT912fU&callback=initMap"></script>
