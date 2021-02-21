@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/rickandmorty.css">
+</head>
+
+<body>
+
+    <div x-data="main()" x-init="loadData()">
+        <button @click="changePage('prev')">PREV</button>
+        <button @click="changePage('next')">NEXT</button>
+        <div x-text="page"></div>
+        <div x-text="numPages"></div>
+        <div class="characters-list">
+            <template x-for="character in characters" :key="character">
+                <div class="character">
+                    <img x-bind:src="character.image" alt="">
+                    <h4 x-text="character.name"></h4>
+                    <p class="origin" x-text="character.origin.name"></p>
+                    <p class="specie" x-text="character.species"></p>
+                </div>
+            </template>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="js/rickandmorty.js"></script>
+
+</html>
