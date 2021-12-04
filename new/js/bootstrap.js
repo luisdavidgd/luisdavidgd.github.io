@@ -1,7 +1,6 @@
 document.addEventListener("alpine:init", () => {
   console.log("[HOOK:alpine:init]");
-
-  luidavid();
+  customFunction();
 
   Alpine.data("bootstrap", () => ({
     activeMenu: "",
@@ -10,12 +9,12 @@ document.addEventListener("alpine:init", () => {
     init: function () {
       console.log("[FUNCTION:bootstrap:init()]");
       this.activeMenu = "menu-item-1";
-      this.activePortfolio = "portfolio-item-1";
+      this.activePortfolio = "portfolio-item-2";
     },
   }));
 });
 
 document.addEventListener("alpine:initialized", () => {
   console.log("[HOOK:alpine:initialized]");
-  luidavid();
+  customFunction();
 });

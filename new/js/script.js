@@ -1,3 +1,3 @@
-function luidavid() {
-  console.log("[FUNCTION:luisdavid()]");
+function customFunction() {
+  console.log("[FUNCTION:customFunction()]");
 }
