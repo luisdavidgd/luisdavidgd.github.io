@@ -8,62 +8,165 @@
   <title>Luda! - Welcome to my website!</title>
   <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body x-data="alpine">
+<body x-data="bootstrap" x-init="console.log('[FUNCTION:bootstrap:x-init()]');">
 
+  <div id="menu" class="sticky top-0 bg-white" x-data="menu" x-init="console.log('[FUNCTION:menu:x-init()]');">
+    <div class="flex justify-around">
+      <template x-for="item in menu" :key="item.id">
+        <div x-id="['menu-item']">
+          <input x-model="activeMenu" type="radio" :value="$id('menu-item')" :id="$id('menu-item')">
+          <label :for="$id('menu-item')"><i :class="item.class"></i></span> <span x-text="item.name"></span></label>
+        </div>
+      </template>
+    </div>
+  </div>
 
-    <div>activeMenu: <span x-text="activeMenu"></span></div>
-    <div x-show="activeMenu == '1'">
+  <div id="content" class="p-6">
+
+    <div x-show="activeMenu == 'menu-item-1'" x-transition>
       Home
     </div>
 
-    <div x-show="activeMenu == '2'">
-      About me
+    <div x-show="activeMenu == 'menu-item-2'" x-transition>
+      Me gusta la tecnología desde que tengo uso de razón, y me apasiona la programación desde el 2004, año en que la
+      conocí. Desde entonces he invertido muchísimo tiempo en conocer las nuevas tecnologías de desarrollo en los
+      distintos rubros de programacióm que existen y como es muy sabido que en este rubro las cosas cambian y se
+      actualizan demasiado rápido siempre hay que estar a la vanguardia de las nuevas tecnologías de desarrollo que
+      aparecen en el mercado.
+
     </div>
 
-    <div x-show="activeMenu == '3'">
-      <div id="app" x-data="todos()">
-        <form @submit.prevent="addNewTask()">
-          <input type="text" x-model="task" />
-          <button type="submit">Add new task</button>
-        </form>
-        <template x-for="todo in todos" :key="todo.id">
-          <li :class="{ 'is-complete': todo.isComplete === true }">
-            <span x-text="todo.task"></span>
-            <input type="checkbox" x-model="todo.isComplete" />
-            <button @click="removeTask(todo.id)">Delete</button>
-          </li>
-        </template>
-        </ul>
+    <div x-show="activeMenu == 'menu-item-3'" x-transition>
+
+      <div id="portfolio" class="sticky top-0 bg-white" x-data="portfolio"
+        x-init="console.log('[FUNCTION:portfolio:x-init()]');">
+        <div class="flex justify-center">
+          <template x-for="item in portfolio" :key="item.id">
+            <div x-id="['portfolio-item']">
+              <input x-model="activePortfolio" type="radio" :value="$id('portfolio-item')"" :id="
+                $id('portfolio-item')">
+              <label :for="$id('portfolio-item')"><i :class="item.class"></i></span> <span
+                  x-text="item.name"></span></label>
+            </div>
+          </template>
+        </div>
+
+        <div x-show="activePortfolio == 'portfolio-item-1'" x-transition>
+          All
+        </div>
+
+        <div x-show="activePortfolio == 'portfolio-item-2'" x-transition>
+          Design
+        </div>
+
+        <div x-show="activePortfolio == 'portfolio-item-3'" x-transition>
+          <h2>Development</h2>
+
+          <div id="app" x-data="todos()" x-init="console.log('[FUNCTION:todos:x-init()]');">
+            <form @submit.prevent="addNewTask()">
+              <input type="text" x-model="task" />
+              <button type="submit">Add new task</button>
+            </form>
+            <template x-for="todo in todos" :key="todo.id">
+              <li :class="{ 'is-complete': todo.isComplete === true }">
+                <span x-text="todo.task"></span>
+                <input type="checkbox" x-model="todo.isComplete" />
+                <button @click="removeTask(todo.id)">Delete</button>
+              </li>
+            </template>
+            </ul>
+          </div>
+        </div>
+
+        <div x-show="activePortfolio == 'portfolio-item-4'">
+          Print
+        </div>
       </div>
     </div>
 
-    <div x-show="activeMenu == '4'">
+    <div x-show="activeMenu == 'menu-item-4'" x-transition>
       Contact form
     </div>
-  
-    <div x-show="activeMenu == '5'">
+
+    <div x-show="activeMenu == 'menu-item-5'" x-transition>
       Posts from blogger
-    </div>
 
-    <div class="flex items-center justify-around">
-      <template x-for="item in menu" :key="item.id">
-        <div>
-          <input x-model="activeMenu" type="radio" :value="item.id.toString()" :id="item.id">
-          <label :for="item.id"  class="text-4xl"><i :class="item.class"></i> <span x-text="item.name" class="hidden sm:block"></span></label>
+      <div class="lg:flex mb-4 m-10 rounded mx-auto">
+
+        <div class="w-full lg:w-1/3 rounded overflow-hidden shadow-lg m-10 relative flex flex-col">
+          <img class="w-full" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains">
+          <div class="px-6 py-4 h-full">
+            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p class="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </p>
+          </div>
+          <button
+            class="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+            </svg>
+            <span>Download</span>
+          </button>
         </div>
-      </template>
-     </div>
-  
 
+        <div class="w-full lg:w-1/3 rounded overflow-hidden shadow-lg m-10">
+          <img class="w-full" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains">
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p class="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis
+              eaque, exercitationem praesentium nihil.
+            </p>
+          </div>
+          <button
+            class="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+            </svg>
+            <span>Download</span>
+          </button>
+        </div>
+
+        <div class="w-full lg:w-1/3 rounded overflow-hidden shadow-lg m-10">
+          <img class="w-full" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains">
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+            <p class="text-gray-700 text-base">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis
+              eaque, exercitationem praesentium nihil.
+            </p>
+          </div>
+          <button
+            class="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+            </svg>
+            <span>Download</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
   </div>
 
- 
+  <footer id="terminal" class="fixed bottom-0 bg-white text-xs">
+      <p>
+        activeMenu: <code x-text="activeMenu"></code> | 
+        activePortfolio: <code x-text="activePortfolio"></code>
+      </p>
+  </footer>
 
-<script src="js/script.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/portfolio.js"></script>
+  <script src="js/todo.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>

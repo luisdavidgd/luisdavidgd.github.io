@@ -1,7 +1,9 @@
+.is-complete {
+  text-decoration: line-through;
+}
+
 input[type="radio"] {
   visibility: hidden;
-  height: 0;
-  width: 0;
 }
 
 label {
