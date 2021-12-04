@@ -1,0 +1,17 @@
+.is-complete {
+  text-decoration: line-through;
+}
+
+input[type="radio"] {
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+input[type="radio"]:checked + label {
+  background-color: gray;
+}

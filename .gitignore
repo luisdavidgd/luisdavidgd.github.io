@@ -1,3 +1,2 @@
 *.zip
-# Demo files (too big)
-demos/arqenperu/assets/img/portfolio/*/*.png
+*.code-workspace
