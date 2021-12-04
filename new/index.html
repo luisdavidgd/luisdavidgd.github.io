@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luda! - Welcome to my website!</title>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body x-data="alpine">
+
+
+    <div>activeMenu: <span x-text="activeMenu"></span></div>
+    <div x-show="activeMenu == '1'">
+      Home
+    </div>
+
+    <div x-show="activeMenu == '2'">
+      About me
+    </div>
+
+    <div x-show="activeMenu == '3'">
+      <div id="app" x-data="todos()">
+        <form @submit.prevent="addNewTask()">
+          <input type="text" x-model="task" />
+          <button type="submit">Add new task</button>
+        </form>
+        <template x-for="todo in todos" :key="todo.id">
+          <li :class="{ 'is-complete': todo.isComplete === true }">
+            <span x-text="todo.task"></span>
+            <input type="checkbox" x-model="todo.isComplete" />
+            <button @click="removeTask(todo.id)">Delete</button>
+          </li>
+        </template>
+        </ul>
+      </div>
+    </div>
+
+    <div x-show="activeMenu == '4'">
+      Contact form
+    </div>
+  
+    <div x-show="activeMenu == '5'">
+      Posts from blogger
+    </div>
+
+    <div class="flex items-center justify-around">
+      <template x-for="item in menu" :key="item.id">
+        <div>
+          <input x-model="activeMenu" type="radio" :value="item.id.toString()" :id="item.id">
+          <label :for="item.id"  class="text-4xl"><i :class="item.class"></i> <span x-text="item.name" class="hidden sm:block"></span></label>
+        </div>
+      </template>
+     </div>
+  
+
+  </div>
+
+ 
+
+<script src="js/script.js"></script>
+</body>
+
+</html>
