@@ -1,7 +1,7 @@
 function home() {
   return {
     text: "",
-    textArray: ["Luda", "software developer", "your god."],
+    textArray: ["Luda", "a software developer", "a gamer."],
     textIndex: 0,
     charIndex: 0,
     pauseEnd: 1500,
