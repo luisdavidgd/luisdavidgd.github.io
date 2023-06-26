@@ -1,0 +1,46 @@
+<div x-show="activeMenu == 'menu-item-3'" x-transition>
+
+    <div id="portfolio" class="sticky top-0 bg-white" x-data="portfolio">
+        <div class="flex justify-center">
+            <template x-for="item in portfolio" :key="item.id">
+                <div x-id="['portfolio-item']">
+                    <input x-model="activePortfolio" type="radio" :value="$id('portfolio-item')"" :id="
+                        $id('portfolio-item')">
+                    <label :for="$id('portfolio-item')"><i :class="item.class"></i></span> <span
+                            x-text="item.name"></span></label>
+                </div>
+            </template>
+        </div>
+
+        <div x-show="activePortfolio == 'portfolio-item-1'" x-transition>
+            All
+        </div>
+
+        <div x-show="activePortfolio == 'portfolio-item-2'" x-transition>
+            Design
+        </div>
+
+        <div x-show="activePortfolio == 'portfolio-item-3'" x-transition>
+            <h2>Development</h2>
+
+            <div id="app" x-data="todos">
+                <form @submit.prevent="addNewTask()">
+                    <input type="text" x-model="task" />
+                    <button type="submit">Add new task</button>
+                </form>
+                <template x-for="todo in todos" :key="todo.id">
+                    <li :class="{ 'is-complete': todo.isComplete === true }">
+                        <span x-text="todo.task"></span>
+                        <input type="checkbox" x-model="todo.isComplete" />
+                        <button @click="removeTask(todo.id)">Delete</button>
+                    </li>
+                </template>
+                </ul>
+            </div>
+        </div>
+
+        <div x-show="activePortfolio == 'portfolio-item-4'">
+            Print
+        </div>
+    </div>
+</div>

@@ -18,9 +18,5 @@ function portfolio() {
         name: "Print",
       },
     ],
-
-    init: function () {
-      console.log("[FUNCTION:portfolio:init()]");
-    },
   };
 }
