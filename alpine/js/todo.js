@@ -1,6 +1,5 @@
 function todos() {
   return {
-    //data
     increment: 3,
     task: "",
     todos: [
@@ -15,12 +14,9 @@ function todos() {
         isComplete: false,
       },
     ],
-    /**/
 
     addNewTask() {
-      //Return if empty
       if (this.task.trim() === "") return;
-      //Add new todo and clear task
       this.todos.push({
         id: this.increment++,
         task: this.task,
@@ -28,13 +24,11 @@ function todos() {
       });
       this.task = "";
     },
+
     removeTask(todoToRemove) {
-      if (confirm("Are you sure you want to delete this task?", "asdad")) {
+      if (confirm("Are you sure you want to delete this task?")) {
         this.todos = this.todos.filter((todo) => todo.id != todoToRemove);
       }
-    },
-    init: function () {
-      console.log("[FUNCTION:todos:init()]");
     },
   };
 }

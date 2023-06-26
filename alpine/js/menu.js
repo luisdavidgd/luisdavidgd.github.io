@@ -21,9 +21,6 @@ function menu() {
         id: 5,
         name: "Blog",
       },
-    ],
-    init: function () {
-      console.log("[FUNCTION:menu:init()]");
-    },
+    ]
   };
 }
