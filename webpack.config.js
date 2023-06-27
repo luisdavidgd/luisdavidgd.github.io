@@ -1,11 +1,34 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const SRC_DIR = path.resolve(__dirname, 'src');
+const OUT_DIR = path.resolve(__dirname, 'public');
+
+const components = ['about', 'blog', 'contact', 'home', 'nav', 'portfolio'];
+
+const htmlPlugins = components.map((component) => {
+  return new HtmlWebpackPlugin({
+    template: `./components/${component}.html`,
+    filename: `components/${component}.html`,
+    inject: 'body',
+    chunks: [],
+  });
+});
+
+htmlPlugins.push(
+  new HtmlWebpackPlugin({
+    template: './index.html',
+    filename: 'index.html',
+    inject: 'body',
+  })
+);
+
 module.exports = {
-  entry: './src/js/main.js',
+  context: SRC_DIR,
+  entry: './js/main.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: OUT_DIR,
   },
   module: {
     rules: [
@@ -15,47 +38,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      filename: 'index.html',
-      inject: 'body',
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/components/about.html',
-      filename: 'components/about.html',
-      inject: 'body',
-      chunks: [],
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/components/blog.html',
-      filename: 'components/blog.html',
-      inject: 'body',
-      chunks: [],
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/components/contact.html',
-      filename: 'components/contact.html',
-      inject: 'body',
-      chunks: [],
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/components/home.html',
-      filename: 'components/home.html',
-      inject: 'body',
-      chunks: [],
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/components/nav.html',
-      filename: 'components/nav.html',
-      inject: 'body',
-      chunks: [],
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/components/portfolio.html',
-      filename: 'components/portfolio.html',
-      inject: 'body',
-      chunks: [],
-    }),
-  ],
+  plugins: htmlPlugins,
 };
