@@ -1,9 +1,10 @@
+import 'tailwindcss/tailwind.css';
+import '../css/style.css';
 import Alpine from 'alpinejs';
 import home from './home';
 import menu from './menu';
 import portfolio from './portfolio';
 import todo from './todo';
-import '../css/style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   Alpine.data('bootstrap', () => ({
@@ -11,18 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
     menu: menu(),
     portfolio: portfolio(),
     todo: todo(),
-    activeMenu: '',
-    activePortfolio: '',
+    activeMenu: localStorage.getItem('activeMenu') || 'menu-item-1',
+    activePortfolio: localStorage.getItem('activePortfolio') || 'portfolio-item-2',
 
     async init() {
-      this.activeMenu = 'menu-item-1';
-      this.activePortfolio = 'portfolio-item-2';
-
       await this.loadComponents();
     },
 
     async loadComponents() {
-      const componentNames = ['nav', 'home', 'about', 'portfolio', 'contact', 'blog'];
+      const componentNames = ['nav', 'home', 'about', 'portfolio', 'blog', 'contact'];
 
       for (const componentName of componentNames) {
         const response = await fetch(`../components/${componentName}.html`);
