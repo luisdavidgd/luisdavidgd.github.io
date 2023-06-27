@@ -1,4 +1,4 @@
-function menu() {
+function menu(activeMenu) {
   return {
     menu: [
       {
@@ -15,13 +15,16 @@ function menu() {
       },
       {
         id: 4,
-        name: "Contact",
+        name: "Blog",
       },
       {
         id: 5,
-        name: "Blog",
+        name: "Contact",
       },
-    ]
+    ],
+    init() {
+      this.$watch('activeMenu', value => localStorage.setItem('activeMenu', value));
+    }
   };
 }
 
