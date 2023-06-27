@@ -1,0 +1,10 @@
+<div x-show="activeMenu == 'menu-item-1'" x-transition>
+    <div class="h-screen flex items-center justify-center">
+        <div class="mx-auto text-center" x-data="home" x-init="startTyping">
+            <div class="relative h-auto">
+                <h1 class="text-7xl font-black">I'm <span x-text="text"></span></h1>
+                <span class="absolute right-0 top-0 h-full w-5 -mr-8 bg-black" x-ref="cursor"></span>
+            </div>
+        </div>
+    </div>
+</div>
