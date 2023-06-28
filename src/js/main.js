@@ -3,7 +3,7 @@ import '../css/style.css';
 import Alpine from 'alpinejs';
 
 document.addEventListener('DOMContentLoaded', () => {
-  Alpine.data('bootstrap', () => ({
+  Alpine.data('app', () => ({
     activeMenu: localStorage.getItem('activeMenu') || 'menu-item-1',
 
     async init() {
