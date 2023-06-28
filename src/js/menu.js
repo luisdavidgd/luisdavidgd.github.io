@@ -1,4 +1,4 @@
-function menu(activeMenu) {
+function menu() {
   return {
     menu: [
       {
