@@ -1,4 +1,4 @@
-function portfolio(activePortfolio) {
+function portfolio() {
   return {
     portfolio: [
       {
@@ -18,6 +18,7 @@ function portfolio(activePortfolio) {
         name: "Print",
       },
     ],
+    activePortfolio: localStorage.getItem('activePortfolio') || 'portfolio-item-2',
     init() {
       this.$watch('activePortfolio', value => localStorage.setItem('activePortfolio', value));
     }
