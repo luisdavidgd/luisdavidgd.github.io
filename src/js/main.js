@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   }));
 
-  const components = ['menu', 'home', 'portfolio', 'todo', 'blog'];
+  const components = ['menu', 'home', 'portfolio', 'todo', 'blog', 'contact'];
   components.forEach((component) => {
     import(`./${component}.js`).then((module) => {
       Alpine.data(component, module.default);
