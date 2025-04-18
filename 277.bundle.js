@@ -1,1 +1,0 @@
-(self.webpackChunk=self.webpackChunk||[]).push([[277],{277:(e,s,c)=>{c(656).config(),console.log(process.env.SOME_VARIABLE)}}]);
