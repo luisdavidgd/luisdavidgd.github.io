@@ -5,7 +5,7 @@
       <div class="flex flex-wrap">
         <div class="w-full lg:w-6/12 px-4">
           <h4 class="text-3xl font-semibold text-gray-90ss0">Let's keep in touch!</h4>
-          <h5 class="lg:text-lg text-sm mt-0 mb-2 text-gray-700">
+          <h5 class="lg:text-lg text-xs mt-0 mb-2 text-gray-700">
             If you’d like to get in touch, use the
             <a
               href="#"
