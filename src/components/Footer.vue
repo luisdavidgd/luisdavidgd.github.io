@@ -4,15 +4,15 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap">
         <div class="w-full lg:w-6/12 px-4">
-          <h4 class="text-3xl font-semibold">Let's keep in touch!</h4>
-          <h5 class="text-lg mt-0 mb-2 text-gray-700">
-            If you’d like to get in touch,
+          <h4 class="text-3xl font-semibold text-gray-90ss0">Let's keep in touch!</h4>
+          <h5 class="lg:text-lg text-sm mt-0 mb-2 text-gray-700">
+            If you’d like to get in touch, use the
             <a
               href="#"
               @click.prevent="showModal = true"
               class="text-blue-500 underline hover:text-blue-700 font-semibold"
             >
-              use the contact form
+              contact form
             </a>
           </h5>
         </div>
