@@ -35,20 +35,20 @@
                 <div class="mr-4 p-3 text-center">
                   <span
                     class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                    >22</span
-                  ><span class="text-sm text-gray-500">Friends</span>
+                    ><i class="fab fa-github"></i></span
+                  ><span class="text-sm text-gray-500">Public</span>
                 </div>
                 <div class="mr-4 p-3 text-center">
                   <span
                     class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                    >10</span
-                  ><span class="text-sm text-gray-500">Photos</span>
+                    >{{ repoCount }}</span
+                  ><span class="text-sm text-gray-500">Repositories</span>
                 </div>
                 <div class="lg:mr-4 p-3 text-center">
                   <span
                     class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                    >89</span
-                  ><span class="text-sm text-gray-500">Comments</span>
+                    >{{ commitCount }}</span
+                  ><span class="text-sm text-gray-500">Commits</span>
                 </div>
               </div>
             </div>
@@ -113,6 +113,7 @@
 
 
 <script>
+import axios from 'axios'
 import ContactModal from '../components/ContactModal.vue'
 
 export default {
@@ -123,7 +124,71 @@ export default {
     return {
       showMore: false,
       showModal: false,
+      commitCount: 0,
+      repoCount: 0,
     }
+  },
+  methods: {
+    async fetchCommits() {
+      const username = 'luisdavidgd'
+      const perPage = 100
+      let totalCommits = 0
+
+      try {
+        // Step 1: Get all the repos
+        let repos = []
+        let page = 1
+        let hasMore = true
+
+        while (hasMore) {
+          const response = await axios.get(
+            `https://api.github.com/users/${username}/repos`,
+            {
+              params: {
+                per_page: perPage,
+                page,
+              },
+            }
+          )
+
+          repos = repos.concat(response.data)
+          hasMore = response.data.length === perPage
+          page++
+        }
+        this.repoCount = repos.length; // save total of repos
+
+        // Step 2: Iterate repos and count commits
+        for (const repo of repos) {
+          let pageCommits = 1
+          let hasMoreCommits = true
+
+          while (hasMoreCommits) {
+            const commitsRes = await axios.get(
+              `https://api.github.com/repos/${username}/${repo.name}/commits`,
+              {
+                params: {
+                  per_page: perPage,
+                  page: pageCommits,
+                },
+              }
+            )
+
+            const commits = commitsRes.data
+            totalCommits += commits.length
+            hasMoreCommits = commits.length === perPage
+            pageCommits++
+          }
+        }
+
+        this.commitCount = totalCommits
+      } catch (error) {
+        console.error('Error al obtener commits dinámicamente:', error)
+      }
+    },
+  },
+  mounted() {
+    this.fetchCommits() // Llamamos la función para obtener los commits al cargar el componente
   },
 }
 </script>
+
