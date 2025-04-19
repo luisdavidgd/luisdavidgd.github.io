@@ -21,6 +21,7 @@
             >
               <div class="py-6 px-3 mt-32 sm:mt-0">
                 <button
+                  @click="showModal = true"
                   class="bg-blue-500 active:bg-blue-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
                   type="button"
                   style="transition: all 0.15s ease 0s"
@@ -70,22 +71,36 @@
             </div>
             <div class="mb-2 text-gray-700">
               <i class="fas fa-university mr-2 text-lg text-gray-500"></i
-              >University of Computer Science
+              >Universidad Ricardo Palma
             </div>
           </div>
           <div class="mt-10 py-10 border-t border-gray-300 text-center">
             <div class="flex flex-wrap justify-center">
               <div class="w-full lg:w-9/12 px-4">
                 <p class="mb-4 text-lg leading-relaxed text-gray-800">
-                  I love tech for as long as I can remember, I have always been
-                  passionate about programming and I really enjoy building
-                  software, is my life. You always have to be at the forefront
-                  of new development techs that appear on the market. That's
-                  what I'm doing.
+                  I've always been passionate about tech and programming. I
+                  truly enjoy creating software and turning ideas into real
+                  solutions. I believe it's important to stay updated with the
+                  latest tools and trends in development — that's what keeps it
+                  exciting for me.
                 </p>
-                <a href="#luisdavidgd" class="font-normal text-blue-500"
-                  >Show more</a
+
+                <p
+                  class="mb-4 text-lg leading-relaxed text-gray-800"
+                  v-if="showMore"
                 >
+                  I'm currently working on multiple projects, constantly
+                  learning new frameworks and improving my skills. I believe
+                  that great software comes from collaboration, creativity, and
+                  curiosity.
+                </p>
+                <a
+                  href="#"
+                  class="font-normal text-blue-500"
+                  @click.prevent="showMore = !showMore"
+                >
+                  {{ showMore ? 'Show less' : 'Show more' }}
+                </a>
               </div>
             </div>
           </div>
@@ -93,4 +108,22 @@
       </div>
     </div>
   </section>
+  <ContactModal v-if="showModal" @close="showModal = false" />
 </template>
+
+
+<script>
+import ContactModal from '../components/ContactModal.vue'
+
+export default {
+  components: {
+    ContactModal,
+  },
+  data() {
+    return {
+      showMore: false,
+      showModal: false,
+    }
+  },
+}
+</script>
