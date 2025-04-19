@@ -1,5 +1,5 @@
 <template>
-  <section class="relative block" style="height: 500px">
+  <section class="relative block" style="height: 400px">
     <div
       class="absolute top-0 w-full h-full bg-center bg-cover"
       style="
