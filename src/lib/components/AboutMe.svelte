@@ -155,7 +155,7 @@
                 </p>
               {/if}
               <a
-                href="#contact"
+                href="#"
                 class="font-normal text-blue-500"
                 on:click|preventDefault={() => (showMore = !showMore)}
               >
