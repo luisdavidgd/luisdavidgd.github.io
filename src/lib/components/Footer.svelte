@@ -61,7 +61,7 @@
         <h5 class="lg:text-lg text-xs mt-0 mb-2 text-gray-700">
           If you’d like to get in touch, use the
           <a
-            href="#contact"
+            href="#"
             class="text-blue-500 underline hover:text-blue-700 font-semibold"
             on:click|preventDefault={() => showModal = true}
           >
