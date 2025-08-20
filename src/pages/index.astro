@@ -1,0 +1,12 @@
+---
+import HeroSection from "../components/svelte/HeroSection.svelte";
+import AboutMe from "../components/svelte/AboutMe.svelte";
+import Footer from "../components/svelte/Footer.svelte";
+import Basic from "../layouts/basic.astro";
+---
+
+<Basic>
+	<HeroSection />
+	<AboutMe  client:load />
+	<Footer client:load />
+</Basic>
