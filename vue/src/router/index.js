@@ -1,5 +1,5 @@
 // src/router/index.js
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import FixtureGenerator from '@/components/FixtureGenerator.vue'
 import ContinueFixture from '@/components/ContinueFixture.vue'
 import HowToUse from '@/components/HowToUse.vue'
@@ -19,7 +19,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes,
 })
 
