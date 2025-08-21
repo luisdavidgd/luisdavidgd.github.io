@@ -1,0 +1,27 @@
+---
+import Basic from "../../layouts/basic.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+const posts: CollectionEntry<"cheatsheets">[] =
+	await getCollection("cheatsheets");
+---
+
+<Basic>
+	<h1>Blog</h1>
+	<ul>
+		{
+			posts
+				.sort(
+					(a, b) =>
+						new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+				)
+				.map((post) => (
+					<li id={post.slug}>
+						<a href={`/cheatsheets/${post.slug}`}>{post.data.title}</a> -{" "}
+						{post.data.date}
+					</li>
+				))
+		}
+	</ul>
+</Basic>
