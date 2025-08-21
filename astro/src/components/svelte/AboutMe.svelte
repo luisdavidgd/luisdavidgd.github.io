@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import ContactModal from "./ContactModal.svelte";
+  import ContactModal from "../ContactModal.svelte";
 
   let showMore = false;
   let showModal = false;
@@ -52,6 +52,7 @@
   }
 
   onMount(() => {
+    console.log("Is this working?");
     fetchCommits();
   });
 </script>
@@ -154,13 +155,12 @@
                   curiosity.
                 </p>
               {/if}
-              <a
-                href="#"
+              <button
                 class="font-normal text-blue-500"
                 on:click|preventDefault={() => (showMore = !showMore)}
               >
                 {showMore ? "Show less" : "Show more"}
-              </a>
+              </button>
             </div>
           </div>
         </div>
