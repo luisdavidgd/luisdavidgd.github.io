@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import ContactModal from "./ContactModal.svelte";
+  import ContactModal from "../ContactModal.svelte";
 
   let showMore = false;
   let showModal = false;
