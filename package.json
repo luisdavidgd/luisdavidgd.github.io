@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "![Website](https://img.shields.io/website/https/luisdavidgd.github.io.svg?down_message=Down&label=Status&style=for-the-badge&up_message=Live)",
   "main": "index.js",
+  "scripts": {
+    "dev:astro": "npm run dev --prefix astro",
+    "dev:vue": "npm run dev --prefix vue",
+    "dev:svelte": "npm run dev --prefix svelte",
+    "dev:react": "npm run dev --prefix react"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luisdavidgd/luisdavidgd.github.io.git"
