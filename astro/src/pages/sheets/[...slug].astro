@@ -1,0 +1,17 @@
+---
+import { getCollection, render } from 'astro:content';
+import MarkdownSheetLayout from '../../layouts/MarkdownSheetLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('cheatsheets');
+  return posts.map(post => ({
+    params: { slug: post.id }, props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<MarkdownSheetLayout frontmatter={post.data}>
+  <Content />
+</MarkdownSheetLayout>
