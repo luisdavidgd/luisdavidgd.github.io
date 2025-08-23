@@ -1,17 +1,19 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 const allPosts = await getCollection("blog");
-const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
-const pageTitle = "Tag Index";
+const categories = [
+  ...new Set(allPosts.map((post) => post.data.categories).flat()),
+];
+const pageTitle = "Category Index";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <div class="tags">
+  <div class="categories">
     {
-      tags.map((tag) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
+      categories.map((category) => (
+        <p class="category">
+          <a href={`/blog/categories/${category}`}>{category}</a>
         </p>
       ))
     }
@@ -22,12 +24,12 @@ const pageTitle = "Tag Index";
     color: #00539f;
   }
 
-  .tags {
+  .categories {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .tag {
+  .category {
     margin: 0.25em;
     border: dotted 1px #a1a1a1;
     border-radius: 0.5em;
