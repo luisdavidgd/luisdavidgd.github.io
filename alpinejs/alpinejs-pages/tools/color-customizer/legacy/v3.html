@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Personalizador de Zapato (PNG)</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .canvas {
+      position: relative;
+      width: 400px;
+      height: 300px;
+    }
+
+    .zona-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      mix-blend-mode: multiply;
+    }
+
+    .zona {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .base {
+      z-index: 1;
+    }
+
+    .color {
+      z-index: 2;
+      background-color: red;
+
+    }
+
+    .zona2 {
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .zona1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .picker {
+      margin: 5px 0;
+    }
+
+    #parche1-color {
+      mask-image: url("assets/parche1.png");
+      -webkit-mask-image: url("assets/parche1.png");
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-position: center;
+      mask-size: contain;
+      -webkit-mask-size: contain;
+    }
+
+    #parche2-color {
+      mask-image: url("../assets/parche2.png");
+      -webkit-mask-image: url("../assets/parche2.png");
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-position: center;
+      mask-size: contain;
+      -webkit-mask-size: contain;
+    }
+
+    #tobillo-ext-color {
+      mask-image: url("../assets/tobillo-ext.png");
+      -webkit-mask-image: url("../assets/tobillo-ext.png");
+      mask-repeat: no-repeat;
+      -webkit-mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-position: center;
+      mask-size: contain;
+      -webkit-mask-size: contain;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Personalizador de Zapato (con capas PNG)</h2>
+
+  <div class="canvas">
+    <div class="zona color" id="parche1-color"></div>
+    <div class="zona color" id="tobillo-ext-color"></div>
+    <div class="zona color" id="parche2-color"></div>
+  </div>
+  </div>
+
+  <div>
+    <label class="picker">Tobillo exterior 2 <input type="color"
+        onchange="colorZona('tobillo-ext', this.value)"></label><br>
+    <label class="picker">Parche 1 <input type="color" onchange="colorZona('parche1', this.value)"></label><br>
+    <label class="picker">Parche 2 <input type="color" onchange="colorZona('parche2', this.value)"></label><br>
+    <!-- 
+    <label class="picker">Frontal <input type="color" onchange="colorZona('frontal', this.value)"></label><br>
+    <label class="picker">Cuerpo <input type="color" onchange="colorZona('cuerpo', this.value)"></label><br>
+    <label class="picker">Punta <input type="color" onchange="colorZona('punta', this.value)"></label><br>
+    <label class="picker">Suela <input type="color" onchange="colorZona('suela', this.value)"></label><br>
+    <label class="picker">Ojal 1 <input type="color" onchange="colorZona('ojal1', this.value)"></label><br>
+    <label class="picker">Ojal 2 <input type="color" onchange="colorZona('ojal2', this.value)"></label><br>
+    <label class="picker">Ojal 3 <input type="color" onchange="colorZona('ojal3', this.value)"></label><br>
+    <label class="picker">Ojal 4 <input type="color" onchange="colorZona('ojal4', this.value)"></label><br>
+    <label class="picker">Pasadores <input type="color" onchange="colorZona('pasadores', this.value)"></label><br> 
+    -->
+  </div>
+
+  <script>
+    function colorZona(id, color) {
+      const layer = document.getElementById(`${id}-color`);
+      layer.style.backgroundColor = color;
+    }
+  </script>
+</body>
+
+</html>

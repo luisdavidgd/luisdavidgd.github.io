@@ -1,0 +1,25 @@
+<section id="contact" class="bg-gray-100 py-16 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+
+    <!-- Animated image -->
+    <div x-data="{ show: false }" x-intersect.once="show = true" class="flex justify-center w-full">
+      <img src="assets/img/555x447.jpg" alt="Contact illustration" x-show="show"
+        x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 translate-y-10"
+        x-transition:enter-end="opacity-100 translate-y-0" class="w-full max-w-full sm:max-w-md rounded-lg shadow-lg"
+        loading="lazy" />
+    </div>
+
+    <!-- Contact box -->
+    <div class="bg-gray-50 p-8 rounded-lg shadow text-center">
+      <h2 class="text-2xl font-bold mb-2">Contact Us</h2>
+      <p class="text-gray-600 mb-6 text-sm">Advice & Inquiries</p>
+
+      <a href="https://wa.me/51999999999?text=Hi!%20I'm%20interested%20in%20your%20specialized%20services."
+        target="_blank"
+        class="inline-flex items-center px-6 py-3 text-white bg-green-600 hover:bg-green-700 rounded-lg text-lg transition">
+        <i class="fab fa-whatsapp text-2xl mr-3"></i> Contact via WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>

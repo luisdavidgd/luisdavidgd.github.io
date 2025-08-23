@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Tailwind + Alpine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-100 text-gray-800" x-data x-init="initComponents()">
+
+  <div x-component="navbar"></div>
+  <div x-component="hero"></div>
+  <div x-component="about"></div>
+  <div x-component="services"></div>
+  <div x-component="cta"></div>
+  <div x-component="clients"></div>
+  <div x-component="contact"></div>
+  <div x-component="footer"></div>
+  <div x-component="common-back-to-top" data-bottom="80px"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="/assets/js/components.js"></script>
+</body>
+
+</html>

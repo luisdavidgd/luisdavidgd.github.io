@@ -1,0 +1,55 @@
+<!-- TITLE -->
+<section id="services" class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <div class="text-3xl md:text-4xl font-semibold leading-tight mb-4 uppercase">
+      <div>Kitchen Exhaust System</div>
+      <div>Risk Prevention</div>
+      <div class="text-red-600">Hazards</div>
+    </div>
+    <p class="text-gray-700">
+      Poor or insufficient maintenance of the exhaust system can lead to grease buildup,
+      increasing serious risks to your business:
+    </p>
+  </div>
+</section>
+
+<!-- RISK BOXES -->
+<section x-data="hazards" x-intersect.once="showSequence()" class="max-w-6xl mx-auto px-4 pb-20">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <template x-for="(risk, index) in risks" :key="index">
+      <div class="bg-white border border-gray-200 rounded-lg shadow p-6 text-center animate__animated"
+        :class="risk.shown ? 'animate__fadeIn' : ''"
+        :style="risk.shown ? 'animation-delay: ' + (index * 0.3) + 's;' : 'opacity: 0;'">
+        <div class="text-4xl text-blue-600 mb-4">
+          <i :class="risk.icon"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-800" x-text="risk.title"></h3>
+      </div>
+    </template>
+  </div>
+</section>
+
+<script>
+  function hazards() {
+    return {
+      risks: [
+        { title: "FIRE HAZARD", icon: "fas fa-fire", shown: false },
+        { title: "IRRITATING SMOKE", icon: "fas fa-smog", shown: false },
+        { title: "AIR CONTAMINATION", icon: "fas fa-biohazard", shown: false },
+        { title: "GREASE BUILD-UP", icon: "fas fa-oil-can", shown: false },
+        { title: "DUCT BLOCKAGE", icon: "fas fa-ban", shown: false },
+        { title: "HIGHER ENERGY CONSUMPTION", icon: "fas fa-bolt", shown: false },
+        { title: "UNPLEASANT ODORS", icon: "fas fa-poop", shown: false },
+        { title: "EXTRACTOR SYSTEM FAILURE", icon: "fas fa-tools", shown: false },
+        { title: "CLOSURE RISK", icon: "fas fa-times-circle", shown: false }
+      ],
+      showSequence() {
+        this.risks.forEach((risk, i) => {
+          setTimeout(() => {
+            this.risks[i].shown = true;
+          }, i * 300);
+        });
+      }
+    }
+  }
+</script>

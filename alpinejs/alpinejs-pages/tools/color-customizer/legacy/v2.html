@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Personalizador de Zapato</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    svg {
+      width: 300px;
+    }
+    .picker {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Personalizador de Zapato</h1>
+
+  <svg id="product" viewBox="0 0 300 200">
+    <!-- Cuerpo base -->
+    <path id="cuerpo" d="M20,150 Q80,80 240,100 Q250,130 230,150 Z" fill="#4e342e" />
+
+    <!-- Puntera -->
+    <circle id="puntera" cx="240" cy="130" r="20" fill="#5d4037" />
+
+    <!-- Parche lateral -->
+    <ellipse id="parche" cx="120" cy="110" rx="20" ry="30" fill="#ef6c00" />
+
+    <!-- Panel lateral inferior -->
+    <path id="panel" d="M60,140 Q90,120 100,150 Q80,160 60,150 Z" fill="#f9a825" />
+
+    <!-- Talón -->
+    <path id="talon" d="M20,150 Q30,120 60,140 Q50,160 30,160 Z" fill="#fbc02d" />
+  </svg>
+
+  <div>
+    <label class="picker">
+      Cuerpo base: <input type="color" id="color-cuerpo" value="#4e342e">
+    </label><br>
+    <label class="picker">
+      Puntera: <input type="color" id="color-puntera" value="#5d4037">
+    </label><br>
+    <label class="picker">
+      Parche lateral: <input type="color" id="color-parche" value="#ef6c00">
+    </label><br>
+    <label class="picker">
+      Panel inferior: <input type="color" id="color-panel" value="#f9a825">
+    </label><br>
+    <label class="picker">
+      Talón: <input type="color" id="color-talon" value="#fbc02d">
+    </label>
+  </div>
+
+  <script>
+    const zonas = ['cuerpo', 'puntera', 'parche', 'panel', 'talon'];
+    zonas.forEach(zona => {
+      const picker = document.getElementById('color-' + zona);
+      picker.addEventListener('input', e => {
+        document.getElementById(zona).setAttribute('fill', e.target.value);
+      });
+    });
+  </script>
+</body>
+</html>

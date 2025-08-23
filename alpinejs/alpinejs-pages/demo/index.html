@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" x-data="demo()" x-init="init()" :class="{ 'dark': darkMode }">
+
+<head>
+  <meta charset="UTF-8">
+  <title>AlpineJS Full Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen p-6">
+
+  <!-- Header -->
+  <header class="text-center mb-8">
+    <h1 class="text-3xl font-bold">
+      <span x-show="darkMode">🌙</span>
+      <span x-show="!darkMode">☀️</span>
+      <span>AlpineJS Interactive Demo</span>
+    </h1>
+    <p class="text-gray-500 dark:text-gray-400">A playground for AlpineJS features</p>
+    <a href="../" class="text-blue-600 underline mt-2 block">← Back to Home</a>
+  </header>
+
+  <!-- Dark Mode Toggle -->
+  <div class="text-center mb-6">
+    <button @click="darkMode = !darkMode"
+      class="px-4 py-2 space-x-2 bg-blue-500 hover:bg-indigo-700 text-white rounded  dark:bg-indigo-600 dark:hover:bg-blue-500">
+      <span x-show="darkMode">🌙</span>
+      <span x-show="!darkMode">☀️</span>
+      <span>Toggle Dark Mode</span>
+    </button>
+  </div>
+
+  <!-- Card -->
+  <div class="max-w-3xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 space-y-8">
+
+    <!-- Input -->
+    <div>
+      <label class="block font-semibold mb-1">Your name:</label>
+      <input type="text" x-model="name" class="w-full p-2 rounded border dark:bg-gray-700"
+        placeholder="Enter your name...">
+      <p class="mt-2">Hello, <span class="font-bold" x-text="name || 'guest'"></span>! 👋</p>
+    </div>
+
+    <!-- Toggle Message -->
+    <div>
+      <button @click="show = !show" class="bg-blue-500 text-white px-4 py-2 rounded">
+        Toggle Message
+      </button>
+      <p x-show="show" x-transition class="mt-2 text-gray-700 dark:text-gray-300">This is a toggleable message!</p>
+    </div>
+
+    <!-- Dynamic List -->
+    <div>
+      <h2 class="text-lg font-bold mb-2">To-Do List</h2>
+      <ul class="list-disc list-inside space-y-1">
+        <template x-for="(item, index) in todos" :key="index">
+          <li x-text="item"></li>
+        </template>
+      </ul>
+      <button @click="addTask()" class="mt-2 text-sm text-indigo-500 underline">+ Add Random Task</button>
+    </div>
+
+    <!-- Tabs -->
+    <div x-data="{ tab: 'one' }">
+      <div class="flex space-x-2 mb-4">
+        <button @click="tab = 'one'"
+          :class="tab === 'one' ? 'bg-indigo-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-black dark:text-white'"
+          class="px-4 py-2 rounded">Tab One</button>
+        <button @click="tab = 'two'"
+          :class="tab === 'two' ? 'bg-indigo-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-black dark:text-white'"
+          class="px-4 py-2 rounded">Tab Two</button>
+      </div>
+      <div>
+        <div x-show="tab === 'one'" x-transition>
+          <p>This is content for Tab One.</p>
+        </div>
+        <div x-show="tab === 'two'" x-transition>
+          <p>This is content for Tab Two.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accordion -->
+    <div>
+      <h2 class="text-lg font-bold mb-2">FAQs</h2>
+      <div x-data="{ open: null }">
+        <div class="border-b">
+          <button @click="open === 1 ? open = null : open = 1" class="w-full text-left py-2 font-medium">
+            What is AlpineJS?
+          </button>
+          <div x-show="open === 1" x-collapse>
+            <p class="pb-2">A lightweight JavaScript framework for declarative interactions.</p>
+          </div>
+        </div>
+        <div class="border-b">
+          <button @click="open === 2 ? open = null : open = 2" class="w-full text-left py-2 font-medium">
+            Is it like Vue?
+          </button>
+          <div x-show="open === 2" x-collapse>
+            <p class="pb-2">Yes! It’s Vue-like but much smaller and without a virtual DOM.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-500 dark:text-gray-400 mt-10">
+    Built with 🧠 AlpineJS & TailwindCSS
+  </footer>
+
+  <!-- AlpineJS Data -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+    function demo() {
+      return {
+        name: '',
+        show: true,
+        darkMode: false,
+        todos: ['Try AlpineJS', 'Build something fun'],
+        init() {
+          console.log('Component mounted!');
+        },
+        addTask() {
+          const tasks = ['Refactor code', 'Write README', 'Deploy to CF Pages', 'Celebrate 🎉'];
+          const random = tasks[Math.floor(Math.random() * tasks.length)];
+          this.todos.push(random);
+        }
+      }
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,26 +1,67 @@
 ---
-import Basic from "../../layouts/basic.astro";
-import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../components/BlogPost.astro";
 
-const posts: CollectionEntry<"blog">[] = await getCollection("blog");
+const pageTitle = "My Astro Learning Blog";
+const allPosts = await getCollection("blog");
+const categories = [
+  ...new Set(allPosts.map((post) => post.data.categories).flat()),
+];
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 ---
 
-<Basic>
-	<h1>Bloag</h1>
-	<ul>
-		{
-			posts
-				.sort(
-					(a, b) =>
-						new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-				)
-				.map((post) => (
-					<li id={post.slug}>
-						<a href={`/blog/${post.slug}`}>{post.data.title}</a> -{" "}
-						{post.data.date}
-					</li>
-				))
-		}
-	</ul>
-</Basic>
+<BaseLayout pageTitle={pageTitle}>
+  <p>This is where I will post about my journey learning Astro.</p>
+  <ul>
+    {
+      allPosts.map((post) => (
+        <BlogPost url={`/blog/${post.id}/`} title={post.data.title} />
+      ))
+    }
+  </ul>
+
+  <h2>All Categories</h2>
+  <div class="categories">
+    {
+      categories.map((category) => (
+        <p class="category">
+          <a href={`blog/categories/${category}`}>{category}</a>
+        </p>
+      ))
+    }
+  </div>
+  <div><a href="blog/categories">View All Categories</a></div>
+
+  <h2>All tags</h2>
+  <div class="tags">
+    {
+      tags.map((tag) => (
+        <p class="tag">
+          <a href={`blog/tags/${tag}`}>{tag}</a>
+        </p>
+      ))
+    }
+  </div>
+  <div><a href="blog/tags">View All Tags</a></div>
+</BaseLayout>
+
+<style>
+  a {
+    color: #00539f;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #f8fcfd;
+  }
+</style>

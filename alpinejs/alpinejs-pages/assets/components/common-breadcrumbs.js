@@ -1,0 +1,1 @@
+console.log('breadcrumbs load from /assets')
