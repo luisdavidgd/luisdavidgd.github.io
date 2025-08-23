@@ -1,0 +1,34 @@
+<section class="swiper mySwiper h-[60vh]" x-data="sliders">
+  <div class="swiper-wrapper">
+    <template x-for="(slide, index) in slides" :key="index">
+      <div class="swiper-slide relative h-full text-white flex items-center justify-center text-3xl font-bold"
+        :style="`background-image: url(${slide.url}); background-repeat: no-repeat`" x-text="slide.title">
+      </div>
+    </template>
+  </div>
+  <div class="swiper-pagination"></div>
+</section>
+
+<script>
+  function sliders() {
+    return {
+      slides: [
+        {
+          url: "assets/sliders/slider1.png",
+          title: "Welcome",
+          caption: "Sample text",
+        },
+        {
+          url: "assets/sliders/slider2.png",
+          title: "Industrial Services",
+          caption: "Sample text",
+        },
+        {
+          url: "assets/sliders/slider2.png",
+          title: "Contact Us",
+          caption: "Sample text",
+        },
+      ]
+    };
+  };
+</script>

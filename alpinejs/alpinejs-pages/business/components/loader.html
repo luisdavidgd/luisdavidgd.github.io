@@ -1,0 +1,17 @@
+<div id="loader" x-data="loader" x-show="!loaded" x-transition.opacity.duration.2000ms
+  style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;background:#ffffff; display:flex; align-items:center; justify-content:center;">
+</div>
+
+<script>
+  function loader() {
+    return {
+      loaded: false,
+      init() {
+        window.addEventListener('load', () => {
+          setTimeout(() => { this.loaded = true; }, 500);
+        });
+
+      }
+    }
+  }
+</script>

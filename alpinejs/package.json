@@ -1,0 +1,30 @@
+{
+  "name": "alpinejs",
+  "version": "1.0.0",
+  "description": "Some description text",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "create-component": "node scripts/create-component.js",
+    "create:component": "npm run create-component",
+    "build": "rm -rf dist && mkdir dist && cp -r alpinejs-pages/* dist/",
+    "preview": "npm run build && npx wrangler pages dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisdavidgd/alpinejs.git"
+  },
+  "keywords": [
+    "alpinejs",
+    "tailwindcss",
+    "npm",
+    "javascript",
+    "alpine"
+  ],
+  "author": "Luis Gallo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luisdavidgd/alpinejs/issues"
+  },
+  "homepage": "https://github.com/luisdavidgd/alpinejs#readme"
+}

@@ -1,0 +1,33 @@
+<section id="about" class="bg-white py-16" x-data="about">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+
+    <!-- Main title -->
+    <h3 class="text-3xl md:text-4xl font-bold uppercase text-gray-900 mb-10" x-text="mainGoal"></h3>
+
+    <!-- Mission -->
+    <div class="mb-10">
+      <h2 class="text-2xl font-semibold text-blue-800 mb-4" x-text="missionTitle"></h2>
+      <p class="text-gray-700 leading-relaxed" x-text="missionText"></p>
+    </div>
+
+    <!-- Vision -->
+    <div class="mb-10">
+      <h2 class="text-2xl font-semibold text-blue-800 mb-4" x-text="visionTitle"></h2>
+      <p class="text-gray-700 leading-relaxed" x-text="visionText"></p>
+    </div>
+
+    <hr class="border-t border-gray-300 max-w-xs mx-auto" />
+  </div>
+</section>
+
+<script>
+  function about() {
+    return {
+      mainGoal: "Our main goal is to keep your business safe, profitable, and running",
+      missionTitle: "Mission",
+      missionText: "To be the preferred choice for our clients by delivering high-quality services with a focus on safety, efficiency, and sustainability. We aim to exceed expectations while fostering the continuous development of our team and technology.",
+      visionTitle: "Vision",
+      visionText: "To be industry leaders in Peru and Latin America, recognized for our excellence, environmental responsibility, and strong relationships built on trust with our clients."
+    };
+  }
+</script>

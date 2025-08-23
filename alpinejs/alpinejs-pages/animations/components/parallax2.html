@@ -1,0 +1,10 @@
+<div class="relative h-[60vh] overflow-hidden bg-gray-900 text-white flex items-center justify-center" x-data>
+  <div class="absolute top-0 left-0 w-full h-full bg-fixed bg-cover bg-center scale-110" style="background-image: url('https://pxpx.imgix.net/2021/10/parallax-1.jpg');
+              transform: translateY(calc(var(--scroll-y, 0) * 0.3px));"
+    x-init="window.addEventListener('scroll', () => $el.style.setProperty('--scroll-y', window.scrollY))">
+  </div>
+  <div class="relative z-10 text-center">
+    <h2 class="text-4xl font-bold mb-4">Parallax Showcase</h2>
+    <p class="text-lg text-gray-300">Simple and smooth parallax effect using AlpineJS</p>
+  </div>
+</div>

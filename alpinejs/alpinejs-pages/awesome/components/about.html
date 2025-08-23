@@ -1,0 +1,15 @@
+<section x-data="about" class="py-16 bg-white text-center">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-4" x-text="title">Title</h2>
+    <p class="text-gray-600" x-text="description">Some text description</p>
+  </div>
+</section>
+
+<script>
+  function about() {
+    return {
+      title: "About Us",
+      description: "We are passionate about building modular websites with AlpineJS."
+    };
+  };
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animations Showcase – AlpineJS + GSAP</title>
+
+  <meta name="description"
+    content="Explore a collection of animations built with AlpineJS and GSAP. Clean, responsive, and visually engaging effects for web interfaces." />
+  <meta name="keywords" content="GSAP, AlpineJS, animations, web animations, TailwindCSS, frontend showcase" />
+  <meta name="author" content="Luis David Gallo Dawson" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Animations Showcase" />
+  <meta property="og:description" content="Smooth and modern animations powered by GSAP and AlpineJS." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alpinejs.pages.dev/animations" />
+  <meta property="og:image" content="https://alpinejs.pages.dev/assets/img/og-image.jpg" /> <!-- opcional -->
+  <link rel="canonical" href="https://alpinejs.pages.dev/animations" />
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AlpineJS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+
+  <!-- Font, styles, etc. -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+
+<body class="bg-gray-100 text-gray-800 antialiased" x-data x-init="initComponents?.()">
+  <!-- Hero -->
+  <header
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+    <div class="text-center px-6">
+      <h1 class="text-5xl font-bold mb-4">🎬 Animations Showcase</h1>
+      <p class="text-lg">Built with <strong>AlpineJS</strong>, <strong>GSAP</strong> & <strong>TailwindCSS</strong></p>
+      <p class="mt-4 text-sm opacity-80">Scroll down to explore live animation demos ↓</p>
+    </div>
+  </header>
+
+  <!-- Components -->
+  <section class="py-24 px-4 max-w-5xl mx-auto space-y-24">
+
+    <div x-component="common-breadcrumbs"></div>
+    <div x-component="hello-world"></div>
+    <div x-component="parallax2"></div>
+    <div x-component="parallax"></div>
+    <div x-component="fade"></div>
+    <div x-component="cards"></div>
+
+  </section>
+
+  <footer class="bg-gray-100 text-center text-sm py-6 text-gray-500">
+    Built with 💙 using Alpine.js + GSAP – <a href="/" class="underline hover:text-blue-600">Back to top</a>
+  </footer>
+
+  <!-- Global Script -->
+  <script src="/assets/js/components.js"></script>
+</body>
+
+</html>

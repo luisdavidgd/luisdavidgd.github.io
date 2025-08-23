@@ -1,0 +1,41 @@
+<div id="slider" class="swiper relative w-full h-[70vh]" x-data="sliderSetup">
+  <!-- Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Navigation -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+
+  <!-- Slides -->
+  <div class="swiper-wrapper">
+    <template x-for="(slide, index) in slides" :key="index">
+      <div class="swiper-slide relative w-full h-[70vh]">
+        <img :src="slide.src" alt="" class="w-full h-full object-cover">
+
+        <!-- Overlay caption in bottom-right -->
+        <div class="absolute bottom-6 right-6 bg-black/70 text-white p-4 md:p-6 rounded-lg shadow-lg max-w-lg">
+          <h2 class="text-xl md:text-3xl font-bold mb-2" x-text="slide.title"></h2>
+          <p class="text-sm md:text-base" x-text="slide.description"></p>
+        </div>
+      </div>
+    </template>
+  </div>
+</div>
+
+<script>
+  function sliderSetup() {
+    return {
+      slides: [
+        {
+          title: "Kitchen Equipment Cleaning",
+          description: "Experts in deep cleaning and maintenance of commercial kitchen systems.",
+          src: "assets/slides/slide1.jpg",
+        },
+        {
+          title: "Industrial Cleaning",
+          description: "Specialized services for industrial facilities and machinery.",
+          src: "assets/slides/slide1.jpg",
+        },
+      ],
+    }
+  }
+</script>

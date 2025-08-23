@@ -1,0 +1,37 @@
+<section class="py-16 bg-white" x-data="clients">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-8">Our Clients</h2>
+    <div class="swiper myClientsSwiper">
+      <div class="swiper-wrapper">
+        <template x-for="logo in logos" :key="logo">
+          <div class="swiper-slide flex justify-center items-center h-24">
+            <img :src="logo" alt="Client Logo" class="h-16 object-contain" />
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function clients() {
+    return {
+      logos: [
+        'assets/logos/c01.png',
+        'assets/logos/c02.png',
+        'assets/logos/c03.png',
+        'assets/logos/c04.png',
+        'assets/logos/c05.png',
+        'assets/logos/c06.png',
+        'assets/logos/c07.png',
+        'assets/logos/c08.png',
+        'assets/logos/c09.png',
+        'assets/logos/c10.png',
+      ],
+      init() {
+        console.log("clients init() executed!")
+      }
+    }
+  }
+
+</script>
