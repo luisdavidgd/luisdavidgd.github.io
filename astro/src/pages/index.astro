@@ -1,54 +1,9 @@
 ---
-import HeroSection from "../components/svelte/HeroSection.svelte";
-import AboutMe from "../components/svelte/AboutMe.svelte";
-import Footer from "../components/svelte/Footer.svelte";
-import Basic from "../layouts/basic.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-const posts: CollectionEntry<"blog">[] = await getCollection("blog");
-const cheatsheets: CollectionEntry<"cheatsheets">[] = await getCollection("cheatsheets");
+const pageTitle = "Home Page";
 ---
 
-<Basic>
-	<HeroSection />
-	<AboutMe client:load />
-
-	<h1 class="text-3xl font-bold mb-6">Bienvenido a mi Hub 🚀</h1>
-
-	<section class="mb-10">
-		<h2 class="text-xl font-semibold mb-3">Últimos posts</h2>
-		<ul>
-			{
-				posts.slice(0, 3).map((post) => (
-					<li>
-						<a href={`/blog/${post.slug}`}>{post.data.title}</a>
-					</li>
-				))
-			}
-		</ul>
-	</section>
-
-	<section class="mb-10">
-		<h2 class="text-xl font-semibold mb-3">Cheatsheets</h2>
-		<ul>
-			{
-				cheatsheets.map((sheet) => (
-					<li>
-						<a href={`/cheatsheets/${sheet.slug}`}>{sheet.data.title}</a>
-					</li>
-				))
-			}
-		</ul>
-	</section>
-
-	<section>
-		<h2 class="text-xl font-semibold mb-3">Demos</h2>
-		<ul>
-			<li><a href="/vue/">Vue Demo</a></li>
-			<li><a href="/react/">React Demo</a></li>
-			<li><a href="/svelte/">Svelte Demo</a></li>
-		</ul>
-	</section>
-
-	<Footer client:load />
-</Basic>
+<BaseLayout pageTitle={pageTitle}>
+  <h2>My awesome blog subtitle</h2>
+</BaseLayout>
