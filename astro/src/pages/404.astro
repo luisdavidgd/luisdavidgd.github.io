@@ -1,1 +1,32 @@
-This is a custom 404 page error.
+<!DOCTYPE html>
+<html lang="en" x-data="{ hover: false }">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>404 - Not Found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gray-900 text-white flex items-center justify-center p-6">
+  <div class="text-center max-w-md">
+    <h1 class="text-6xl font-bold text-rose-500 mb-4">404</h1>
+    <h2 class="text-2xl font-semibold mb-2">Page not found</h2>
+    <p class="text-gray-300 mb-6">
+      Looks like you took a wrong turn... but hey, we all do sometimes 😅
+    </p>
+
+    <button @mouseenter="hover = true" @mouseleave="hover = false" @click="window.location.href = '/'"
+      class="bg-rose-600 hover:bg-rose-700 transition-colors duration-300 px-6 py-2 rounded-lg font-medium shadow-md">
+      <span x-text="hover ? 'Get me outta here!' : 'Go back home'"></span>
+    </button>
+
+    <p class="mt-8 text-sm text-gray-500">
+      Or maybe try <a href="https://www.google.com" class="underline hover:text-gray-300">Googling it?</a>
+    </p>
+  </div>
+</body>
+
+</html>

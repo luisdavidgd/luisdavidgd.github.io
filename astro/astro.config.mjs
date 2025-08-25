@@ -5,10 +5,12 @@ import svelte from '@astrojs/svelte';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import alpinejs from '@astrojs/alpinejs';
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://luisdavidgd.github.io",
-  integrations: [svelte()],
+  integrations: [svelte(), alpinejs()],
 
   vite: {
     plugins: [tailwindcss()]

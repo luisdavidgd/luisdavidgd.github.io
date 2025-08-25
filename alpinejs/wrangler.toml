@@ -1,6 +1,0 @@
-name = "alpinejs-pages"
-compatibility_date = "2025-07-01"
-pages_build_output_dir = "./dist"
-
-[vars]
-GOOGLE_SPREADSHEET_ID='AKfycbx2fQRj0Ve7HUovISPvYmfIJifsweAxDV0dXkPLrDO8nDjnQT7i2_QEiawycMowc3k'
