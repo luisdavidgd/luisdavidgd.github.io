@@ -43,9 +43,9 @@ jobs:
               cd ..
 
               if [ -d "$dir/dist" ]; then
-                cp -r "$dir/dist" "public/${dir%/}"
+                cp -r "$dir/dist" "public/demos/${dir%/}"
               elif [ -d "$dir/build" ]; then
-                cp -r "$dir/build" "public/${dir%/}"
+                cp -r "$dir/build" "public/demos/${dir%/}"
               else
                 echo "⚠️ No se encontró carpeta dist/build en $dir"
               fi
