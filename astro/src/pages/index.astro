@@ -1,9 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import LandingPageLayout from "@layouts/LandingPage.astro";
+import HeroSection from "@components/landing/HeroSection.astro";
 
 const pageTitle = "Home Page";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<LandingPageLayout pageTitle={pageTitle}>
+  <HeroSection />
   <h2>My awesome blog subtitle</h2>
-</BaseLayout>
+</LandingPageLayout>
