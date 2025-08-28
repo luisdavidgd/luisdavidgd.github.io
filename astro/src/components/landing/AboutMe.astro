@@ -100,6 +100,8 @@ const username = "luisdavidgd";
 </style>
 
 <script is:client="load">
+import ContactModal from "./ContactModal.astro";
+
   const username = "luisdavidgd";
   const repoCountEl = document.getElementById("repoCount");
   const commitCountEl = document.getElementById("commitCount");
@@ -157,7 +159,7 @@ const username = "luisdavidgd";
 
   // Modal
   openModalBtn.addEventListener("click", () => {
-    import("./ContactModal.astro").then(({ default: ContactModal }) => {
+    import(ContactModal).then(({ default: ContactModal }) => {
       // Render modal manually si ContactModal devuelve HTML
       modalContainer.innerHTML =
         "<div class='modal'>[Aquí iría tu modal]</div>";
