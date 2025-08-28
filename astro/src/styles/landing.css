@@ -1,32 +1,54 @@
-@import "./nav";
-
-html {
-  background-color: #f1f5f9;
-  font-family: sans-serif;
+:root {
+  --dark-bg-color: #0d0950;
+  --light-bg-color: #e7e9ee;
+  --panel-color: #15171c;
+  --dark-text-color: #e7e9ee;
+  --light-text-color: #0e0f12;
+  --muted: #a7adbb;
+  --accent: #6aa9ff;
+  --ring: #91baff;
 }
 
-/* body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
-} */
-
-/* * {
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
-} */
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-/* .expanded {
-  display: unset;
-} */
+a:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--light-bg-color);
+  color: var(--light-text-color);
+  line-height: 1.6;
+}
+
+.dark body {
+  font-family: system-ui, sans-serif;
+  background: var(--dark-bg-color);
+  color: var(--dark-text-color);
+  line-height: 1.6;
+}
 
 html.dark {
-  background-color: #0d0950;
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text);
+}
+
+.dark .nav-links a {
   color: #fff;
+}
+
+.dark .menu-icon span {
+  background: white;
 }
