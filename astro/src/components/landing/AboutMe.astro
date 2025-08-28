@@ -1,0 +1,168 @@
+---
+import ContactModal from "./ContactModal.astro";
+const username = "luisdavidgd";
+---
+
+<section class="profile">
+  <div class="card">
+    <div class="avatar">
+      <img src="/img/profile.jpg" alt="Profile" />
+    </div>
+
+    <div class="stats">
+      <div>
+        <strong id="repoCount">0</strong><br />Repos
+      </div>
+      <div>
+        <strong id="commitCount">0</strong><br />Commits
+      </div>
+    </div>
+
+    <div class="info">
+      <h3>Luis David Gallo Dawson</h3>
+      <p class="location">📍 Lima, Perú</p>
+      <p>💻 Software Developer</p>
+      <p>🏫 Universidad Ricardo Palma</p>
+    </div>
+
+    <div class="bio">
+      <p>
+        I've always been passionate about tech and programming. I truly enjoy
+        creating software and turning ideas into real solutions.
+      </p>
+      <p id="extraBio" hidden>
+        I'm currently working on multiple projects, constantly learning new
+        frameworks and improving my skills.
+      </p>
+      <button id="toggleBio" class="link-btn">Show more</button>
+    </div>
+
+    <button id="openModal" class="connect">Connect</button>
+  </div>
+
+  <div id="modalContainer"></div>
+</section>
+
+<style>
+  .profile {
+    padding: 4rem 1rem;
+    background: #e5e7eb;
+    display: flex;
+    justify-content: center;
+  }
+  .card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    text-align: center;
+    position: relative;
+  }
+  .avatar img {
+    width: 150px;
+    height: 150px;
+    border-radius: 9999px;
+    margin-top: -80px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+  }
+  .info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .bio {
+    margin-top: 1.5rem;
+  }
+  .link-btn {
+    background: none;
+    border: none;
+    color: #2563eb;
+    cursor: pointer;
+  }
+  .connect {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #3b82f6;
+    color: white;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+  }
+  .connect:hover {
+    background: #2563eb;
+  }
+</style>
+
+<script is:client="load">
+import ContactModal from "./ContactModal.astro";
+
+  const username = "luisdavidgd";
+  const repoCountEl = document.getElementById("repoCount");
+  const commitCountEl = document.getElementById("commitCount");
+  const toggleBioBtn = document.getElementById("toggleBio");
+  const extraBio = document.getElementById("extraBio");
+  const openModalBtn = document.getElementById("openModal");
+  const modalContainer = document.getElementById("modalContainer");
+
+  async function fetchGitHubStats() {
+    const perPage = 100;
+    let totalCommits = 0;
+    let repos = [];
+    let page = 1;
+    let hasMore = true;
+
+    while (hasMore) {
+      const res = await fetch(
+        `https://api.github.com/users/${username}/repos?per_page=${perPage}&page=${page}`,
+      );
+      const data = await res.json();
+      repos = repos.concat(data);
+      hasMore = data.length === perPage;
+      page++;
+    }
+    repoCountEl.textContent = repos.length;
+
+    for (const repo of repos) {
+      let pageCommits = 1;
+      let moreCommits = true;
+      while (moreCommits) {
+        const res = await fetch(
+          `https://api.github.com/repos/${username}/${repo.name}/commits?per_page=${perPage}&page=${pageCommits}`,
+        );
+        const commits = await res.json();
+        totalCommits += Array.isArray(commits) ? commits.length : 0;
+        moreCommits = Array.isArray(commits) && commits.length === perPage;
+        pageCommits++;
+      }
+    }
+    commitCountEl.textContent = totalCommits;
+  }
+
+  fetchGitHubStats();
+
+  // Show more toggle
+  toggleBioBtn.addEventListener("click", () => {
+    if (extraBio.hidden) {
+      extraBio.hidden = false;
+      toggleBioBtn.textContent = "Show less";
+    } else {
+      extraBio.hidden = true;
+      toggleBioBtn.textContent = "Show more";
+    }
+  });
+
+  // Modal
+  openModalBtn.addEventListener("click", () => {
+    import(ContactModal).then(({ default: ContactModal }) => {
+      // Render modal manually si ContactModal devuelve HTML
+      modalContainer.innerHTML =
+        "<div class='modal'>[Aquí iría tu modal]</div>";
+    });
+  });
+</script>
