@@ -3,8 +3,6 @@ import { defineConfig } from 'astro/config';
 
 import svelte from '@astrojs/svelte';
 
-import tailwindcss from '@tailwindcss/vite';
-
 import alpinejs from '@astrojs/alpinejs';
 
 // https://astro.build/config
@@ -13,6 +11,6 @@ export default defineConfig({
   integrations: [svelte(), alpinejs()],
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: []
   }
 });

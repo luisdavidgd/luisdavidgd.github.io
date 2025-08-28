@@ -1,11 +1,15 @@
 ---
 import LandingPageLayout from "@layouts/LandingPage.astro";
 import HeroSection from "@components/landing/HeroSection.astro";
+import AboutMe from "@components/landing/AboutMe.astro";
 
 const pageTitle = "Home Page";
 ---
 
 <LandingPageLayout pageTitle={pageTitle}>
-  <!-- <HeroSection /> -->
-  <h2>My awesome blog subtitle</h2>
+  <HeroSection />
+  <AboutMe />
+  <h2>Latest Posts</h2>
+  <h2>Latest Cheatsheets</h2>
+  <h2>Demos</h2>
 </LandingPageLayout>

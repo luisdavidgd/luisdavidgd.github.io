@@ -1,5 +1,6 @@
 ---
 import ThemeIcon from "@components/ThemeIcon.astro";
+const logoText = "Luis Gallo";
 
 const links = [
   { href: "/", text: "Home", active: true },
@@ -11,47 +12,54 @@ const links = [
 ---
 
 <nav>
-  <div class="logo">LOGO</div>
-
   <input type="checkbox" id="menu-toggle" />
-
   <label for="menu-toggle" class="menu-icon">
     <span></span>
     <span></span>
     <span></span>
   </label>
 
+  <div class="logo"> { logoText } </div>
+
   <ul class="menu">
     {
       links.map((link) => (
         <li>
+          {" "}
           <a href={link.href} class={link.active ? "active" : ""}>
-            {link.text}
-          </a>
+            {" "}
+            {link.text}{" "}
+          </a>{" "}
         </li>
       ))
     }
   </ul>
+
   <ThemeIcon />
 </nav>
 
 <style>
   nav {
+    position: fixed;
+    width: 100%;
+    background: var(--light-bg-color);
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
   }
-
+  nav ul {
+    list-style: none;
+    gap: 1rem;
+  }
   #menu-toggle {
     display: none;
   }
-
   .menu {
     display: flex;
     gap: 1rem;
   }
-
   .menu-icon {
     display: none;
     width: 30px;
@@ -59,7 +67,6 @@ const links = [
     position: relative;
     cursor: pointer;
   }
-
   .menu-icon span {
     position: absolute;
     height: 3px;
@@ -68,11 +75,9 @@ const links = [
     background: var(--light-text-color);
     transition: 0.3s;
   }
-
   html.dark .menu-icon span {
     background: var(--dark-text-color);
   }
-
   .menu-icon span:nth-child(1) {
     top: 0;
   }
@@ -82,23 +87,18 @@ const links = [
   .menu-icon span:nth-child(3) {
     bottom: 0;
   }
-
   @media (max-width: 600px) {
     .menu {
       display: none;
       flex-direction: column;
       gap: 0.5rem;
     }
-
     .menu-icon {
       display: block;
     }
-
-    #menu-toggle:checked + .menu-icon + .menu {
+    #menu-toggle:checked + .menu-icon ~ .menu {
       display: flex;
     }
-
-    /* animación burger → X */
     #menu-toggle:checked + .menu-icon span:nth-child(1) {
       transform: rotate(45deg);
       top: 9px;
@@ -109,6 +109,19 @@ const links = [
     #menu-toggle:checked + .menu-icon span:nth-child(3) {
       transform: rotate(-45deg);
       bottom: 9px;
+    }
+    nav ul {
+      display: none;
+      flex-direction: column;
+      background: var(--light-bg-color);
+      position: absolute;
+      top: 65px;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+    }
+    html.dark nav ul {
+      background: var(--dark-bg-color);
     }
   }
 </style>
