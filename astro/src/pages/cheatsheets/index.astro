@@ -4,14 +4,15 @@ import LandingPageLayout from "@layouts/LandingPage.astro";
 import BlogPost from "../../components/BlogPost.astro";
 
 const pageTitle = "Cheat Sheets!!";
-const allPosts = await getCollection("cheatsheets");
+const allSheets = await getCollection("cheatsheets");
 ---
+
 <LandingPageLayout pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
+  <p>Cheat Sheets!</p>
   <ul>
     {
-      allPosts.map((post) => (
-        <BlogPost url={`/cheatsheets/${post.id}/`} title={post.data.title} />
+      allSheets.map((sheet) => (
+        <BlogPost url={`/cheatsheets/${sheet.id}/`} title={sheet.data.title} />
       ))
     }
   </ul>
