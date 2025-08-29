@@ -1,48 +1,45 @@
-<div class="container pt">
-  <section class="section profile">
-    <div class="profile">
-      <div class="card">
-        <div class="avatar">
-          <img src="/img/profile.jpg" alt="Profile" />
-        </div>
+<section class="container pt">
+  <div class="profile">
+    <div class="card">
+      <div class="avatar">
+        <img src="/img/profile.jpg" alt="Profile" />
+      </div>
 
-        <div class="stats">
-          <div>
-            <strong id="repoCount">0</strong><br />Repos
-          </div>
-          <div>
-            <strong id="commitCount">0</strong><br />Commits
-          </div>
+      <div class="stats">
+        <div>
+          <strong id="repoCount">0</strong><br />Repos
         </div>
-
-        <div class="info">
-          <h3>Luis David Gallo Dawson</h3>
-          <p class="location">📍 Lima, Perú</p>
-          <p>💻 Software Developer</p>
-          <p>🏫 Universidad Ricardo Palma</p>
+        <div>
+          <strong id="commitCount">0</strong><br />Commits
         </div>
+      </div>
 
-        <div class="bio">
-          <p>
-            I've always been passionate about tech and programming. I truly
-            enjoy creating software and turning ideas into real solutions. I
-            believe it's important to stay updated with the latest tools and
-            trends in development — that's what keeps it exciting for me.
-          </p>
-          <p id="extraBio" hidden>
-            I'm currently working on multiple projects, constantly learning new
-            frameworks and improving my skills. I believe that great software
-            comes from collaboration, creativity, and curiosity.
-          </p>
-          <button id="toggleBio" class="link-btn">Show more</button>
-        </div>
+      <div class="info">
+        <h3>Luis David Gallo Dawson</h3>
+        <p class="location">📍 Lima, Perú</p>
+        <p>💻 Software Developer</p>
+        <p>🏫 Universidad Ricardo Palma</p>
+      </div>
 
+      <div class="bio">
+        <p>
+          I've always been passionate about tech and programming. I truly enjoy
+          creating software and turning ideas into real solutions. I believe
+          it's important to stay updated with the latest tools and trends in
+          development — that's what keeps it exciting for me.
+        </p>
+        <p id="extraBio" hidden>
+          I'm currently working on multiple projects, constantly learning new
+          frameworks and improving my skills. I believe that great software
+          comes from collaboration, creativity, and curiosity.
+        </p>
+        <button id="toggleBio" class="link-btn">Show more</button>
       </div>
     </div>
+  </div>
 
-    <div id="modalContainer"></div>
-  </section>
-</div>
+  <div id="modalContainer"></div>
+</section>
 
 <script is:client="load">
   const username = "luisdavidgd";
