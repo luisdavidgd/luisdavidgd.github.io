@@ -15,6 +15,10 @@ p {
   line-height: 1.6;
 }
 
+span {
+  color: var(--text-color);
+}
+
 a {
   color: var(--accent);
   text-decoration: none;

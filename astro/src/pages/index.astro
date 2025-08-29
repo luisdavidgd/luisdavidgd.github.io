@@ -4,8 +4,13 @@ import HeroSection from "@components/landing/HeroSection.astro";
 import AboutMe from "@components/landing/AboutMe.astro";
 import LatestPosts from "@components/landing/LatestPosts.astro";
 import { getCollection } from "astro:content";
+import LatestCheatSheet from "@components/landing/LatestCheatSheet.astro";
 
 const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const sheets = (await getCollection("cheatsheets"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
@@ -15,7 +20,17 @@ const pageTitle = "Home Page";
 <LandingPageLayout pageTitle={pageTitle}>
   <HeroSection />
   <AboutMe />
-  <LatestPosts posts={posts} />
-  <h2>Latest Cheatsheets</h2>
-  <h2>Demos</h2>
+  <LatestPosts {posts} />
+  <LatestCheatSheet {sheets} />
+  <div class="container">
+    <div class="section">
+      <h2>Demos</h2>
+      <ul>
+        <li><a href="/demos/alpinejs">Alpine JS</a></li>
+        <li><a href="/demos/svelte">Svelte</a></li>
+        <li><a href="/demos/react">React</a></li>
+        <li><a href="/demos/vue">Vue</a></li>
+      </ul>
+    </div>
+  </div>
 </LandingPageLayout>

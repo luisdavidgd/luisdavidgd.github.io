@@ -1,5 +1,5 @@
 ---
-title: "Svelte Cheatsheet"
+title: "Svelte asds"
 pubDate: 2025-07-01
 ---
 
