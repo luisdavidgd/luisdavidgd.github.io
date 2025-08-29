@@ -6,6 +6,7 @@
 @import "./components/card.css";
 @import "./components/buttons.css";
 @import "./components/about.css";
+@import "./components/footer.css";
 
 /* Extra global (si necesitas cosas pequeñas aquí) */
 body {

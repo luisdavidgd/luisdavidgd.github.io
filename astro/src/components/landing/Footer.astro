@@ -1,6 +1,5 @@
 ---
 import ContactModal from "./ContactModal.astro";
-import "@styles/components/Footer.css";
 
 let showModal = false;
 const date = new Date().getFullYear();
@@ -62,7 +61,7 @@ const footerSections = [
         <p>
           If you’d like to get in touch, use the
           <button
-            class="contact-btn"
+            class="link-btn"
             on:click|preventDefault={() => (showModal = true)}
             >contact form</button
           >
@@ -97,7 +96,7 @@ const footerSections = [
 
     <hr />
 
-    <div class="footer-bottom">
+    <div>
       <p>Copyright © {date} Luis David Gallo Dawson.</p>
     </div>
   </div>
