@@ -6,6 +6,7 @@ h5,
 h6 {
   font-weight: 700;
   color: var(--text-color);
+  margin-bottom: 1rem;
 }
 
 p {

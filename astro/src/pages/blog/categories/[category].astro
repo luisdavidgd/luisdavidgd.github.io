@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingPageLayout from "@layouts/LandingPage.astro";
 import BlogPost from "../../../components/BlogPost.astro";
 
 export async function getStaticPaths() {
@@ -24,7 +24,7 @@ const { category } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<BaseLayout pageTitle={category}>
+<LandingPageLayout pageTitle={category}>
   <p>Posts in {category}</p>
   <ul>
     {
@@ -33,4 +33,4 @@ const { posts } = Astro.props;
       ))
     }
   </ul>
-</BaseLayout>
+</LandingPageLayout>
