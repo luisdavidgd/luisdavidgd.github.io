@@ -1,8 +1,3 @@
----
-import ContactModal from "./ContactModal.astro";
-const username = "luisdavidgd";
----
-
 <section class="profile">
   <div class="card">
     <div class="avatar">
@@ -28,11 +23,14 @@ const username = "luisdavidgd";
     <div class="bio">
       <p>
         I've always been passionate about tech and programming. I truly enjoy
-        creating software and turning ideas into real solutions.
+        creating software and turning ideas into real solutions. I believe it's
+        important to stay updated with the latest tools and trends in
+        development — that's what keeps it exciting for me.
       </p>
       <p id="extraBio" hidden>
         I'm currently working on multiple projects, constantly learning new
-        frameworks and improving my skills.
+        frameworks and improving my skills. I believe that great software comes
+        from collaboration, creativity, and curiosity.
       </p>
       <button id="toggleBio" class="link-btn">Show more</button>
     </div>
@@ -100,8 +98,6 @@ const username = "luisdavidgd";
 </style>
 
 <script is:client="load">
-import ContactModal from "./ContactModal.astro";
-
   const username = "luisdavidgd";
   const repoCountEl = document.getElementById("repoCount");
   const commitCountEl = document.getElementById("commitCount");
@@ -159,10 +155,6 @@ import ContactModal from "./ContactModal.astro";
 
   // Modal
   openModalBtn.addEventListener("click", () => {
-    import(ContactModal).then(({ default: ContactModal }) => {
-      // Render modal manually si ContactModal devuelve HTML
-      modalContainer.innerHTML =
-        "<div class='modal'>[Aquí iría tu modal]</div>";
-    });
+    console.log("Open a Contact Modal.");
   });
 </script>
