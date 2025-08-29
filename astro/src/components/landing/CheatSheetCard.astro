@@ -1,0 +1,11 @@
+---
+const { sheet } = Astro.props;
+---
+
+<article class="card">
+  <a href={sheet.data.url}>
+    <h3>{sheet.data.title}</h3>
+    <p>{sheet.data.description}</p>
+    <time>{sheet.data.pubDate}</time>
+  </a>
+</article>

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LandingPageLayout from "@layouts/LandingPage.astro";
 const allPosts = await getCollection("blog");
 const categories = [
   ...new Set(allPosts.map((post) => post.data.categories).flat()),
@@ -8,7 +8,7 @@ const categories = [
 const pageTitle = "Category Index";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<LandingPageLayout pageTitle={pageTitle}>
   <div class="categories">
     {
       categories.map((category) => (
@@ -18,7 +18,7 @@ const pageTitle = "Category Index";
       ))
     }
   </div>
-</BaseLayout>
+</LandingPageLayout>
 <style>
   a {
     color: #00539f;

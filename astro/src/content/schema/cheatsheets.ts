@@ -5,7 +5,7 @@ export const cheatsheets = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: "./src/content/cheatsheets" }),
   schema: z.object({
     title: z.string(),
-    // pubDate: z.date(),
+    pubDate: z.date(),
     // description: z.string(),
     // author: z.string(),
     // image: z.object({

@@ -1,15 +1,15 @@
 :root {
   --bg-color: #fff;
-  --panel-color: #15171c;
+  --panel-color: #e2e8f0;
   --text-color: #0e0f12;
 
   --muted: #a7adbb;
-  --accent: #6aa9ff;
-  --ring: #91baff;
+  --accent: #2563eb;
+  --ring: #6aa9ff;
 
-  --radius: 1rem;
+  --radius: 22px;
   --spacing: 1.5rem;
-  --footer-bg: #e2e8f0;
+  --footer-bg: px#e2e8f0;
   --footer-text: #1a202c;
   --footer-link: #2b6cb0;
   --footer-link-hover: #2c5282;

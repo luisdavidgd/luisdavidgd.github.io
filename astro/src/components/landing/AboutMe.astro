@@ -1,114 +1,49 @@
----
-import "@styles/components/AboutMe.css";
----
+<div class="container">
+  <section class="section profile">
+    <div class="profile">
+      <div class="card">
+        <div class="avatar">
+          <img src="/img/profile.jpg" alt="Profile" />
+        </div>
 
-<section class="profile">
-  <div class="card">
-    <div class="avatar">
-      <img src="/img/profile.jpg" alt="Profile" />
-    </div>
+        <div class="stats">
+          <div>
+            <strong id="repoCount">0</strong><br />Repos
+          </div>
+          <div>
+            <strong id="commitCount">0</strong><br />Commits
+          </div>
+        </div>
 
-    <div class="stats">
-      <div>
-        <strong id="repoCount">0</strong><br />Repos
+        <div class="info">
+          <h3>Luis David Gallo Dawson</h3>
+          <p class="location">📍 Lima, Perú</p>
+          <p>💻 Software Developer</p>
+          <p>🏫 Universidad Ricardo Palma</p>
+        </div>
+
+        <div class="bio">
+          <p>
+            I've always been passionate about tech and programming. I truly
+            enjoy creating software and turning ideas into real solutions. I
+            believe it's important to stay updated with the latest tools and
+            trends in development — that's what keeps it exciting for me.
+          </p>
+          <p id="extraBio" hidden>
+            I'm currently working on multiple projects, constantly learning new
+            frameworks and improving my skills. I believe that great software
+            comes from collaboration, creativity, and curiosity.
+          </p>
+          <button id="toggleBio" class="link-btn">Show more</button>
+        </div>
+
+        <button id="openModal" class="btn btn-primary">Connect</button>
       </div>
-      <div>
-        <strong id="commitCount">0</strong><br />Commits
-      </div>
     </div>
 
-    <div class="info">
-      <h3>Luis David Gallo Dawson</h3>
-      <p class="location">📍 Lima, Perú</p>
-      <p>💻 Software Developer</p>
-      <p>🏫 Universidad Ricardo Palma</p>
-    </div>
-
-    <div class="bio">
-      <p>
-        I've always been passionate about tech and programming. I truly enjoy
-        creating software and turning ideas into real solutions. I believe it's
-        important to stay updated with the latest tools and trends in
-        development — that's what keeps it exciting for me.
-      </p>
-      <p id="extraBio" hidden>
-        I'm currently working on multiple projects, constantly learning new
-        frameworks and improving my skills. I believe that great software comes
-        from collaboration, creativity, and curiosity.
-      </p>
-      <button id="toggleBio" class="link-btn">Show more</button>
-    </div>
-
-    <button id="openModal" class="connect">Connect</button>
-  </div>
-
-  <div id="modalContainer"></div>
-</section>
-
-<style>
-    .profile {
-    padding: 4rem 1rem;
-    background: var(--lightPanelColor);
-    display: flex;
-    justify-content: center;
-  }
-
-
-  .card {
-    background: var(--bg-color);
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 700px;
-    text-align: center;
-    position: relative;
-  }
-
-  .avatar img {
-    width: 150px;
-    height: 150px;
-    border-radius: 9999px;
-    margin-top: -80px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  .stats {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 1.5rem 0;
-  }
-
-  .info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .bio {
-    margin-top: 1.5rem;
-  }
-
-  .link-btn {
-    background: none;
-    border: none;
-    color: #2563eb;
-    cursor: pointer;
-  }
-
-  .connect {
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background: #3b82f6;
-    color: white;
-    border-radius: 0.5rem;
-    border: none;
-    cursor: pointer;
-  }
-
-  .connect:hover {
-    background: #2563eb;
-  }
-</style>
+    <div id="modalContainer"></div>
+  </section>
+</div>
 
 <script is:client="load">
   const username = "luisdavidgd";
