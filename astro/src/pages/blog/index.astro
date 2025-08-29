@@ -26,24 +26,24 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
     {
       categories.map((category) => (
         <p class="category">
-          <a href={`blog/categories/${category}`}>{category}</a>
+          <a href={`/blog/categories/${category}`}>{category}</a>
         </p>
       ))
     }
   </div>
-  <div><a href="blog/categories">View All Categories</a></div>
+  <div><a href="/blog/categories">View All Categories</a></div>
 
   <h2>All tags</h2>
   <div class="tags">
     {
       tags.map((tag) => (
         <p class="tag">
-          <a href={`blog/tags/${tag}`}>{tag}</a>
+          <a href={`/blog/tags/${tag}`}>{tag}</a>
         </p>
       ))
     }
   </div>
-  <div><a href="blog/tags">View All Tags</a></div>
+  <div><a href="/blog/tags">View All Tags</a></div>
 </LandingPageLayout>
 
 <style>
