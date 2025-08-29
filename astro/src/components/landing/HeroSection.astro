@@ -2,9 +2,15 @@
 // https://hero-generator.netlify.app/
 // https://github.com/sdras/hero-generator
 ---
+
 <section class="masthead" role="img" aria-label="Image Description">
   <h1>My Landing Page</h1>
-  <button class="btn btn-primary"> See my projects! </button>
+  <button
+    class="btn btn-primary"
+    onclick="document.getElementById('demos').scrollIntoView()"
+  >
+    See my projects!
+  </button>
 </section>
 
 <style>
@@ -25,7 +31,8 @@
         rgba(0, 0, 0, 0) 52%,
         rgba(0, 0, 0, 0.65) 100%
       ),
-      url(https://cdn.pixabay.com/photo/2021/12/12/20/00/play-6865967_640.jpg) no-repeat center center scroll;
+      url(https://cdn.pixabay.com/photo/2021/12/12/20/00/play-6865967_640.jpg)
+        no-repeat center center scroll;
   }
 
   h1 {
@@ -38,5 +45,4 @@
     text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.8);
     margin-bottom: 184px;
   }
-
 </style>

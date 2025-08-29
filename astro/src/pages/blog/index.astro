@@ -12,38 +12,43 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 ---
 
 <LandingPageLayout pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
-  <ul>
-    {
-      allPosts.map((post) => (
-        <BlogPost url={`/blog/${post.id}/`} title={post.data.title} />
-      ))
-    }
-  </ul>
+  <div class="container pt">
+    <div class="section">
+      <h1>My blog</h1>
+      <p>This is where I will post about my journey learning Astro.</p>
+      <ul>
+        {
+          allPosts.map((post) => (
+            <BlogPost url={`/blog/${post.id}/`} title={post.data.title} />
+          ))
+        }
+      </ul>
 
-  <h2>All Categories</h2>
-  <div class="categories">
-    {
-      categories.map((category) => (
-        <p class="category">
-          <a href={`/blog/categories/${category}`}>{category}</a>
-        </p>
-      ))
-    }
-  </div>
-  <div><a href="/blog/categories">View All Categories</a></div>
+      <h2>All Categories</h2>
+      <div class="categories">
+        {
+          categories.map((category) => (
+            <p class="category">
+              <a href={`/blog/categories/${category}`}>{category}</a>
+            </p>
+          ))
+        }
+      </div>
+      <div><a href="/blog/categories">View All Categories</a></div>
 
-  <h2>All tags</h2>
-  <div class="tags">
-    {
-      tags.map((tag) => (
-        <p class="tag">
-          <a href={`/blog/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
-    }
+      <h2>All tags</h2>
+      <div class="tags">
+        {
+          tags.map((tag) => (
+            <p class="tag">
+              <a href={`/blog/tags/${tag}`}>{tag}</a>
+            </p>
+          ))
+        }
+      </div>
+      <div><a href="/blog/tags">View All Tags</a></div>
+    </div>
   </div>
-  <div><a href="/blog/tags">View All Tags</a></div>
 </LandingPageLayout>
 
 <style>
