@@ -3,11 +3,9 @@ import CheatSheetCard from "./CheatSheetCard.astro";
 const { sheets } = Astro.props;
 ---
 
-<section class="section">
-  <div class="container">
-    <h2>Latest Cheat Sheets</h2>
-    <div class="grid">
-      {sheets.map((sheet: any) => <CheatSheetCard sheet={sheet} />)}
-    </div>
+<section class="container">
+  <h2>Latest Cheat Sheets</h2>
+  <div class="grid">
+    {sheets.map((sheet: any) => <CheatSheetCard sheet={sheet} />)}
   </div>
 </section>
