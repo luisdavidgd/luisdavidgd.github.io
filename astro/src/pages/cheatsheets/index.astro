@@ -8,12 +8,19 @@ const allSheets = await getCollection("cheatsheets");
 ---
 
 <LandingPageLayout pageTitle={pageTitle}>
-  <p>Cheat Sheets!</p>
-  <ul>
-    {
-      allSheets.map((sheet) => (
-        <BlogPost url={`/cheatsheets/${sheet.id}/`} title={sheet.data.title} />
-      ))
-    }
-  </ul>
+  <div class="container pt">
+    <div class="section">
+      <h1>Cheat Sheets!</h1>
+      <ul>
+        {
+          allSheets.map((sheet) => (
+            <BlogPost
+              url={`/cheatsheets/${sheet.id}/`}
+              title={sheet.data.title}
+            />
+          ))
+        }
+      </ul>
+    </div>
+  </div>
 </LandingPageLayout>
