@@ -39,19 +39,20 @@ const links = [
 </nav>
 
 <style>
+  a {
+    color: var(--text-color);
+  }
   nav {
     position: fixed;
     width: 100%;
-    background: var(--lightBgColor);
+    background: var(--bg-color);
     z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
   }
-  html.dark nav {
-    background: var(--darkBgColor);
-  }
+
   nav ul {
     list-style: none;
     gap: 1rem;
@@ -75,11 +76,8 @@ const links = [
     height: 3px;
     width: 100%;
     left: 0;
-    background-color: var(--lightTextColor);
+    background-color: var(--text-color);
     transition: 0.3s;
-  }
-  html.dark .menu-icon span {
-    background-color: var(--darkTextColor);
   }
   .menu-icon span:nth-child(1) {
     top: 0;
@@ -116,15 +114,12 @@ const links = [
     nav ul {
       display: none;
       flex-direction: column;
-      background: var(--lightBgColor);
+      background: var(--bg-color);
       position: absolute;
       top: 65px;
       left: 0;
       width: 100%;
       padding: 1rem;
-    }
-    html.dark nav ul {
-      background: var(--darkBgColor);
     }
   }
 </style>

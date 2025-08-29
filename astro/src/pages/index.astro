@@ -2,6 +2,12 @@
 import LandingPageLayout from "@layouts/LandingPage.astro";
 import HeroSection from "@components/landing/HeroSection.astro";
 import AboutMe from "@components/landing/AboutMe.astro";
+import LatestPosts from "@components/landing/LatestPosts.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 
 const pageTitle = "Home Page";
 ---
@@ -9,7 +15,7 @@ const pageTitle = "Home Page";
 <LandingPageLayout pageTitle={pageTitle}>
   <HeroSection />
   <AboutMe />
-  <h2>Latest Posts</h2>
+  <LatestPosts posts={posts} />
   <h2>Latest Cheatsheets</h2>
   <h2>Demos</h2>
 </LandingPageLayout>
