@@ -1,0 +1,11 @@
+---
+const { post } = Astro.props;
+---
+
+<article class="card">
+  <a href={post.data.url}>
+    <h3>{post.data.title}</h3>
+    <p>{post.data.description}</p>
+    <time>{post.data.pubDate}</time>
+  </a>
+</article>
