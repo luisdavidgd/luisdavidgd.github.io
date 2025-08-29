@@ -1,9 +1,10 @@
 :root {
-  --dark-bg-color: #0d0950;
-  --light-bg-color: #e7e9ee;
-  --panel-color: #15171c;
-  --dark-text-color: #e7e9ee;
-  --light-text-color: #0e0f12;
+  --darkBgColor: #0d0950;
+  --lightBgColor: white;
+  --lightPanelColor: #e7e9ee;
+  --darkPanelColor: #15171c;
+  --darkTextColor: white;
+  --lightTextColor: #0e0f12;
   --muted: #a7adbb;
   --accent: #6aa9ff;
   --ring: #91baff;
@@ -23,13 +24,13 @@ html {
 body {
   font-family: system-ui, sans-serif;
   line-height: 1.6;
-  background: var(--light-bg-color);
-  color: var(--light-text-color);
+  background: var(--lightBgColor);
+  color: var(--lightTextColor);
 }
 
 html.dark body {
-  background: var(--dark-bg-color);
-  color: var(--dark-text-color);
+  background: var(--darkBgColor);
+  color: var(--darkTextColor);
 }
 
 a {
