@@ -3,7 +3,7 @@ const { sheet } = Astro.props;
 ---
 
 <article class="card">
-  <a href={sheet.data.url}>
+  <a href={`/cheatsheets/${sheet.id}/`}>
     <h3>{sheet.data.title}</h3>
     <p>{sheet.data.description}</p>
     <time>{sheet.data.pubDate}</time>

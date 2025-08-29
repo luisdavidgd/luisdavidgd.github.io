@@ -1,9 +1,10 @@
 ---
 const { post } = Astro.props;
+console.log(post)
 ---
 
 <article class="card">
-  <a href={post.data.url}>
+  <a href={`/blog/${post.id}/`}>
     <h3>{post.data.title}</h3>
     <p>{post.data.description}</p>
     <time>{post.data.pubDate}</time>
