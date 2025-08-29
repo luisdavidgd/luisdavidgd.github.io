@@ -1,5 +1,11 @@
 .profile {
-  padding: 4rem 1rem;
+  /**
+  padding-top
+padding-right
+padding-bottom
+padding-left
+*/
+  padding: 4rem 0px 4rem 0px;
   display: flex;
   justify-content: center;
 }
