@@ -5,14 +5,10 @@
 @import "./components/layout.css";
 @import "./components/card.css";
 @import "./components/buttons.css";
+@import "./components/about.css";
 
 /* Extra global (si necesitas cosas pequeñas aquí) */
 body {
-  background: var(--lightPanelColor);
-  color: var(--text-color);
-}
-
-html.dark body {
-  background: var(--panel-color);
+  background: var(--bg-color);
   color: var(--text-color);
 }
