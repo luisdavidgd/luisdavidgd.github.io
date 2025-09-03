@@ -4,12 +4,35 @@ interface Props {
   class?: string;
 }
 
-const { width = '100%', class: className } = Astro.props as Props;
+const { width = "100%", class: className } = Astro.props as Props;
 ---
 
-<div class={['sw-separator-glow', className].filter(Boolean).join(' ')} style={`--sep-width: ${String(width)};`}>
-  <div class="sw-glow" />
+<div
+  class={["separator-glow", className].filter(Boolean).join(" ")}
+  style={`--sep-width: ${String(width)};`}
+>
+  <div class="separator-glow__line"></div>
   <span class="sr-only">Separator</span>
 </div>
 
+<style>
+  .separator-glow {
+    width: 10rem;
+    padding-top: var(--spacing);
+    display: flex;
+    margin: auto;
+  }
 
+  .separator-glow__line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--accent),
+      transparent
+    );
+    border-radius: 9999px;
+    filter: drop-shadow(0 0 6px var(--accent));
+  }
+</style>

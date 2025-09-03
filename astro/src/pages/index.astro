@@ -1,19 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 import LandingPageLayout from "@layouts/LandingPage.astro";
-import HeroSection from "@components/landing/HeroSection.astro";
 import LatestPosts from "@components/landing/LatestPosts.astro";
-import LatestCheatSheet from "@components/landing/LatestCheatSheet.astro";
-import DemoSection from "@components/landing/DemoSection.astro";
 import ArrowSeparator from "@components/ui/separator/ArrowSeparator.astro";
 import SkillsSection from "@components/landing/SkillsSection.astro";
 import { skills } from "../data/skills";
+import HeroSection from "@components/sections/HeroSection.astro";
+import GlowLineSeparator from "@components/ui/separator/GlowLineSeparator.astro";
 
 const posts = (await getCollection("blog"))
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3);
-
-const sheets = (await getCollection("cheatsheets"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
@@ -21,13 +16,15 @@ const pageTitle = "Home Page";
 ---
 
 <LandingPageLayout pageTitle={pageTitle}>
-  <HeroSection />
+  <HeroSection
+    title="Your Headline Goes Here!"
+    subtitle="I build softwares that brings you loyal subscribers."
+    showCTA
+    primaryCTA={{ text: "View Demos", href: "/demos" }}
+    secondaryCTA={{ text: "Read Blog", href: "/blog" }}
+  />
   <ArrowSeparator />
   <SkillsSection title="Skills & Tools" skills={skills} />
   <LatestPosts {posts} />
-  <LatestCheatSheet {sheets} />
-  <section class="container" id="demos">
-    <h2>My Demos</h2>
-    <DemoSection />
-  </section>
+  <GlowLineSeparator />
 </LandingPageLayout>

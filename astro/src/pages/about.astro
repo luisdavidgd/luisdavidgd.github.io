@@ -1,5 +1,7 @@
 ---
-import AboutMe from "@components/landing/AboutMe.astro";
+import AboutMe from "@components/sections/AboutMe.astro";
+import ArrowSeparator from "@components/ui/separator/ArrowSeparator.astro";
+import GlowLineSeparator from "@components/ui/separator/GlowLineSeparator.astro";
 import LandingPageLayout from "@layouts/LandingPage.astro";
 
 const pageTitle = "About Me";
@@ -7,4 +9,5 @@ const pageTitle = "About Me";
 
 <LandingPageLayout pageTitle={pageTitle}>
   <AboutMe />
+  <GlowLineSeparator />
 </LandingPageLayout>

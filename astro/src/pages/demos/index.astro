@@ -1,13 +1,12 @@
 ---
 import LandingPageLayout from "@layouts/LandingPage.astro";
 import DemoSection from "@components/landing/DemoSection.astro";
+import HeroSection from "@components/sections/HeroSection.astro";
 
 const pageTitle = "Demos";
 ---
 
 <LandingPageLayout pageTitle={pageTitle}>
-  <section class="container pt">
-    <h1>My Demos</h1>
-    <DemoSection />
-  </section>
+  <HeroSection title="My Demos" />
+  <DemoSection />
 </LandingPageLayout>
