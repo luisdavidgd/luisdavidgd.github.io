@@ -2,13 +2,12 @@
 import { getCollection } from "astro:content";
 import LandingPageLayout from "@layouts/LandingPage.astro";
 import HeroSection from "@components/landing/HeroSection.astro";
-import AboutMe from "@components/landing/AboutMe.astro";
 import LatestPosts from "@components/landing/LatestPosts.astro";
 import LatestCheatSheet from "@components/landing/LatestCheatSheet.astro";
 import DemoSection from "@components/landing/DemoSection.astro";
 import ArrowSeparator from "@components/ui/separator/ArrowSeparator.astro";
-import SkillsSection from "@components/sections/SkillsSection.astro";
-import { skills } from '../data/skills';
+import SkillsSection from "@components/landing/SkillsSection.astro";
+import { skills } from "../data/skills";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
