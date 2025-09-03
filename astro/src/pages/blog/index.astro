@@ -1,73 +1,42 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import LandingPageLayout from "@layouts/LandingPage.astro";
-import BlogPost from "../../components/BlogPost.astro";
 import BlogHero from "@components/sections/BlogHero.astro";
+import BlogAllArticles from "@components/sections/BlogAllArticles.astro";
+import BlogPagination from "@components/ui/nav/BlogPagination.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import FeaturedPost from "@components/ui/card/FeaturedPost.astro";
+import { calculateReadingTimeFromHtml } from "@lib/reading";
+import GlowLineSeparator from "@components/ui/separator/GlowLineSeparator.astro";
 
-const pageTitle = "My Astro Learning Blog";
+const title = "My Learning Blog";
 const allPosts = await getCollection("blog");
 const categories = [
   ...new Set(allPosts.map((post) => post.data.categories).flat()),
 ];
 const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+const PAGE_SIZE = 6;
+const posts = (await getCollection("blog")).sort(
+  (a, b) => +b.data.pubDate - +a.data.pubDate,
+);
+const [featured, ...rest] = posts;
+const firstPagePosts = rest.slice(0, PAGE_SIZE);
+const totalPages = Math.max(1, Math.ceil(rest.length / PAGE_SIZE));
+let featuredReading = 0;
+if (featured) {
+  const { Content } = await render(featured);
+  const html = await Astro.slots.render("default");
+  featuredReading = calculateReadingTimeFromHtml(html ?? "");
+}
 ---
 
-<LandingPageLayout pageTitle={pageTitle}>
+<LandingPageLayout {title}>
   <BlogHero
     title="My blog"
     subtitle="This is where I will post about my journey learning Astro."
   />
-  <section class="container">
-    <ul>
-      {
-        allPosts.map((post) => (
-          <BlogPost url={`/blog/${post.id}/`} title={post.data.title} />
-        ))
-      }
-    </ul>
-
-    <h2>All Categories</h2>
-    <div class="categories">
-      {
-        categories.map((category) => (
-          <p class="category">
-            <a href={`/blog/categories/${category}`}>{category}</a>
-          </p>
-        ))
-      }
-    </div>
-    <div><a href="/blog/categories">View All Categories</a></div>
-
-    <h2>All tags</h2>
-    <div class="tags">
-      {
-        tags.map((tag) => (
-          <p class="tag">
-            <a href={`/blog/tags/${tag}`}>{tag}</a>
-          </p>
-        ))
-      }
-    </div>
-    <div><a href="/blog/tags">View All Tags</a></div>
-  </section>
+  <FeaturedPost post={featured} readingTimeMin={featuredReading} />
+  <BlogAllArticles posts={firstPagePosts} />
+  <BlogPagination currentPage={1} totalPages={totalPages} />
 </LandingPageLayout>
-
-<style>
-  a {
-    color: #00539f;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
-  }
-</style>

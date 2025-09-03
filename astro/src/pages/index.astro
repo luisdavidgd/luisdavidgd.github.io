@@ -12,10 +12,10 @@ const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-const pageTitle = "Home Page";
+const pageTitle = "Landing Page";
 ---
 
-<LandingPageLayout pageTitle={pageTitle}>
+<LandingPageLayout title={pageTitle}>
   <HeroSection
     title="Your Headline Goes Here!"
     subtitle="I build softwares that brings you loyal subscribers."

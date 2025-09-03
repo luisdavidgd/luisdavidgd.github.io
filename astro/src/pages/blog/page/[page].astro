@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import BlogHero from "@components/sections/BlogHero.astro";
+import BlogAllArticles from "@components/sections/BlogAllArticles.astro";
+import BlogPagination from "@components/ui/nav/BlogPagination.astro";
+import LandingPage from "@layouts/LandingPage.astro";
+
+export async function getStaticPaths() {
+  const PAGE_SIZE = 6;
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => +b.data.pubDate - +a.data.pubDate,
+  );
+  const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+  return Array.from({ length: totalPages - 1 }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const PAGE_SIZE = 6;
+const posts = (await getCollection("blog")).sort(
+  (a, b) => +b.data.pubDate - +a.data.pubDate,
+);
+const { page } = Astro.params;
+const currentPage = Math.max(1, parseInt(page || "1", 10));
+const start = (currentPage - 1) * PAGE_SIZE;
+const end = start + PAGE_SIZE;
+const pagePosts = posts.slice(start, end);
+const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+---
+
+<LandingPage>
+  <BlogHero
+    title="My blog"
+    subtitle="This is where I will post about my journey learning Astro."
+  />
+  <BlogAllArticles posts={pagePosts} />
+  <BlogPagination currentPage={currentPage} totalPages={totalPages} />
+</LandingPage>

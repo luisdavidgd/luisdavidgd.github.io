@@ -12,8 +12,8 @@ export const blog = defineCollection({
       image: z.object({
         url: z.string(),
         alt: z.string()
-      }),
-      categories: z.array(z.string()),
+      }).optional(),
+      categories: z.array(z.string()).optional(),
       tags: z.array(z.string()),
       heroImage: image().optional()
     })
