@@ -4,9 +4,29 @@ import PostCard from "@components/ui/card/PostCard.astro";
 const { posts } = Astro.props;
 ---
 
-<section class="container">
-  <h2>Latest Posts</h2>
-  <div class="grid">
-    {posts.map((post: any) => <PostCard post={post} />)}
+<section>
+  <div class="container">
+    <h2>Latest Posts</h2>
+    <div class="grid">
+      {posts.map((post: any) => <PostCard post={post} />)}
+    </div>
   </div>
 </section>
+
+<style>
+  section {
+    width: 100%;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+  }
+  .container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+</style>

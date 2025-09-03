@@ -76,7 +76,7 @@ const { title, subtitle, showCTA = false, primaryCTA, secondaryCTA } = Astro.pro
 }
 
 .hero-gradient {
-  background: linear-gradient(to right, var(--accent));
+  background: var(--accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -84,7 +84,7 @@ const { title, subtitle, showCTA = false, primaryCTA, secondaryCTA } = Astro.pro
 .hero-subtitle {
   margin-top: 1rem;
   font-size: 1.125rem;
-  color: var(--color-text-secondary);
+  color: var(--color-text);
   max-width: 42rem; /* ~672px */
   margin-left: auto;
   margin-right: auto;

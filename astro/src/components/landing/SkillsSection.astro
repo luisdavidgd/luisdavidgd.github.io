@@ -57,7 +57,6 @@ const { title, skills } = Astro.props as Props;
     font-weight: 600;
     text-align: center;
     margin-bottom: 1.5rem;
-    color: var(--foreground);
   }
 
   @media (min-width: 768px) {
@@ -115,7 +114,7 @@ const { title, skills } = Astro.props as Props;
     justify-content: center;
     color: var(--accent);
     opacity: 0.9;
-    background: rgba(var(--accent-rgb), 0.08);
+    background: rgba(var(--accent), 0.08);
     transition:
       transform 0.3s,
       opacity 0.3s;
@@ -134,7 +133,6 @@ const { title, skills } = Astro.props as Props;
   .skill-title {
     font-size: 1.25rem; /* xl */
     font-weight: 600;
-    color: var(--foreground);
     margin-bottom: 0.5rem;
   }
 
@@ -142,6 +140,6 @@ const { title, skills } = Astro.props as Props;
     font-size: 1rem;
     color: var(--color-text-muted);
     line-height: 1.6;
-    max-width: 65ch; /* similar a prose */
+    max-width: 65ch;
   }
 </style>
