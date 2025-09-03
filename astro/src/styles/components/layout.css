@@ -18,3 +18,10 @@ main {
 .featured {
   grid-column: span 2;
 }
+
+.responsive-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem; /* opcional */
+}

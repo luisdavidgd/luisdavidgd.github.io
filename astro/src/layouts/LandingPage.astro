@@ -2,7 +2,8 @@
 import Header from "@components/landing/Header.astro";
 import Footer from "../components/landing/Footer.astro";
 import "@styles/global.css";
-const { pageTitle } = Astro.props;
+import BaseHead from "@components/BaseHead.astro";
+const { title = "Luis Gallo", description = "Description." } = Astro.props;
 ---
 
 <html lang="en">
@@ -11,9 +12,8 @@ const { pageTitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
+    <BaseHead {title} {description} />
+  </head><body>
     <Header />
     <main>
       <slot />

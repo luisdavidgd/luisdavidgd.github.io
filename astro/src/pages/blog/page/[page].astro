@@ -29,7 +29,10 @@ const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
 ---
 
 <LandingPage>
-  <BlogHero title="Blog" subtitle="Stories, notes, and learnings." />
+  <BlogHero
+    title="My blog"
+    subtitle="This is where I will post about my journey learning Astro."
+  />
   <BlogAllArticles posts={pagePosts} />
   <BlogPagination currentPage={currentPage} totalPages={totalPages} />
 </LandingPage>
