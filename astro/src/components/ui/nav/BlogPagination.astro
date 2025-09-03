@@ -2,30 +2,86 @@
 interface Props {
   currentPage: number;
   totalPages: number;
-  basePath?: string; // e.g. '/blog/page'
+  basePath?: string;
 }
 
-const { currentPage, totalPages, basePath = '/blog/page' } = Astro.props as Props;
-const prevHref = currentPage > 1 ? (currentPage === 2 ? '/blog/' : `${basePath}/${currentPage - 1}/`) : null;
-const nextHref = currentPage < totalPages ? `${basePath}/${currentPage + 1}/` : null;
+const {
+  currentPage,
+  totalPages,
+  basePath = "/blog/page",
+} = Astro.props as Props;
+const prevHref =
+  currentPage > 1
+    ? currentPage === 2
+      ? "/blog/"
+      : `${basePath}/${currentPage - 1}/`
+    : null;
+const nextHref =
+  currentPage < totalPages ? `${basePath}/${currentPage + 1}/` : null;
 ---
 
-{totalPages > 1 && (
-  <nav class="mt-6 flex items-center justify-center gap-3" aria-label="Pagination">
-    {prevHref ? (
-      <a href={prevHref} class="sw-btn">Previous</a>
-    ) : (
-      <span class="sw-btn" style="opacity:.5; pointer-events:none;">Previous</span>
-    )}
-    <span class="text-sm text-[color:var(--color-text-muted)]">
-      Page {currentPage} of {totalPages}
-    </span>
-    {nextHref ? (
-      <a href={nextHref} class="sw-btn">Next</a>
-    ) : (
-      <span class="sw-btn" style="opacity:.5; pointer-events:none;">Next</span>
-    )}
-  </nav>
-)}
+{
+  totalPages > 1 && (
+    <nav class="pagination" aria-label="Pagination">
+      {prevHref ? (
+        <a href={prevHref} class="pagination-btn">
+          Previous
+        </a>
+      ) : (
+        <span class="pagination-btn pagination-btn--disabled">Previous</span>
+      )}
 
+      <span class="pagination-info">
+        Page {currentPage} of {totalPages}
+      </span>
 
+      {nextHref ? (
+        <a href={nextHref} class="pagination-btn">
+          Next
+        </a>
+      ) : (
+        <span class="pagination-btn pagination-btn--disabled">Next</span>
+      )}
+    </nav>
+  )
+}
+
+<style>
+  .pagination {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    background: var(--color-bg-secondary, #f5f5f5);
+    color: var(--color-text-primary, #111);
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .pagination-btn:hover {
+    background: var(--accent, #0070f3);
+    color: white;
+  }
+
+  .pagination-btn--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    background: var(--color-bg-secondary, #f5f5f5);
+  }
+
+  .pagination-info {
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #666);
+  }
+</style>

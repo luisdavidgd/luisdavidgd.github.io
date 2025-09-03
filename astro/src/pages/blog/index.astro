@@ -1,8 +1,13 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import LandingPageLayout from "@layouts/LandingPage.astro";
-import BlogPost from "../../components/BlogPost.astro";
+import BlogPost from "@components/BlogPost.astro";
 import BlogHero from "@components/sections/BlogHero.astro";
+import BlogAllArticles from "@components/sections/BlogAllArticles.astro";
+import BlogPagination from "@components/ui/nav/BlogPagination.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import FeaturedPost from "@components/ui/card/FeaturedPost.astro";
+import { calculateReadingTimeFromHtml } from "@lib/reading";
 
 const pageTitle = "My Astro Learning Blog";
 const allPosts = await getCollection("blog");
@@ -10,6 +15,20 @@ const categories = [
   ...new Set(allPosts.map((post) => post.data.categories).flat()),
 ];
 const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+const PAGE_SIZE = 6;
+const posts = (await getCollection("blog")).sort(
+  (a, b) => +b.data.pubDate - +a.data.pubDate,
+);
+const [featured, ...rest] = posts;
+const firstPagePosts = rest.slice(0, PAGE_SIZE);
+const totalPages = Math.max(1, Math.ceil(rest.length / PAGE_SIZE));
+let featuredReading = 0;
+if (featured) {
+  const { Content } = await render(featured);
+  const html = await Astro.slots.render("default");
+  featuredReading = calculateReadingTimeFromHtml(html ?? "");
+}
 ---
 
 <LandingPageLayout pageTitle={pageTitle}>
@@ -17,6 +36,8 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
     title="My blog"
     subtitle="This is where I will post about my journey learning Astro."
   />
+  <BlogAllArticles posts={firstPagePosts} />
+  <BlogPagination currentPage={1} totalPages={totalPages} />
   <section class="container">
     <ul>
       {
