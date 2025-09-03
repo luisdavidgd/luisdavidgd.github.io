@@ -4,20 +4,71 @@ interface Props {
   subtitle?: string;
 }
 
-const { title = 'Blog', subtitle } = Astro.props as Props;
+const { title = "Blog", subtitle } = Astro.props as Props;
 ---
 
-<section class="w-full py-4">
-  <div class="mx-auto max-w-5xl px-3">
-    <div class="grid items-center gap-4 md:grid-cols-2">
-      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-foreground">
-        <span class="bg-gradient-to-r from-[var(--accent)] to-[var(--accent-dark)] bg-clip-text text-transparent">{title}</span>
+<section class="blog-header">
+  <div class="blog-header-container">
+    <div class="blog-header-grid">
+      <h1 class="blog-header-title">
+        <span class="blog-header-gradient">{title}</span>
       </h1>
-      {subtitle && (
-        <p class="text-base md:text-lg text-[color:var(--color-text-secondary)] md:text-right">{subtitle}</p>
-      )}
+      {subtitle && <p class="blog-header-subtitle">{subtitle}</p>}
     </div>
   </div>
-  </section>
+</section>
 
+<style>
+  .blog-header {
+    width: 100%;
+    padding: 1rem 0;
+  }
 
+  .blog-header-container {
+    max-width: 64rem; /* 1024px */
+    margin: 0 auto;
+    padding: 0 0.75rem;
+  }
+
+  .blog-header-grid {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+  }
+  @media (min-width: 768px) {
+    .blog-header-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .blog-header-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    margin: 0;
+  }
+  @media (min-width: 768px) {
+    .blog-header-title {
+      font-size: 3.75rem;
+    }
+  }
+
+  .blog-header-gradient {
+    background: linear-gradient(to right, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .blog-header-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+  @media (min-width: 768px) {
+    .blog-header-subtitle {
+      font-size: 1.125rem;
+      text-align: right;
+    }
+  }
+</style>

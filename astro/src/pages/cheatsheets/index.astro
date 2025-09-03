@@ -2,23 +2,26 @@
 import { getCollection } from "astro:content";
 import LandingPageLayout from "@layouts/LandingPage.astro";
 import BlogPost from "../../components/BlogPost.astro";
+import HeroSection from "@components/sections/HeroSection.astro";
+import LatestCheatSheet from "@components/landing/LatestCheatSheet.astro";
+
+const sheets = (await getCollection("cheatsheets"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 
 const pageTitle = "Cheat Sheets!!";
 const allSheets = await getCollection("cheatsheets");
 ---
 
 <LandingPageLayout pageTitle={pageTitle}>
-  <section class="container pt">
-    <h1>Cheat Sheets!</h1>
-    <ul>
-      {
-        allSheets.map((sheet) => (
-          <BlogPost
-            url={`/cheatsheets/${sheet.id}/`}
-            title={sheet.data.title}
-          />
-        ))
-      }
-    </ul>
-  </section>
+  <HeroSection title="Cheat Sheets!" />
+  <LatestCheatSheet {sheets} />
+
+  <ul>
+    {
+      allSheets.map((sheet) => (
+        <BlogPost url={`/cheatsheets/${sheet.id}/`} title={sheet.data.title} />
+      ))
+    }
+  </ul>
 </LandingPageLayout>

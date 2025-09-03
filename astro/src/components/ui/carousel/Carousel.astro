@@ -73,14 +73,8 @@ const { tools = [], speedMs = 100000 } = Astro.props as Props;
   height: 100%;
   object-fit: contain;
   transition: transform 0.3s, filter 0.3s, opacity 0.3s;
-  filter: grayscale(1);
+  filter: var(--filter-logo);
   opacity: 0.8;
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo-box img {
-    filter: invert(1) brightness(0) saturate(0);
-  }
 }
 
 .carousel-item span {

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import LandingPageLayout from "@layouts/LandingPage.astro";
 import BlogPost from "../../components/BlogPost.astro";
+import BlogHero from "@components/sections/BlogHero.astro";
 
 const pageTitle = "My Astro Learning Blog";
 const allPosts = await getCollection("blog");
@@ -12,9 +13,11 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 ---
 
 <LandingPageLayout pageTitle={pageTitle}>
-  <section class="container pt">
-    <h1>My blog</h1>
-    <p>This is where I will post about my journey learning Astro.</p>
+  <BlogHero
+    title="My blog"
+    subtitle="This is where I will post about my journey learning Astro."
+  />
+  <section class="container">
     <ul>
       {
         allPosts.map((post) => (

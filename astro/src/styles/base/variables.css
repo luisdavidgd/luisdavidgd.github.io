@@ -21,6 +21,7 @@
   /* Skills & Tools */
   --foreground: #2b6cb0;
   --color-text-muted: #a7adbb;
+  --filter-logo: grayscale(0);
 }
 
 .dark {
@@ -32,6 +33,7 @@
   --footer-link: #63b3ed;
   --footer-link-hover: #90cdf4;
   --footer-border: #4a5568;
+  --filter-logo: grayscale(1);
 }
 
 html {
