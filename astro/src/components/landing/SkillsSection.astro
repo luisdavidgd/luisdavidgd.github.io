@@ -1,0 +1,147 @@
+---
+import Carousel from "../ui/carousel/Carousel.astro";
+import { logos } from "../../data/logos";
+
+interface SkillItem {
+  icon: string; // inline SVG
+  title: string;
+  description: string;
+}
+
+interface Props {
+  title?: string;
+  skills: SkillItem[];
+}
+
+const { title, skills } = Astro.props as Props;
+---
+
+<section class="skills-section">
+  <div class="skills-container">
+    {title && <h2 class="skills-title">{title}</h2>}
+
+    <div class="skills-carousel">
+      <Carousel tools={logos} />
+    </div>
+
+    <div class="skills-grid">
+      {
+        skills.map((skill) => (
+          <div class="skill-card">
+            <div class="skill-inner">
+              <div class="skill-icon" set:html={skill.icon} />
+              <h3 class="skill-title">{skill.title}</h3>
+              <p class="skill-desc">{skill.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills-section {
+    width: 100%;
+    padding: 2rem 0;
+  }
+
+  .skills-container {
+    max-width: 72rem; /* 6xl */
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .skills-title {
+    font-size: 1.875rem; /* 3xl */
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+  }
+
+  @media (min-width: 768px) {
+    .skills-title {
+      font-size: 2.25rem; /* 4xl */
+    }
+  }
+
+  .skills-carousel {
+    margin-bottom: 1.5rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 64rem; /* 5xl */
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .skills-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .skill-card {
+    background: var(--panel-color);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .skill-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .skill-icon {
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    opacity: 0.9;
+    background: rgba(var(--accent-rgb), 0.08);
+    transition:
+      transform 0.3s,
+      opacity 0.3s;
+  }
+
+  .skill-card:hover .skill-icon {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  .skill-icon > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .skill-title {
+    font-size: 1.25rem; /* xl */
+    font-weight: 600;
+    color: var(--foreground);
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-desc {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 65ch; /* similar a prose */
+  }
+</style>

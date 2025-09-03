@@ -17,6 +17,10 @@
   --footer-link: #2b6cb0;
   --footer-link-hover: #2c5282;
   --footer-border: #cbd5e0;
+
+  /* Skills & Tools */
+  --foreground: #2b6cb0;
+  --color-text-muted: #a7adbb;
 }
 
 .dark {
