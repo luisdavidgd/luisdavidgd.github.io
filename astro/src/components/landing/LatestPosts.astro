@@ -1,5 +1,6 @@
 ---
-import PostCard from "./PostCard.astro";
+import PostCard from "@components/ui/card/PostCard.astro";
+
 const { posts } = Astro.props;
 ---
 
@@ -9,3 +10,13 @@ const { posts } = Astro.props;
     {posts.map((post: any) => <PostCard post={post} />)}
   </div>
 </section>
+
+<style>
+  h2 {
+    font-size: 1.875rem; /* 3xl */
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+  }
+</style>
