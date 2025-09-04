@@ -1,6 +1,7 @@
 :root {
   --bg-color: #fff;
   --panel-color: #e2e8f0;
+  --shadow-color: #a7adb4;
   --text-color: #0e0f12;
 
   --muted: #a7adbb;
@@ -25,6 +26,7 @@
 
 .dark {
   --panel-color: #15171c;
+  --shadow-color: #20232b;
   --bg-color: #000;
   --text-color: #e2e8f0;
   --footer-bg: #1a202c;

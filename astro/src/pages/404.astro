@@ -1,23 +1,17 @@
 ---
+import HeroSection from "@components/sections/HeroSection.astro";
+import ArrowSeparator from "@components/ui/separator/ArrowSeparator.astro";
+import GlowLineSeparator from "@components/ui/separator/GlowLineSeparator.astro";
 import LandingPageLayout from "@layouts/LandingPage.astro";
 ---
 
 <LandingPageLayout>
-  <section class="container">
-    <h1>404</h1>
-    <h2>Page not found</h2>
-    <p>Looks like you took a wrong turn... but hey, we all do sometimes 😅</p>
-
-    <button
-      @mouseenter="hover = true"
-      @mouseleave="hover = false"
-      @click="window.location.href = '/'"
-    >
-      <span x-text="hover ? 'Get me outta here!' : 'Go back home'"></span>
-    </button>
-
-    <p>
-      Or maybe try <a href="https://www.google.com">Googling it?</a>
-    </p>
-  </section>
+  <HeroSection
+    title="404 - Page not found"
+    subtitle="Looks like you took a wrong turn... but hey, we all do sometimes 😅"
+    showCTA
+    primaryCTA={{ text: "Go Home", href: "/" }}
+    secondaryCTA={{ text: "Read Blog", href: "/blog" }}
+  />
+  <GlowLineSeparator />
 </LandingPageLayout>
