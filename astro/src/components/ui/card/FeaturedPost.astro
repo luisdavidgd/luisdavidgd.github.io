@@ -18,7 +18,6 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
         <div class="post-card-image">
           <div class="image-wrapper">
             <Image
-              class="img-responsive"
               width={1200}
               height={630}
               src={post.data.heroImage}
@@ -99,48 +98,67 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
 </section>
 
 <style>
-  section {
-    padding-top: var(--spacing);
-    padding-bottom: var(--spacing);
-  }
   .post-card {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.25rem;
-    align-items: stretch;
+    align-items: start;
     position: relative;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    background: var(--panel-color, #fff);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
   }
+
+  .post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  }
+
   @media (min-width: 768px) {
     .post-card {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      padding: 1.5rem;
     }
   }
 
+  /* Imagen */
   .post-card-image {
     position: relative;
     overflow: hidden;
     border-radius: 0.5rem;
-    grid-column: span 1;
   }
+
   .image-wrapper {
     aspect-ratio: 16/9;
     width: 100%;
     min-height: 200px;
   }
-  .image {
+
+  .post-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.4s ease;
   }
 
+  .post-card:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Body */
   .post-card-body {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    grid-column: span 2;
+    gap: 0.75rem;
   }
 
+  /* Meta */
   .post-meta {
     display: flex;
     align-items: center;
@@ -155,37 +173,62 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    padding: 0.125rem 0.5rem;
+    padding: 0.2rem 0.6rem;
     border: 1px solid var(--accent);
-    border-radius: 0.375rem;
-    font-size: 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), 0.05);
   }
+
   .tag.featured .star {
     color: var(--accent);
   }
 
+  /* Title */
   .post-title {
     font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-text);
+    font-weight: 700;
+    color: var(--foreground);
+    margin: 0;
+    line-height: 1.3;
+    transition: color 0.2s ease;
   }
+
+  .post-title:hover {
+    color: var(--accent);
+  }
+
   @media (min-width: 768px) {
     .post-title {
       font-size: 1.875rem;
     }
   }
 
+  /* Description */
   .post-description {
-    color: var(--color-text);
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
   }
 
+  /* Details */
   .post-details {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     color: var(--color-text-muted);
   }
+
+  .post-details .author-link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
   .post-details .author-link:hover {
     color: var(--accent);
   }
@@ -196,25 +239,33 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
     gap: 0.25rem;
   }
 
+  /* Tags */
   .tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
   }
+
   .tag {
     display: inline-block;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.6rem;
     font-size: 0.75rem;
-    border-radius: 0.375rem;
-    background: rgba(var(--accent), 0.1);
+    border-radius: 9999px;
+    background: rgba(var(--accent-rgb), 0.1);
     color: var(--accent);
     text-decoration: none;
-    transition: background 0.2s ease;
-  }
-  .tag:hover {
-    background: rgba(var(--accent), 0.2);
+    font-weight: 500;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
   }
 
+  .tag:hover {
+    background: rgba(var(--accent-rgb), 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Stretched link */
   .stretched-link {
     position: absolute;
     inset: 0;
