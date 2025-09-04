@@ -14,7 +14,6 @@
 		"@types/alpinejs": "^3.13.11",
 		"alpinejs": "^3.14.9",
 		"astro": "^5.13.3",
-		"svelte": "^5.38.2",
 		"typescript": "^5.9.2"
 	}
 }
