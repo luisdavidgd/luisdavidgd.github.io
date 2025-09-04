@@ -4,55 +4,55 @@ import SupabaseIcon from '../assets/logos/Supabase-logo.svg?raw';
 import PosthogIcon from '../assets/logos/posthog-logo.svg?raw';
 import PythonIcon from '../assets/logos/Python-logo.svg?raw';
 import TailwindIcon from '../assets/logos/Tailwind-logo.svg?raw';
-
+import { AlpineIcon, SvelteIcon, ReactIcon, VueIcon, LudaIcon, ChaclaIcon } from "./icons";
 
 export const projects = [
 	{
-		title: "Workflow Automation Orchestrator (n8n)",
-		techStack: "n8n • Node.js • TypeScript • PostgreSQL",
-		description: "Event‑driven workflows for data sync, notifications, and back‑office automation. Custom nodes, secrets management, retries, and metrics.",
-		ctaText: "View Repo →",
-		ctaLink: "#",
-		icon: N8nIcon
+		title: "Alpine JS Demo",
+		techStack: "Alpine.js • HTML • CSS",
+		description: "Basic project showcasing reactivity, directives, and some of Alpine.js’ main features.",
+		ctaText: "View Demo →",
+		ctaLink: "https://luisdavidgd.github.io/demos/alpinejs",
+		icon: AlpineIcon
 	},
 	{
-		title: "SaaS API Starter (Auth, Billing, RBAC)",
-		techStack: "Node.js • TypeScript • PostgreSQL • Supabase • Stripe",
-		description: "Production‑ready REST/GraphQL API with JWT auth, role‑based access, Stripe subscriptions, and rate‑limited endpoints.",
-		ctaText: "Get Source < / >",
-		ctaLink: "#",
-		icon: SupabaseIcon
+		title: "Svelte Explorations",
+		techStack: "Svelte • JavaScript • Vite",
+		description: "Exploring the framework with practical examples of stores, components, and bindings.",
+		ctaText: "Explore →",
+		ctaLink: "https://luisdavidgd.github.io/demos/svelte",
+		icon: SvelteIcon
 	},
 	{
-		title: "Realtime Chat Service",
-		techStack: "Phoenix • WebSockets • Redis • Docker",
-		description: "Low‑latency chat with channels, presence, and backpressure handling. Includes load tests and horizontal scaling notes.",
-		ctaText: "Live Demo →",
-		ctaLink: "#",
-		icon: PhoenixIcon
+		title: "React Mini Apps",
+		techStack: "React • TypeScript • Vite",
+		description: "A collection of mini-apps like Simon Says, Todo App, Hangman, and more — all built with React.",
+		ctaText: "Try →",
+		ctaLink: "https://luisdavidgd.github.io/demos/react",
+		icon: ReactIcon
 	},
 	{
-		title: "Product Analytics Pipeline",
-		techStack: "Node.js • PostHog • PostgreSQL • ClickHouse",
-		description: "Event ingestion, batching, and replay; user properties and cohorts; dashboards for funnels, retention, and feature adoption.",
-		ctaText: "Read Case Study →",
-		ctaLink: "#",
-		icon: PosthogIcon
+		title: "Vue Fixture Generator",
+		techStack: "Vue 3 • JavaScript • Vite",
+		description: "Fixture generator for creating random matchups, useful for TCG tournaments or other games.",
+		ctaText: "Generate →",
+		ctaLink: "https://luisdavidgd.github.io/demos/vue",
+		icon: VueIcon
 	},
 	{
-		title: "Data Ingestion & ETL",
-		techStack: "Python • Airflow • PostgreSQL • S3",
-		description: "Scheduled extract/transform/load with schema migrations, data quality checks, and partitioned tables for analytics.",
-		ctaText: "View Repo →",
-		ctaLink: "#",
-		icon: PythonIcon
+		title: "Luda Pages",
+		techStack: "Astro • Three.js • WebGL • CSS",
+		description: "Personal showcase with 2D and 3D explorations, including galleries and interactive demos.",
+		ctaText: "Explore →",
+		ctaLink: "https://luda.pages.dev",
+		icon: LudaIcon
 	},
 	{
-		title: "Design System",
-		techStack: "React • TypeScript • Tailwind CSS • Storybook",
-		description: "Accessible UI kit with tokens, theming, and testing. Published as a versioned package with changelogs and docs.",
-		ctaText: "Docs →",
-		ctaLink: "#",
-		icon: TailwindIcon
+		title: "Chacla.pe",
+		techStack: "SvelteKit • Hono • Supabase • Cloudflare",
+		description: "Digital hub for the district of Chaclacayo featuring a business directory, news, and community services.",
+		ctaText: "Visit →",
+		ctaLink: "https://chacla.pe",
+		icon: ChaclaIcon
 	},
 ];
