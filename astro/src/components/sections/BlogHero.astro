@@ -55,14 +55,14 @@ const { title = "Blog", subtitle } = Astro.props as Props;
   }
 
   .blog-header-gradient {
-    background: linear-gradient(to right, var(--accent));
+    background: var(--accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .blog-header-subtitle {
     font-size: 1rem;
-    color: var(--color-text-secondary);
+    color: var(--color-text);
     margin: 0;
   }
   @media (min-width: 768px) {

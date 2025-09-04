@@ -40,3 +40,13 @@ export const ChaclaIcon = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="currentColor">
   <path d="M16 64l48-40 48 40v48H72V88H56v24H16V64z"/>
 </svg>`;
+
+// Cheat Sheets Icon
+export const CheatSheetsIcon = `
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <rect x="4" y="3" width="16" height="18" rx="2" ry="2" stroke-width="2"/>
+  <line x1="8" y1="7" x2="16" y2="7" stroke-width="2"/>
+  <line x1="8" y1="11" x2="16" y2="11" stroke-width="2"/>
+  <line x1="8" y1="15" x2="13" y2="15" stroke-width="2"/>
+</svg>
+`;
