@@ -22,7 +22,7 @@ const { title } = Astro.props as Props;
             <p class="project-tech">{p.techStack}</p>
             <p class="project-description">{p.description}</p>
             <div class="project-cta">
-              <Button href={p.ctaLink} variant="primary" size="sm">
+              <Button href={p.ctaLink} variant="primary" size="sm" target={p.ctaTarget}>
                 {p.ctaText}
               </Button>
             </div>
@@ -74,14 +74,32 @@ const { title } = Astro.props as Props;
   .project-card {
     position: relative;
     padding: 1.5rem; /* p-6 */
-    background: var(--panel-color); /* .card-surface */
+    background: var(--panel-color);
     border-radius: 0.75rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* opcional si el icono es más grande */
+  }
+
+  .project-icon {
+    position: absolute;
+    top: 1rem; /* espacio desde arriba */
+    right: 1rem; /* espacio desde la derecha */
+    width: 48px;
+    height: 48px;
+    opacity: 0.9;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .project-icon > svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .project-card:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 16px var(--shadow-color);
   }
 
   .project-card:hover .project-icon {
@@ -89,11 +107,6 @@ const { title } = Astro.props as Props;
     opacity: 1;
   }
 
-  .project-icon {
-    width: 48px;
-  }
-
-  /* Aplica SOLO al svg hijo directo */
   .project-icon > svg {
     width: 1.5rem; /* w-6 */
     height: 1.5rem; /* h-6 */
@@ -104,7 +117,7 @@ const { title } = Astro.props as Props;
     margin: 0;
     font-size: 1.25rem; /* text-xl */
     font-weight: 600;
-    color: var(--foreground);
+    color: var(--text-color);
   }
 
   .project-tech {
@@ -115,7 +128,7 @@ const { title } = Astro.props as Props;
 
   .project-description {
     margin-top: 0.75rem; /* mt-3 */
-    color: var(--color-text-secondary);
+    color: var(--color-text);
   }
 
   .project-cta {
