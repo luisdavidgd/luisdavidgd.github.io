@@ -4,6 +4,7 @@ description: 'Showcase image layout and card behavior.'
 pubDate: 2025-08-12
 heroImage: '../../assets/images/example-blog-hero4.jpg'
 category: 'Engineering'
+categories: ["astro", "ui", "random category"]
 tags: ['template']
 ---
 
