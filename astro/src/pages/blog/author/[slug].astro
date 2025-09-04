@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import PostCard from "../../../components/ui/card/PostCard.astro";
+import LandingPage from "@layouts/LandingPage.astro";
+import { slugifyTag as slugify } from "../../../lib/slug";
+import BlogHero from "@components/sections/BlogHero.astro";
+import HeroSection from "@components/sections/HeroSection.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const authorSlugs = [
+    ...new Set(posts.map((p) => slugify(p.data.author || "Site Author"))),
+  ];
+  return authorSlugs.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const posts = (await getCollection("blog")).filter(
+  (p) => slugify(p.data.author || "Site Author") === slug,
+);
+const authorName = posts[0]?.data.author || "Site Author";
+---
+
+<LandingPage>
+  <HeroSection
+    title=`Articles by ${authorName}`
+    subtitle="This is where I will post about my journey learning Astro."
+  />
+  <section>
+    <div class="container">
+      <div class="grid">
+        {posts.map((p) => <PostCard post={p} />)}
+      </div>
+    </div>
+  </section>
+</LandingPage>
