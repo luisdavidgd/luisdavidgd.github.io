@@ -1,7 +1,7 @@
 ---
-import { author } from '../../../data/author';
-import FormattedDate from '../../FormattedDate.astro';
-import { slugifyTag as slugify } from '../../../lib/slug';
+import { author } from "../../../data/author";
+import FormattedDate from "../../FormattedDate.astro";
+import { slugifyTag as slugify } from "../../../lib/slug";
 
 interface Props {
   pubDate: Date;
@@ -11,21 +11,45 @@ interface Props {
 const { pubDate, readingTimeMin, authorName } = Astro.props as Props;
 ---
 
-<div class="sw-post-meta flex items-start justify-between gap-4 py-2">
-  <div class="flex items-start gap-3">
-    <div class="w-12 h-12 rounded-full overflow-hidden border border-[color:var(--color-border-light)]">
-      <img src={author.avatar.src} alt={author.name} width="48" height="48" class="w-full h-full object-cover" />
-    </div>
-    <div class="flex flex-col">
-      <a href={`/blog/author/${slugify(authorName || author.name)}/`} class="text-sm font-semibold text-[color:var(--color-text-primary)] hover:text-[color:var(--accent)]">{authorName || author.name}</a>
-      <div class="flex items-center gap-3 text-xs text-[color:var(--color-text-muted)]">
-        <div class="flex items-center gap-1">
-          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
+<div class="sw-post-meta">
+  <div class="author-info">
+    <img
+      src={author.avatar.src}
+      alt={author.name}
+      width="48"
+      height="48"
+      class="avatar"
+    />
+    <div class="author-details">
+      <a
+        href={`/blog/author/${slugify(authorName || author.name)}/`}
+        class="author-name"
+      >
+        {authorName || author.name}
+      </a>
+      <div class="meta">
+        <div class="meta-item">
+          <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 
+              0-1.99.9-1.99 2L3 19c0 1.1.89 
+              2 2 2h14c1.1 0 2-.9 
+              2-2V5c0-1.1-.9-2-2-2zm0 
+              16H5V8h14v11zM7 10h5v5H7z"
+            ></path>
+          </svg>
           <FormattedDate date={pubDate} />
         </div>
-        <div class="flex items-center gap-1">
+        <div class="meta-item">
           <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-            <path fill="currentColor" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20Zm0-18a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm1 9h3v-2h-2V7h-2v6Z"/>
+            <path
+              fill="currentColor"
+              d="M12 22a10 10 0 1 1 0-20 
+              10 10 0 0 1 0 20Zm0-18a8 8 
+              0 1 0 0 16 8 8 0 0 0 
+              0-16Zm1 9h3v-2h-2V7h-2v6Z"
+            ></path>
           </svg>
           <span>{readingTimeMin} min read</span>
         </div>
@@ -34,4 +58,58 @@ const { pubDate, readingTimeMin, authorName } = Astro.props as Props;
   </div>
 </div>
 
+<style>
+  .sw-post-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
 
+  .author-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-border-light);
+    flex-shrink: 0;
+  }
+
+  .author-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .author-name:hover {
+    color: var(--accent);
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+</style>
