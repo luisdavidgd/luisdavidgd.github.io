@@ -3,9 +3,9 @@ main {
 }
 
 .container {
-  width: 1280px;
-  max-width: calc(100% - 2em);
-  margin: auto;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .grid {
@@ -23,5 +23,6 @@ main {
   display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 0.5rem; /* opcional */
+  border-radius: 0.5rem;
+  /* opcional */
 }
