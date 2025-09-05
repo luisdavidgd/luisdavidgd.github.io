@@ -27,50 +27,31 @@ try {
         width={640}
         height={360}
         src={post.data.heroImage}
-        alt={post.data.title}
+        alt={`Hero image for ${post.data.title}`}
+        class="card-image"
       />
     )
   }
-  <h3 class="card-title">
-    <a
-      href={`/blog/${post.id}/`}
-      class="stretched-link"
-      aria-label={post.data.title}>{post.data.title}</a
-    >
-  </h3>
+
+  <h3 class="card-title">{post.data.title}</h3>
+
   <p class="card-description">{post.data.description}</p>
 
-  <div class="card-meta">
-    <div>
-      <a
-        href={`/blog/author/${slugify(post.data.author || "Site Author")}/`}
-        class="author-link"
-      >
-        {post.data.author || "Site Author"}
-      </a>
-    </div>
-    <div>
-      <FormattedDate date={post.data.pubDate} />
-    </div>
+  <div class="card-meta-line">
+    <a
+      href={`/blog/author/${slugify(post.data.author || "Site Author")}/`}
+      class="author-link interactive-link"
+    >
+      {post.data.author || "Site Author"}
+    </a>
+    <span class="separator">·</span>
+    <FormattedDate date={post.data.pubDate} />
     {
       readingTimeMin > 0 && (
-        <div class="reading-time">
-          <svg
-            viewBox="0 0 24 24"
-            width="14"
-            height="14"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 7v5l3 3" />
-          </svg>
-          {readingTimeMin} min read
-        </div>
+        <>
+          <span class="separator">·</span>
+          <span class="reading-time">{readingTimeMin} min read</span>
+        </>
       )
     }
   </div>
@@ -79,27 +60,29 @@ try {
     post.data.tags && post.data.tags.length > 0 && (
       <div class="tags">
         {post.data.tags.map((t) => (
-          <a
-            href={`/blog/tags/${t.replace(/\s+/g, "-").toLowerCase()}/`}
-            class="tag"
-          >
+          <a href={`/blog/tag/${slugify(t)}/`} class="tag interactive-link">
             {t}
           </a>
         ))}
       </div>
     )
   }
+
+  <a
+    href={`/blog/${post.id}/`}
+    class="stretched-link"
+    aria-label={post.data.title}></a>
 </article>
 
 <style>
   .stretched-link {
     color: inherit;
-    text-decoration: none;
-    font-weight: 500;
+    position: absolute;
+    inset: 0;
   }
 
-  .stretched-link:hover {
-    color: var(--accent);
+  .interactive-link {
+    z-index: 1;
   }
   .card {
     position: relative;
@@ -121,17 +104,21 @@ try {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
   }
 
+  .card-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.5rem;
+  }
+
   .card-title {
     margin: 0;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--foreground);
     line-height: 1.3;
-    position: relative;
-  }
-
-  .card-title:hover {
-    color: var(--accent);
   }
 
   .card-description {
@@ -141,12 +128,17 @@ try {
     line-height: 1.5;
   }
 
-  .card-meta {
+  .card-meta-line {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.25rem;
     font-size: 0.85rem;
     color: var(--color-text-muted);
+    align-items: center;
+  }
+
+  .separator {
+    margin: 0 0.25rem;
   }
 
   .author-link {
@@ -160,9 +152,6 @@ try {
   }
 
   .reading-time {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
     color: var(--color-text-muted);
   }
 
@@ -170,6 +159,7 @@ try {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-top: 0.25rem;
   }
 
   .tag {
@@ -188,14 +178,5 @@ try {
   .tag:hover {
     background: rgba(var(--accent-rgb), 0.2);
     transform: translateY(-1px);
-  }
-
-  .card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    aspect-ratio: 16 / 9;
-    border-radius: 0.5rem;
   }
 </style>
