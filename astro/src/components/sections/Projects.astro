@@ -22,7 +22,12 @@ const { title } = Astro.props as Props;
             <p class="project-tech">{p.techStack}</p>
             <p class="project-description">{p.description}</p>
             <div class="project-cta">
-              <Button href={p.ctaLink} variant="primary" size="sm" target={p.ctaTarget}>
+              <Button
+                href={p.ctaLink}
+                variant="primary"
+                size="sm"
+                target={p.ctaTarget}
+              >
                 {p.ctaText}
               </Button>
             </div>

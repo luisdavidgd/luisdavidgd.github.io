@@ -45,7 +45,7 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
         <span>•</span>
         <a
           href={`/blog/author/${slugify(post.data.author || "Site Author")}/`}
-          class="author-link"
+          class="author-link interactive-link"
         >
           {post.data.author || "Site Author"}
         </a>
@@ -81,7 +81,7 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
             {post.data.tags.map((t) => (
               <a
                 href={`/blog/tag/${t.replace(/\s+/g, "-").toLowerCase()}/`}
-                class="tag"
+                class="tag interactive-link"
               >
                 {t}
               </a>
@@ -98,6 +98,9 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
 </section>
 
 <style>
+  .container {
+    padding-bottom: var(--spacing);
+  }
   .post-card {
     display: grid;
     grid-template-columns: 1fr;
@@ -269,6 +272,9 @@ const { post, readingTimeMin = 0 } = Astro.props as Props;
   .stretched-link {
     position: absolute;
     inset: 0;
+  }
+
+  .interactive-link {
     z-index: 1;
   }
 </style>
