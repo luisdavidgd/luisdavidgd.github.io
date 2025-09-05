@@ -1,6 +1,6 @@
 ---
 title: "Migrating from cPanel to Astro: escaping the static past"
-pubDate: 2025-08-19
+pubDate: 2025-08-05
 author: "Luda"
 tags: ["astro", "cPanel", "static-site-generation", "jamstack", "developer-experience"]
 categories: ["Astro", "Static Hosting"]

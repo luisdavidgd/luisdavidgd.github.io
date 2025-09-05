@@ -1,6 +1,6 @@
 ---
 title: "Vercel vs Netlify for Astro sites"
-pubDate: 2025-09-09
+pubDate: 2025-08-19
 author: "Luda"
 tags: ["astro", "vercel", "netlify", "deployment", "ssr", "static-hosting"]
 categories: ["Astro", "Deployment", "Static Hosting"]
