@@ -5,7 +5,7 @@ author: "Luda"
 tags: ["astro", "cloudflare", "deployment", "static-hosting"]
 categories: ["Astro", "Deployment", "Static Hosting"]
 description: "A short log of deploying an Astro site to Cloudflare Pages, with pros and quirks compared to GitHub Pages."
-heroImage: "@assets/images/blog-placeholder-1.jpg"
+heroImage: "@assets/images/blog/deploying-astro-to-cloudflare.jpg"
 ---
 
 Cloudflare Pages feels like the “next level” after GitHub Pages.  

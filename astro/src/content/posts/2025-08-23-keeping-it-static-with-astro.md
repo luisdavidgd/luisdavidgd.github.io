@@ -5,7 +5,7 @@ author: "Luda"
 tags: ["astro", "static-site", "jamstack", "performance"]
 categories: ["Astro", "Static Hosting", "Philosophy"]
 description: "Why sometimes the simplest setup—pure static output—is the best choice for Astro sites."
-heroImage: "@assets/images/blog-placeholder-1.jpg"
+heroImage: "@assets/images/blog/keeping-it-static-with-astro.jpg"
 ---
 
 Astro gives you the option to go hybrid: static, SSR, or a mix of both.  

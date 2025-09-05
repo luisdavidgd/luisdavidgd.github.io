@@ -5,7 +5,7 @@ author: "Luda"
 tags: ["astro", "github-pages", "performance", "static-site-generation", "portfolio"]
 categories: ["Astro", "Web Performance", "Static Hosting"]
 description: "Deploying Astro to GitHub Pages to see how it performs without any server-side rendering or edge functions."
-heroImage: "@assets/images/blog-placeholder-1.jpg"
+heroImage: "@assets/images/blog/astro-github-pages.jpg"
 ---
 
 GitHub Pages is a very basic hosting service: no server-side rendering, no edge functions, no CDN tricks.  

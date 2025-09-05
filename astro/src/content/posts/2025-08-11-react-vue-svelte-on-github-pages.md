@@ -5,7 +5,7 @@ author: "Luda"
 tags: ["react", "vue", "svelte", "github-pages", "routing", "ssr"]
 categories: ["Frontend Frameworks", "Static Hosting"]
 description: "Comparing how React, Vue, and Svelte behave when deployed to a purely static hosting environment like GitHub Pages."
-heroImage: "@assets/images/blog-placeholder-1.jpg"
+heroImage: "@assets/images/blog/frameworks-github-pages.jpg"
 ---
 
 When you put modern frameworks on GitHub Pages, you quickly realize the difference between **static hosting** and **server rendering**.

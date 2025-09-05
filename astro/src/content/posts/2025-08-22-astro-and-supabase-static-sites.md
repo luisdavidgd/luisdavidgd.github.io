@@ -5,7 +5,7 @@ author: "Luda"
 tags: ["astro", "supabase", "static-site-generation", "database", "jamstack"]
 categories: ["Astro", "Databases", "Static Hosting"]
 description: "Exploring how Astro can consume Supabase data and still export static HTML when possible."
-heroImage: "@assets/images/blog-placeholder-1.jpg"
+heroImage: "@assets/images/blog/astro-supabase.jpg"
 ---
 
 One of the most interesting things about Astro is how flexible it is with data sources.  

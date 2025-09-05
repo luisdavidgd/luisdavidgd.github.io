@@ -5,7 +5,7 @@ author: "Luda"
 tags: ["react", "vue", "svelte", "routing", "webhashhistory", "static-hosting"]
 categories: ["Frontend Frameworks", "Routing"]
 description: "A deep dive into why static hosting environments break client-side routing for React and Vue, but not always for Svelte."
-heroImage: "@assets/images/blog-placeholder-1.jpg"
+heroImage: "@assets/images/blog/hash-routing.jpg"
 ---
 
 Every frontend developer has hit this bug: your SPA works locally, but `/about` gives a **404** on production.  

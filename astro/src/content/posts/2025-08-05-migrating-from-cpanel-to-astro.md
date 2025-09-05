@@ -5,7 +5,7 @@ author: "Luda"
 tags: ["astro", "cPanel", "static-site-generation", "jamstack", "developer-experience"]
 categories: ["Astro", "Static Hosting"]
 description: "How moving away from old cPanel hosting led me to discover Astro and embrace the modern Jamstack."
-heroImage: "@assets/images/blog-placeholder-1.jpg"
+heroImage: "@assets/images/blog/cpanel-to-astro.jpg"
 ---
 
 For years, my websites lived inside **cPanel** — a place where everything was manual:  

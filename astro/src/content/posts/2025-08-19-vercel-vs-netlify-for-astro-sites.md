@@ -5,7 +5,7 @@ author: "Luda"
 tags: ["astro", "vercel", "netlify", "deployment", "ssr", "static-hosting"]
 categories: ["Astro", "Deployment", "Static Hosting"]
 description: "Notes on how Vercel and Netlify handle Astro, comparing static output and SSR capabilities."
-heroImage: "@assets/images/blog-placeholder-1.jpg"
+heroImage: "@assets/images/blog/vercel-netlify.jpg"
 ---
 
 Astro is flexible: you can deploy it fully static or with SSR enabled.  
