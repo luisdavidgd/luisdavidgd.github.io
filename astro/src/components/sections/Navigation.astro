@@ -52,7 +52,7 @@ const currentPath = Astro.url.pathname;
     background: var(--bg-color);
     z-index: 2;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 1rem 2rem;
   }
@@ -135,6 +135,9 @@ const currentPath = Astro.url.pathname;
   }
 
   @media (max-width: 768px) {
+    nav {
+      justify-content: space-between;
+    }
     li {
       padding-left: var(--spacing);
       padding-bottom: calc(var(--spacing) / 3);

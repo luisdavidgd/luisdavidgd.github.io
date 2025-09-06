@@ -90,14 +90,17 @@ const {
     border-radius: 0.5rem;
     text-decoration: none;
     color: var(--color-text-primary);
-    background: var(--color-surface);
+    background: var(--panel-color);
+    border: 1px solid transparent; /* base transparente */
     transition:
       background 0.2s ease,
-      color 0.2s ease;
+      color 0.2s ease,
+      border-color 0.2s ease;
+    margin: 0.25rem;
   }
 
   .nav-btn:hover {
-    background: var(--color-hover);
+    border-color: var(--accent);
     color: var(--accent);
   }
 
