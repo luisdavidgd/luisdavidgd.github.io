@@ -1,0 +1,38 @@
+---
+const { id, title, children } = Astro.props;
+---
+
+<div id={id} class="modal-backdrop hidden" role="dialog" aria-modal="true">
+  <div class="modal">
+    {title && <h3>{title}</h3>}
+    <slot />
+  </div>
+</div>
+
+<style>
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .modal-backdrop.hidden {
+    display: none;
+  }
+  .modal {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  .modal h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+</style>
