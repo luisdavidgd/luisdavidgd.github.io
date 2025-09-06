@@ -1,0 +1,95 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  rootPath?: string; // Ej: "/blog/", "/cheatsheets/"
+  basePath?: string; // Ej: "/blog/page", "/cheatsheets/page"
+  prevLabel?: string; // Ej: "Anterior"
+  nextLabel?: string; // Ej: "Siguiente"
+}
+
+const {
+  currentPage,
+  totalPages,
+  rootPath = "/",
+  basePath = "/page",
+  prevLabel = "Previous",
+  nextLabel = "Next",
+} = Astro.props as Props;
+
+const prevHref =
+  currentPage > 1
+    ? currentPage === 2
+      ? rootPath
+      : `${basePath}/${currentPage - 1}/`
+    : null;
+
+const nextHref =
+  currentPage < totalPages ? `${basePath}/${currentPage + 1}/` : null;
+---
+
+{
+  totalPages > 1 && (
+    <nav class="pagination" aria-label="Pagination">
+      {prevHref ? (
+        <a href={prevHref} class="pagination-btn">
+          {prevLabel}
+        </a>
+      ) : (
+        <span class="pagination-btn pagination-btn--disabled">{prevLabel}</span>
+      )}
+
+      <span class="pagination-info">
+        Page {currentPage} of {totalPages}
+      </span>
+
+      {nextHref ? (
+        <a href={nextHref} class="pagination-btn">
+          {nextLabel}
+        </a>
+      ) : (
+        <span class="pagination-btn pagination-btn--disabled">{nextLabel}</span>
+      )}
+    </nav>
+  )
+}
+
+<style>
+  .pagination {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    background: var(--color-bg-secondary, #f5f5f5);
+    color: var(--color-text-primary, #111);
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .pagination-btn:hover {
+    background: var(--accent, #0070f3);
+    color: white;
+  }
+
+  .pagination-btn--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    background: var(--color-bg-secondary, #f5f5f5);
+  }
+
+  .pagination-info {
+    font-size: 0.875rem;
+    color: var(--color-text-muted, #666);
+  }
+</style>

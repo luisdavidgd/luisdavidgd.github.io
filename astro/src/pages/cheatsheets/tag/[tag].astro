@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import LandingPage from "@layouts/LandingPage.astro";
+import PostCard from "@components/ui/card/PostCard.astro";
+import { slugifyTag } from "@lib/slug";
+import { getTagMeta } from "../../../data/tags";
+import HeroSection from "@components/sections/HeroSection.astro";
+import SheetCard from "@components/ui/card/SheetCard.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("cheatsheets");
+  const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))];
+  return tags.map((tag: any) => ({ params: { tag: slugifyTag(tag) } }));
+}
+
+const { tag } = Astro.params;
+const posts = (await getCollection("cheatsheets")).filter((p) =>
+  (p.data.tags || []).some((t) => slugifyTag(t) === tag),
+);
+const meta = getTagMeta(tag);
+---
+
+<LandingPage>
+  <HeroSection
+    title=`Posts tagged with ${tag}`
+    subtitle="This is where I will post about my journey learning Astro."
+  />
+  <section>
+    <div class="container">
+      <div class="grid">
+        {posts.map((p) => <SheetCard sheet={p} />)}
+      </div>
+    </div>
+  </section>
+</LandingPage>

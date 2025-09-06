@@ -15,6 +15,6 @@ export const blog = defineCollection({
       }).optional(),
       categories: z.array(z.string()),
       tags: z.array(z.string()),
-      heroImage: image().optional()
+      heroImage: image().optional(),
     })
 });
