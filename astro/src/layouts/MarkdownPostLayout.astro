@@ -2,9 +2,8 @@
 import { Image } from "astro:assets";
 import FormattedDate from "@components/FormattedDate.astro";
 import PostMeta from "@components/ui/meta/PostMeta.astro";
-import PostNav from "@components/ui/nav/PostNav.astro";
-import ShareButtons from "@components/ui/share/ShareButtons.astro";
 import LandingPageLayout from "@layouts/LandingPage.astro";
+import Nav from "@components/ui/nav/Nav.astro";
 
 const {
   title,
@@ -75,7 +74,7 @@ const {
 
       <div class="post-footer">
         <!-- <ShareButtons title={title} url={Astro.url.toString()} /> -->
-        <PostNav prev={prevPost} next={nextPost} />
+        <Nav prev={prevPost} next={nextPost} basePath="/cheatsheets" />
       </div>
     </article>
   </section>

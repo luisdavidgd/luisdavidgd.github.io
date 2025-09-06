@@ -26,13 +26,6 @@ try {
   <p class="card-description">{sheet.data.description}</p>
 
   <div class="card-meta-line">
-    <a
-      href={`/blog/author/${slugify(sheet.data.author || "Site Author")}/`}
-      class="author-link interactive-link"
-    >
-      {sheet.data.author || "Site Author"}
-    </a>
-    <span class="separator">·</span>
     <FormattedDate date={sheet.data.pubDate} />
     {
       readingTimeMin > 0 && (
