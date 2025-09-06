@@ -8,6 +8,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 import FeaturedPost from "@components/ui/card/FeaturedPost.astro";
 import { calculateReadingTimeFromHtml } from "@lib/reading";
 import GlowLineSeparator from "@components/ui/separator/GlowLineSeparator.astro";
+import Pagination from "@components/ui/nav/Pagination.astro";
 
 const title = "My Learning Blog";
 const allPosts = await getCollection("blog");
@@ -38,5 +39,10 @@ if (featured) {
   />
   <FeaturedPost post={featured} readingTimeMin={featuredReading} />
   <BlogAllArticles posts={firstPagePosts} />
-  <BlogPagination currentPage={1} totalPages={totalPages} />
+  <Pagination
+    currentPage={1}
+    totalPages={totalPages}
+    rootPath="/blog/"
+    basePath="/blog/page"
+  />
 </LandingPageLayout>

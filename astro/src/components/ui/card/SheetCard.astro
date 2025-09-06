@@ -1,0 +1,166 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import FormattedDate from "../../FormattedDate.astro";
+import { calculateReadingTimeFromMarkdown } from "../../../lib/reading";
+import { slugifyTag as slugify } from "../../../lib/slug";
+
+interface Props {
+  sheet: CollectionEntry<"cheatsheets">;
+}
+const { sheet } = Astro.props as Props;
+
+let readingTimeMin = 0;
+try {
+  // @ts-ignore
+  const md = (sheet as any).body ?? "";
+  readingTimeMin = calculateReadingTimeFromMarkdown(
+    md || sheet.data.description || "",
+  );
+} catch {}
+---
+
+<article class="card">
+  <h3 class="card-title">{sheet.data.title}</h3>
+
+  <p class="card-description">{sheet.data.description}</p>
+
+  <div class="card-meta-line">
+    <FormattedDate date={sheet.data.pubDate} />
+    {
+      readingTimeMin > 0 && (
+        <>
+          <span class="separator">·</span>
+          <span class="reading-time">{readingTimeMin} min read</span>
+        </>
+      )
+    }
+  </div>
+
+  {
+    sheet.data.tags && sheet.data.tags.length > 0 && (
+      <div class="tags">
+        {sheet.data.tags.map((t) => (
+          <a
+            href={`/cheatsheets/tag/${slugify(t)}/`}
+            class="tag interactive-link"
+          >
+            {t}
+          </a>
+        ))}
+      </div>
+    )
+  }
+
+  <a
+    href={`/cheatsheets/${sheet.id}/`}
+    class="stretched-link"
+    aria-label={sheet.data.title}></a>
+</article>
+
+<style>
+  .stretched-link {
+    color: inherit;
+    position: absolute;
+    inset: 0;
+  }
+
+  .interactive-link {
+    z-index: 1;
+  }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background: var(--panel-color, #fff);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.5rem;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--foreground);
+    line-height: 1.3;
+  }
+
+  .card-description {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .card-meta-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    align-items: center;
+  }
+
+  .separator {
+    margin: 0 0.25rem;
+  }
+
+  .author-link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .author-link:hover {
+    color: var(--accent);
+  }
+
+  .reading-time {
+    color: var(--color-text-muted);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .tag {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 9999px;
+    background: rgba(var(--accent-rgb), 0.1);
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .tag:hover {
+    background: rgba(var(--accent-rgb), 0.2);
+    transform: translateY(-1px);
+  }
+</style>

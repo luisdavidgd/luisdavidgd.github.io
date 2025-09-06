@@ -1,0 +1,131 @@
+---
+interface NavItem {
+  id: string;
+  title: string;
+}
+interface Props {
+  prev?: NavItem | null;
+  next?: NavItem | null;
+  basePath?: string;
+  prevLabel?: string;
+  nextLabel?: string;
+}
+const {
+  prev = null,
+  next = null,
+  basePath = "/blog",
+  prevLabel = "Previous",
+  nextLabel = "Next",
+} = Astro.props as Props;
+---
+
+{
+  (prev || next) && (
+    <nav class="sw-post-nav">
+      <div class="nav-container">
+        {prev ? (
+          <a href={`${basePath}/${prev.id}/`} class="nav-btn nav-prev">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+              />
+            </svg>
+            <div class="nav-text">
+              <span class="nav-label">{prevLabel}</span>
+              <span class="truncate">{prev.title}</span>
+            </div>
+          </a>
+        ) : (
+          <span />
+        )}
+
+        {next ? (
+          <a href={`${basePath}/${next.id}/`} class="nav-btn nav-next">
+            <div class="nav-text text-right">
+              <span class="nav-label">{nextLabel}</span>
+              <span class="truncate">{next.title}</span>
+            </div>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="m8.59 16.59 1.41 1.41 6-6-6-6-1.41 1.41L13.17 12z"
+              />
+            </svg>
+          </a>
+        ) : (
+          <span />
+        )}
+      </div>
+    </nav>
+  )
+}
+
+<style>
+  .sw-post-nav {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border-light);
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .nav-container {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  }
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    background: var(--color-surface);
+    transition:
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .nav-btn:hover {
+    background: var(--color-hover);
+    color: var(--accent);
+  }
+
+  .nav-prev {
+    justify-content: flex-start;
+    flex: 1;
+  }
+
+  .nav-next {
+    justify-content: flex-end;
+    flex: 1;
+  }
+
+  .nav-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .truncate {
+    font-weight: 500;
+    font-size: 0.875rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+</style>
