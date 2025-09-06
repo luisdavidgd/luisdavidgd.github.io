@@ -1,5 +1,6 @@
 ---
 const year = new Date().getFullYear();
+import ContactModal from "@components/sections/ContactModal.astro";
 import contactIconRaw from "../../assets/icons/contact-icon.svg?raw";
 import Button from "../ui/button/Button.astro";
 
@@ -56,31 +57,35 @@ const gitHubUrl = `https://github.com/luisdavidgd`;
   <div class="footer-credit">
     Copyright &copy; {year} Luis David Gallo Dawson.
   </div>
-
-  <script type="module">
-    const copyRSSLinkBtn = document.querySelector("button[data-copy]");
-    const getInTouchBtn = document.querySelector("button[data-getInTouch]");
-
-    copyRSSLinkBtn?.addEventListener("click", (e) => {
-      const target = e.target;
-      if (!(target instanceof HTMLElement)) return;
-      if (target.matches("button[data-copy]")) {
-        const url = target.getAttribute("data-copy");
-        if (!url) return;
-        navigator.clipboard?.writeText(url);
-        const original = target.textContent || "Copy RSS link";
-        target.textContent = "Copied!";
-        setTimeout(() => {
-          target.textContent = original;
-        }, 1500);
-      }
-    });
-
-    getInTouchBtn?.addEventListener("click", (e) => {
-      console.log("Please open a modal to contact me.");
-    });
-  </script>
 </footer>
+
+<ContactModal />
+
+<script type="module">
+  const copyRSSLinkBtn = document.querySelector("button[data-copy]");
+  const getInTouchBtn = document.querySelector("button[data-getInTouch]");
+  const modal = document.getElementById("contactModal");
+
+  copyRSSLinkBtn?.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (target.matches("button[data-copy]")) {
+      const url = target.getAttribute("data-copy");
+      if (!url) return;
+      navigator.clipboard?.writeText(url);
+      const original = target.textContent || "Copy RSS link";
+      target.textContent = "Copied!";
+      setTimeout(() => {
+        target.textContent = original;
+      }, 1500);
+    }
+  });
+
+  getInTouchBtn?.addEventListener("click", (e) => {
+    console.log("Please open a modal to contact me.");
+    modal.classList.remove("hidden");
+  });
+</script>
 
 <style>
   .site-footer {
