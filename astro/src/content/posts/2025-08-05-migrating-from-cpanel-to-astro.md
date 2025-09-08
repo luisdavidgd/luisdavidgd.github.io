@@ -2,17 +2,15 @@
 title: "Migrating from cPanel to Astro: escaping the static past"
 pubDate: 2025-08-05
 author: "Luda"
-tags: ["astro", "cPanel", "static-site-generation", "jamstack", "developer-experience"]
+tags: ["astro", "cPanel", "static-sites", "developer-experience"]
 categories: ["Astro", "Static Hosting"]
-description: "How moving away from old cPanel hosting led me to discover Astro and embrace the modern Jamstack."
+description: "How I moved away from cPanel and discovered Astro while looking for a better way to handle static sites."
 heroImage: "@assets/images/blog/cpanel-to-astro.jpg"
 ---
 
 For years, my websites lived inside **cPanel** — a place where everything was manual:  
-FTP uploads, fragile PHP pages, and the occasional 500 error that seemed to appear for no reason.  
-It worked, but it always felt heavy and outdated.  
-
-I started to wonder: if the web has evolved so much, why was I still dragging sites through the same early-2000s workflow?
+Updating them usually meant uploading files via FTP, dealing with outdated PHP versions, and hoping nothing broke.  
+It worked, but it always felt clunky and old-fashioned.
 
 ## Life inside cPanel
 
@@ -30,7 +28,10 @@ Deploying them with cPanel often meant:
 
 ## Discovering Astro
 
-In the search for a better way, I stumbled upon **Astro**.  
+When I started looking for alternatives, I explored several static site generators. That’s when I found **Astro**.  
+What caught my eye was how Astro delivers plain HTML by default, while still letting you use frameworks like React or Svelte 
+if you need them.
+
 What caught my attention was Astro’s **static-first philosophy**:  
 
 - Ship **zero JavaScript** by default.  
@@ -41,7 +42,7 @@ That sounded like the exact opposite of my cPanel experience: lightweight, moder
 
 ## My first migration attempt
 
-To test the waters, I decided to rebuild one of my old static sites in Astro.  
+To test the waters, I decided to rebuild one of my old static sites in Astro.
 
 ```bash
 # start a new Astro project
@@ -50,23 +51,13 @@ cd my-portfolio
 npm install
 npm run dev
 ```
-Within minutes, I had a site running locally with a cleaner structure than anything I’d managed with cPanel in years.
+Within minutes, I had a site running locally with a cleaner structure.
 
-Migrating content was simple: Markdown files became blog entries, layouts were just `.astro` components, and global styles worked without hacks.
+The experience was refreshing: content in Markdown files, layouts as components, and deployment through Git instead of FTP.  
+It wasn’t about chasing trends — it was about finally having a workflow that felt modern and maintainable.
 
-## The difference in performance
-
-The first Lighthouse report I ran on the Astro version blew my mind:  
-Astro served mostly static HTML, so pages loaded instantly compared to the old PHP site.  
-
-| Metric        | cPanel site | Astro build |
-|---------------|-------------|-------------|
-| Performance   | ~65         | 99–100      |
-| SEO           | 70          | 100         |
-| Best Practices| 80          | 100         |
-
-It was clear: Astro wasn’t just “modern,” it was **faster, cleaner, and easier**.
-
+Astro turned out to be a great fit for simple, **database-free projects**.  
+That’s how I first discovered it, and it’s what led me to use it for this very site.
 
 ## Lessons learned
 
