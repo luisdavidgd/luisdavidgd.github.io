@@ -2,47 +2,41 @@
 title: "Why React and Vue need hash routing but Svelte does not"
 pubDate: 2025-08-14
 author: "Luda"
-tags: ["react", "vue", "svelte", "routing", "webhashhistory", "static-hosting"]
+tags: ["react", "vue", "svelte", "routing", "hash-routing", "static-hosting"]
 categories: ["Frontend Frameworks", "Routing"]
-description: "A deep dive into why static hosting environments break client-side routing for React and Vue, but not always for Svelte."
+description: "Testing how routing works on static hosting: why React and Vue break without hash routing, and how Svelte gets around it."
 heroImage: "@assets/images/blog/hash-routing.jpg"
 ---
 
-Every frontend developer has hit this bug: your SPA works locally, but `/about` gives a **404** on production.  
-Why? Because static hosts don’t know how to serve routes that don’t exist as files.
+If you’ve ever deployed a small SPA to **GitHub Pages**, you’ve probably seen it:  
+the app runs fine locally, but refreshing `/about` gives a **404**.  
 
-## The routing problem
+The reason is simple — static hosts only serve files, not routes.
 
-This issue doesn’t happen everywhere.  
-Platforms like Vercel, Netlify, or Cloudflare Pages provide smart redirects so `/about` won’t break.  
-But on stricter static hosts like GitHub Pages, you only get file-based routing — and that’s where the 404s appear.
+## Why React and Vue break
 
-Frameworks like React and Vue often use the **HTML5 History API** (`pushState`) for navigation.  
-This makes URLs look clean (`/about` instead of `/#/about`) but creates a problem on static hosts:
+React Router and Vue Router use the **History API** (`pushState`) for clean URLs like `/about`.  
+That looks nice, but on GitHub Pages the server doesn’t know what `/about` is.  
+It only sees that there’s no `/about/index.html` and returns a 404.
 
-**Hash routing** (`/#/about`) avoids this by never letting the browser request `/about`. Everything after `#` stays in the client, so the server just delivers `index.html`.
-
-## React and Vue
-
-React Router and Vue Router both default to history-based routing.  
-On static hosts, this breaks unless you:
+The quick fixes are:
 
 - Switch to **HashRouter** (React) or `createWebHashHistory` (Vue).  
-- Or set up a fallback redirect to always serve `index.html`.  
+- Or set up a redirect so every path falls back to `index.html` (not possible on GitHub Pages).  
 
-Since GitHub Pages doesn’t allow custom rewrite rules, hash routing becomes the easiest solution.
+That’s why on strict static hosts, hash routing is usually the only option.
 
-## Svelte’s difference
+## Why Svelte feels different
 
-Svelte itself doesn’t include a router. Many Svelte apps just use simple anchor links and multiple HTML files, which work fine on static hosts.  
+Svelte doesn’t ship with a router by default. Many small Svelte apps just use plain anchor links, so each route is already an actual HTML file — which works perfectly on static hosting.  
 
-SvelteKit, with the static adapter, can pre-render each route into an actual file (`/about/index.html`).  
-This means you can refresh `/about` without errors — no hash URLs required.
+With **SvelteKit + static adapter**, it goes further: every route is pre-rendered as a file (`/about/index.html`).  
+This makes routes behave naturally, no hash fragments required.
 
-## Lessons
+## Takeaways
 
-- Static hosting is file-based, not route-aware.  
-- Hash routing is a workaround, not a feature.  
-- Frameworks that pre-render routes (Astro, SvelteKit static) feel more natural on GitHub Pages.  
+- Static hosting only knows about files, not client-side routes.  
+- Hash routing is a workaround to survive on hosts without rewrites.  
+- Frameworks that pre-render routes (SvelteKit, Astro) avoid the problem entirely.  
 
-In short: if your framework depends on a client-only router, static hosts will force you into hacks. If it can pre-render, you win.
+So if you’re deploying to GitHub Pages, expect React and Vue to need some extra setup — while Svelte can feel more “static friendly” out of the box.

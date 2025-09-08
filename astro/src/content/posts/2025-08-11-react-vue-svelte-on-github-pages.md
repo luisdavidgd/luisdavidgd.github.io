@@ -2,44 +2,43 @@
 title: "React, Vue, and Svelte on GitHub Pages: what static hosting really means"
 pubDate: 2025-08-11
 author: "Luda"
-tags: ["react", "vue", "svelte", "github-pages", "routing", "ssr"]
+tags: ["react", "vue", "svelte", "github-pages", "routing", "static-hosting"]
 categories: ["Frontend Frameworks", "Static Hosting"]
-description: "Comparing how React, Vue, and Svelte behave when deployed to a purely static hosting environment like GitHub Pages."
+description: "Trying out React, Vue, and Svelte on GitHub Pages, and seeing how each one adapts to a static-only environment."
 heroImage: "@assets/images/blog/frameworks-github-pages.jpg"
 ---
 
-When you put modern frameworks on GitHub Pages, you quickly realize the difference between **static hosting** and **server rendering**.
+Playing with different frameworks on **GitHub Pages** quickly shows the difference between static hosting and server rendering.
 
-## React and Vue on Pages
+## React and Vue
 
-Both React (with React Router) and Vue (with Vue Router) expect a server that knows how to respond to any route.  
-On GitHub Pages, that server does not exist — it only serves files that physically exist in your repository.  
+When I deployed small demos with React (React Router) and Vue (Vue Router), I hit the classic issue:  
+GitHub Pages doesn’t know what to do with routes like `/about` or `/blog/123`.  
+It only serves files that exist in the repository, so anything else returns a 404.
 
-That means `/about` or `/blog/123` will fail with a **404**, unless you use one of these workarounds:
+The usual fixes are:
 
-- Enable **hash routing** (`/#/about`) so the browser never requests `/about` from the server.  
-- Or, configure a catch-all redirect (`404.html`) that loads your app and lets the router take over.  
+- Using **hash routing** (`/#/about`) so the browser never asks the server for `/about`.  
+- Or adding a catch-all `404.html` that loads the app and lets the router handle navigation.  
 
-Neither is elegant, but they are necessary if you want React or Vue SPAs to survive on static-only hosting.
+Both work, but they feel more like workarounds than native solutions.
 
-## Svelte on Pages
+## Svelte
 
-Svelte (and especially SvelteKit with its static adapter) can build routes directly into HTML files.  
-So `/about` becomes `about/index.html`, which GitHub Pages can serve without extra tricks.  
+With Svelte (and SvelteKit’s static adapter) the experience was smoother.  
+Each route gets pre-built as an HTML file, so `/about` is just `about/index.html`.  
+That means GitHub Pages can serve it without any extra tricks, behaving more like a traditional static site.
 
-This makes Svelte feel much closer to “native static” hosting. It avoids the awkwardness of hash URLs and just works like a traditional site.
+## What “static” really means
 
-## What static hosting really means
+On GitHub Pages you only get **files**: HTML, CSS, and JavaScript.  
+No server runtime, no SSR, no API routes.  
+Frameworks that expect a server run into walls. Frameworks that pre-render have a much easier time.
 
-Static hosting like GitHub Pages only serves **files**.  
-There is no runtime server, no API routes, no SSR — just HTML, CSS, and JavaScript.  
+## My takeaway
 
-Frameworks that assume a server will hit walls. Frameworks that prioritize pre-rendering thrive.
+- Static hosting is simple but limited.  
+- React and Vue demos need routing workarounds.  
+- Svelte (and Astro too) feel more “at home” in this setup.  
 
-## Closing thoughts
-
-- Static hosting is simple but restrictive.  
-- Frameworks designed for SPA (single-page apps) need extra tricks.  
-- Astro and Svelte feel closer to “native static.”  
-
-If you want the smoothest deployment to GitHub Pages, choose a framework that can render to plain HTML at build time.
+For experiments or portfolios, GitHub Pages works well — as long as you know how your framework behaves in a static-only world.

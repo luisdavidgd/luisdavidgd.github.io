@@ -1,48 +1,42 @@
 ---
-title: "Astro on GitHub Pages: performance in a static-only world"
+title: "Astro on GitHub Pages: a static-only stage"
 pubDate: 2025-08-09
 author: "Luda"
-tags: ["astro", "github-pages", "performance", "static-site-generation", "portfolio"]
-categories: ["Astro", "Web Performance", "Static Hosting"]
-description: "Deploying Astro to GitHub Pages to see how it performs without any server-side rendering or edge functions."
+tags: ["astro", "github-pages", "static-sites", "portfolio", "demos"]
+categories: ["Astro", "Static Hosting"]
+description: "Using GitHub Pages as a free and simple way to host my Astro site and other small demos."
 heroImage: "@assets/images/blog/astro-github-pages.jpg"
 ---
 
-GitHub Pages is a very basic hosting service: no server-side rendering, no edge functions, no CDN tricks.  
-But that makes it the perfect lab to test how far Astro’s **static-first philosophy** can go.
+GitHub Pages is a very basic hosting service: no server-side rendering, no databases, no backend features.  
+But that simplicity makes it perfect for what I needed: a place to put a personal site and some small demos.  
 
 ## Why GitHub Pages?
 
-I chose GitHub Pages because it is free, simple, and almost universally accessible.  
-There’s no backend to configure, no server to manage, and the constraints are clear: you only get static files.  
+Two main reasons:  
 
-For frameworks that depend on SSR, that’s a limitation. For Astro, it’s an opportunity — since most pages are rendered to static HTML at build time, it plays right into Astro’s strengths.
+1. It’s free and comes with a `github.io` subdomain.  
+2. It only requires static files, which matched perfectly with Astro.  
+
+Instead of paying for hosting just to serve plain HTML, GitHub Pages was a natural choice.
 
 ## The deployment process
 
-Deployment turned out to be very straightforward:
+The process was simple: configure Astro with the static adapter, build the project, and push the result to a branch that GitHub Pages can serve.  
+I automated it with a GitHub Action so I don’t need to think about uploads or manual steps.  
 
-1. Update `astro.config.mjs` to use the `static` adapter.
-2. Run `npm run build` to generate the `/dist` folder.
-3. Push the `dist` output to a `gh-pages` branch (I used GitHub Actions for automation).
-4. Enable GitHub Pages from repository settings.
+Within minutes, the site was live under my `username.github.io` domain.
 
-Within minutes, the site was live — no configuration headaches, no hidden costs.
+## More than Astro
 
-## Measuring performance
+Since I already had the free domain, I decided to use the same repository to showcase other experiments.  
+Alongside this blog made with Astro, I added small demos with React, Svelte, and Vue.  
+It turned my GitHub Pages site into a lightweight portfolio of experiments.
 
-The first thing I checked was Lighthouse. The results were nearly perfect:
+## Takeaways
 
-- Performance: **99–100**
-- SEO: **100**
-- Best Practices: **100**
+- GitHub Pages is limited, but that’s fine for static sites.  
+- Astro works well in this environment because it generates everything as static HTML.  
+- A free `github.io` domain is a great way to share quick demos without extra setup.  
 
-Even without a CDN, pages felt instant. Static HTML with almost zero JavaScript meant the browser had very little work to do.
-
-## Results and takeaways
-
-- **Astro remains fast even on barebones hosting.**  
-- **GitHub Pages is viable for small portfolios and blogs.**  
-- **Performance is not just about the platform — it’s baked into the framework.**
-
-In short, if you want to showcase what Astro can do, GitHub Pages is a surprisingly good stage.
+For me, GitHub Pages became less about hosting a single site and more about having a small public stage for different projects.
