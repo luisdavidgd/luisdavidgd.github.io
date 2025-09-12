@@ -41,18 +41,14 @@
       </div>
     </div>
   </div>
-
-  <div id="modalContainer"></div>
 </section>
 
-<script is:client="load">
+<script is:inline>
   const username = "luisdavidgd";
   const repoCountEl = document.getElementById("repoCount");
   const commitCountEl = document.getElementById("commitCount");
   const toggleBioBtn = document.getElementById("toggleBio");
   const extraBio = document.getElementById("extraBio");
-  const openModalBtn = document.getElementById("openModal");
-  const modalContainer = document.getElementById("modalContainer");
 
   async function fetchGitHubStats() {
     const cacheKey = "githubStats";
@@ -123,10 +119,5 @@
       extraBio.hidden = true;
       toggleBioBtn.textContent = "Show more";
     }
-  });
-
-  // Modal
-  openModalBtn.addEventListener("click", () => {
-    console.log("Open a Contact Modal.");
   });
 </script>
