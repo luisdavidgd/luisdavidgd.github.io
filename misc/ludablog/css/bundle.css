@@ -246,18 +246,25 @@ caption {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-}@import "./base/reset.css";
-@import "./base/variables.css";
-@import "./base/typography.css";
+}/*--------------------------------------------------------------
+>>> Theme Icon
+--------------------------------------------------------------*/
 
-@import "./components/layout.css";
-@import "./components/table.css";
-@import "./components/card.css";
-@import "./components/buttons.css";
-@import "./components/about.css";
-@import "./components/footer.css";
-
-/* Extra global (si necesitas cosas pequeñas aquí) */
+.theme-toggle-btn {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 2;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s;
+}
+.sun { fill: black; }
+.moon { fill: transparent; }
+.dark .sun { fill: transparent; }
+.dark .moon { fill: white; }/* Extra global (si necesitas cosas pequeñas aquí) */
 body {
   background: var(--bg-color);
   color: var(--text-color);
