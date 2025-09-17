@@ -1521,8 +1521,7 @@ function createSummaryAndThumb(pID){
 
 </div><!-- .widget-footer -->
 <div class='site-infobwrap'>
-<!-- Do not edit or remove credits without our permission: btemplates.com/author/new-blogger-themes -->
-Copyright &#169; <script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script> <a expr:href='data:blog.homepageUrl'><data:blog.title/></a> | Powered by <a href='http://www.blogger.com/'>Blogger</a><br/>Design by <a href='http://www.iografica.it/' target='_blank'>Iografica.it</a> | Blogger Theme by <a href='http://btemplates.com/author/new-blogger-themes/' rel='nofollow' target='_blank' title='NewBloggerThemes.com'>NewBloggerThemes.com</a>
+Copyright &#169; <script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script> <a expr:href='data:blog.homepageUrl'><data:blog.title/></a> | Powered by <a href='http://www.blogger.com/'>Blogger</a><br/> | Blogger Theme by <a href='http://arkitectoweb.com' rel='nofollow' target='_blank' title='Arkitectoweb'>Arkitectoweb</a>
 </div><!-- .site-info -->
 </div><!-- #colophon -->
 </div><!-- #page -->
@@ -1597,7 +1596,4 @@ jQuery(document).ready(function($) {
 </script>
 
 </body>
-</html><!-- Template processed by BTemplates.com on 07-03-2016 07:11.
-Log: Images uploaded to Picasa, HTML Menu was converted to Pages widget menu
-Template URI: http://btemplates.com/2016/blogger-template-base-wp/
--->
+</html>
