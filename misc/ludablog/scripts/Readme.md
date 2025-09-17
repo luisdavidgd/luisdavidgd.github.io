@@ -18,17 +18,9 @@ cd /home/luda/Dev/github/luisdavidgd.github.io/misc/ludablog/css
 cat base/reset.css base/variables.css base/typography.css \
 components/layout.css components/table.css components/card.css \
 components/buttons.css components/about.css components/footer.css \
+components/themeIcon.css components/thumbnails.css \
 global.css > bundle.css
 ```
 ```bash
-cat base/reset.css base/variables.css base/typography.css \
-components/layout.css components/table.css components/card.css \
-components/buttons.css components/about.css components/footer.css \
-> bundle.css
-```
-```bash
-cat bundle.css global.css > bundle-full.css
-```
-```bash
-cleancss -o bundle.min.css bundle-full.css
+cleancss -o bundle.min.css bundle.css
 ```

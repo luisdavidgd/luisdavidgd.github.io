@@ -40,9 +40,6 @@ License        : This template is free for both personal and commercial use, But
 
 :root {
   --bg-color: #fff;
-
-  --accent: #2563eb;
-  --ring: #6aa9ff;
 }
 
 .dark {
