@@ -1,0 +1,28 @@
+@import "./base/reset.css";
+@import "./base/variables.css";
+@import "./base/typography.css";
+
+@import "./components/layout.css";
+@import "./components/table.css";
+@import "./components/card.css";
+@import "./components/buttons.css";
+@import "./components/about.css";
+@import "./components/footer.css";
+
+/* Extra global (si necesitas cosas pequeñas aquí) */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
