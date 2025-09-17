@@ -5,8 +5,7 @@
 <meta content='width=device-width, initial-scale=1' name='viewport'/>
 <b:include data='blog' name='all-head-content'/>
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C700italic%2C400%2C700%2C300' media='all' rel='stylesheet' type='text/css'/>
-<link href='https://cdn.jsdelivr.net/gh/luisdavidgd/luisdavidgd.github.io@main/misc/ludablog/styles.css' media='all' rel='stylesheet' type='text/css'/>
+<link href='https://cdn.jsdelivr.net/gh/luisdavidgd/luisdavidgd.github.io@main/misc/ludablog/css/bundle.min.css' media='all' rel='stylesheet' type='text/css'/>
 
 <b:if cond='data:blog.pageType == &quot;index&quot;'>
 <title><data:blog.pageTitle/></title> 
@@ -35,22 +34,68 @@ Created Date   : Sunday, April 27, 2014
 Updated Date   : Sunday, September 14, 2025
 License        : This template is free for both personal and commercial use, But to satisfy the 'attribution' clause of the license, you are required to keep the footer links intact which provides due credit to its authors.For more information about this license, please use this link :http://creativecommons.org/licenses/by/3.0/
 ----------------------------------------------- */
-body#layout ul{list-style-type:none;list-style:none}
-body#layout ul li{list-style-type:none;list-style:none}
-body#layout #headerbwrap {height:auto;}
-body#layout #blogtitle {min-height:120px;}
-body#layout #content {}
+/*--------------------------------------------------------------
+>>> Variable overriding
+--------------------------------------------------------------*/
+
+:root {
+  --bg-color: #fff;
+
+  --accent: #2563eb;
+  --ring: #6aa9ff;
+}
+
+.dark {
+  --bg-color: #000;
+}
+
 
 ]]></b:skin>
 
-<script src="https://cdn.jsdelivr.net/gh/luisdavidgd/luisdavidgd.github.io@main/misc/ludablog/js/removeHtmlTag.js" type='text/javascript'></script>
-<script src="https://cdn.jsdelivr.net/gh/luisdavidgd/luisdavidgd.github.io@main/misc/ludablog/js/createSummaryAndThumb.js" type='text/javascript'></script>
-
+<script src="https://cdn.jsdelivr.net/gh/luisdavidgd/luisdavidgd.github.io@main/misc/ludablog/js/bundle.min.js" type='text/javascript'></script>
+<script type='text/javascript'>
+summary_noimg = 350;
+summary_img = 275;
+img_thumb_height = 150;
+img_thumb_width = 200; 
+</script>
 
 </head>
 
 <body>
-<div id='pagebwrap'>
+
+<b:if cond='data:blog.pageType == &quot;index&quot;'>
+  <section class="blog-header">
+    <div class="blog-header-container">
+      <div class="blog-header-grid">
+        <h1 class="blog-header-title">
+          <span class="blog-header-gradient">
+            <data:blog.pageName/>
+          </span>
+        </h1>
+        <p class="blog-header-subtitle">
+          <data:description/>
+        </p>
+      </div>
+    </div>
+  </section>
+</b:if>
+
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+  <section id="heroSectionItem"> This is a Hero Section for Item:
+  <div>data:blog.pageName: <data:blog.pageName/></div>
+  <div>data:blog.title <data:blog.title/></div>
+  <div>data:blog.pageTitle: <data:blog.pageTitle/></div>
+</section>
+</b:if>
+
+<b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+  <section id="heroSectionStaticPage"> This is a Hero Section for Static Page:
+  <div>data:blog.pageName: <data:blog.pageName/></div>
+  <div>data:blog.title <data:blog.title/></div>
+  <div>data:blog.pageTitle: <data:blog.pageTitle/></div>
+</section>
+</b:if>
 
 <div class='site-headerbwrap' id='mastheadbwrap' role='banner'>
 <div class='site-brandingbwrap'>
@@ -998,11 +1043,6 @@ body#layout #content {}
 Copyright &#169; <script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script> <a expr:href='data:blog.homepageUrl'><data:blog.title/></a> | Powered by <a href='http://www.blogger.com/'>Blogger</a><br/> | Blogger Theme by <a href='http://arkitectoweb.com' rel='nofollow' target='_blank' title='Arkitectoweb'>Arkitectoweb</a>
 </div><!-- .site-info -->
 </div><!-- #colophon -->
-</div><!-- #page -->
-
-<script src="https://cdn.jsdelivr.net/gh/luisdavidgd/luisdavidgd.github.io@main/misc/ludablog/js/stickyNav.js" type='text/javascript'></script>
-<script src="https://cdn.jsdelivr.net/gh/luisdavidgd/luisdavidgd.github.io@main/misc/ludablog/js/menuToggle.js" type='text/javascript'></script>
-<script src="https://cdn.jsdelivr.net/gh/luisdavidgd/luisdavidgd.github.io@main/misc/ludablog/js/themeIcon.js" type='text/javascript'></script>
 
 </body>
 </html>
