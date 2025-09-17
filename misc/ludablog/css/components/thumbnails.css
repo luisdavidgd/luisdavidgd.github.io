@@ -1,0 +1,14 @@
+/*--------------------------------------------------------------
+>>> Thumbnails
+--------------------------------------------------------------*/
+.pbtthumbimg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0.5em auto;
+  padding: 4px;
+  border: 1px solid #eee;
+  background: var(--shadow-color);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px #eee;
+}
