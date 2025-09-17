@@ -6,6 +6,7 @@
   --text-color: #777777;
   --action-text-color: #000000;
   --header-bg-color: #e2e8f0;
+  --pre-bg-color: #e2e8f0;
   --heading-text-color: #555555;
   --accent: #FF9900;
 }
@@ -15,6 +16,7 @@
   --text-color: #e2e8f0;
   --action-text-color: #ffffff;
   --header-bg-color: #15171c;
+  --pre-bg-color: #15171c;
   --heading-text-color: #e2e8f0;
 }
 
@@ -134,10 +136,10 @@ b, strong { font-weight: bold; }
 dfn, cite, em, i { font-style: italic; }
 blockquote { margin: 0 1.5em; }
 address { margin: 0 0 1.5em; }
-pre, code, kbd, tt, var {
+pre, kbd, tt, var {
   font-family: "Courier 10 Pitch", Courier, monospace;
   font-size: 1.5rem;
-  background: #eee;
+  background: var(--pre-bg-color);
   padding: 1em;
   border-radius: 4px;
   overflow-x: auto;
