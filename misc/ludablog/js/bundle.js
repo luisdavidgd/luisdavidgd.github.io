@@ -29,28 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (btn) {
     btn.addEventListener("click", handleToggleClick);
   }
-});document.addEventListener("DOMContentLoaded", function () {
-  var filter = document.querySelector('.main-navigationbwrap');
-  if (!filter) return;
-
-  var filterSpacer = document.createElement('div');
-  filterSpacer.className = "filter-drop-spacer";
-  filterSpacer.style.height = filter.offsetHeight + "px";
-
-  var isSticky = false;
-
-  window.addEventListener('scroll', function () {
-    var filterTop = filter.getBoundingClientRect().top + window.scrollY;
-    if (!isSticky && window.scrollY > filterTop) {
-      filter.parentNode.insertBefore(filterSpacer, filter);
-      filter.classList.add("fix");
-      isSticky = true;
-    } else if (isSticky && window.scrollY < filterSpacer.getBoundingClientRect().top + window.scrollY) {
-      filter.classList.remove("fix");
-      if (filterSpacer.parentNode) filterSpacer.parentNode.removeChild(filterSpacer);
-      isSticky = false;
-    }
-  });
 });function removeHtmlTag(strx, chop) {
   if (strx.indexOf("<") != -1) {
     var s = strx.split("<");
@@ -88,7 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var div = document.getElementById(pID);
   var imgtag = "";
   var img = div.getElementsByTagName("img");
-  var summ = summary_noimg;
+  if(img) {
+    var summ = summary_noimg;
   if (img.length >= 1) {
     imgtag = '<img src="' + img[0].src + '" class="pbtthumbimg"/>';
     summ = summary_img;
@@ -96,4 +75,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var summary = imgtag + '<div>' + removeHtmlTag(div.innerHTML, summ) + '</div>';
   div.innerHTML = summary;
+  }
 }
