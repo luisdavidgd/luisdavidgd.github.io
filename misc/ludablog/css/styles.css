@@ -26,13 +26,10 @@
 1.0 - Reset
 2.0 - Typography
 3.0 - Layout
-4.0 - ELements
+4.0 - Elements
   4.1 - Theme Icon
-  4.2 - Thumbnails
 5.0 - Navigation
-	5.1 - Links
-	5.2 - Menus
-6.0 - Accessibility
+6.0 - Hero Section
 7.0 - Alignments
 8.0 - Clearings
 9.0 - Widgets
@@ -130,7 +127,6 @@ main {
   max-width: 100%;
   height: auto;
   border-radius: 0.5rem;
-  /* opcional */
 }
 
 /*--------------------------------------------------------------
@@ -168,22 +164,6 @@ main {
 }
 
 /*--------------------------------------------------------------
-4.2 - Thumbnails
---------------------------------------------------------------*/
-.pbtthumbimg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 0.5em auto;
-  padding: 4px;
-  border: 1px solid #eee;
-  background: var(--shadow-color);
-  border-radius: 6px;
-  box-shadow: 0 2px 8px #eee;
-}
-
-
-/*--------------------------------------------------------------
 5.0 Navigation
 --------------------------------------------------------------*/
 nav {
@@ -213,6 +193,7 @@ nav {
   .menu {
     display: flex;
     gap: 1.5rem;
+    margin: auto;
   }
 
   .menu a {
@@ -279,6 +260,9 @@ nav {
     nav {
       justify-content: space-between;
     }
+    .logo{
+      margin:auto;
+    }
     li {
       padding-left: var(--spacing);
       padding-bottom: calc(var(--spacing) / 3);
@@ -288,17 +272,17 @@ nav {
       gap: 1rem;
       background: var(--bg-color);
       position: absolute;
-      top: 65px;
+      top: 50px;
       left: 0;
       width: 100%;
-      padding: 1rem 2rem;
+      padding: 6px 2rem;
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
     }
 
     #menu-toggle:checked ~ .menu {
-      max-height: 300px; /* suficiente para mostrar todo */
+      max-height: 300px;
     }
 
     .menu-icon {
@@ -317,6 +301,76 @@ nav {
       bottom: 9px;
     }
   }
+
+/*--------------------------------------------------------------
+6.0 Hero Section
+--------------------------------------------------------------*/
+/* Hero base */
+#heroSection {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Index Hero */
+.index-header {
+  min-height: 320px;
+  padding-top: 80px; /* navbar offset */
+  background: linear-gradient(90deg, var(--accent), #ffb84d 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.index-header-title {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.index-header-gradient {
+  background: var(--bg-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.index-header-subtitle {
+  font-size: 1.25rem;
+  color: #fff;
+  opacity: 0.85;
+}
+
+/* Item Hero */
+#heroSectionItem {
+  min-height: 120px;
+  padding-top: 80px;
+  background: var(--header-bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#heroSectionItem div {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Static Page Hero */
+#heroSectionStaticPage {
+  min-height: 120px;
+  padding-top: 80px;
+  background: var(--pre-bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#heroSectionStaticPage div {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
 
 /*--------------------------------------------------------------
 >>> Extras
