@@ -42,7 +42,8 @@ License        : This template is free for both personal and commercial use.
   --header-bg-color: #e2e8f0;
   --pre-bg-color: #e2e8f0;
   --heading-text-color: #555555;
-  --accent: #FF9900;
+  --accent: #2288df;
+  --ring: #414ddb
 }
 
 .dark {
@@ -143,7 +144,7 @@ html {
   min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 30px 0px 65px;
+  padding: 30px 15px 65px;
 }
 
 @media (max-width: 768px) {
@@ -155,11 +156,14 @@ html {
   }
 }
 
-.responsive-img {
+img {
   display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 0.5rem;
+}
+
+.featured-img{
+    padding: 8px;
 }
 
 /*--------------------------------------------------------------
@@ -349,7 +353,7 @@ nav {
 .index-header {
   min-height: 320px;
   padding-top: 80px; /* navbar offset */
-  background: linear-gradient(90deg, var(--accent), #ffb84d 70%);
+  background: linear-gradient(90deg, var(--accent), var(--ring) 70%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -377,32 +381,18 @@ nav {
 #heroSectionItem {
   min-height: 120px;
   padding-top: 80px;
-  background: var(--header-bg-color);
-  color: var(--text-color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-#heroSectionItem div {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  align-items: center;
 }
 
 /* Static Page Hero */
 #heroSectionStaticPage {
   min-height: 120px;
   padding-top: 80px;
-  background: var(--pre-bg-color);
-  color: var(--text-color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-#heroSectionStaticPage div {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  align-items: center;
 }
 
 /*--------------------------------------------------------------
@@ -509,7 +499,7 @@ function createSummaryAndThumb(pID){
 	var img = div.getElementsByTagName("img");
 	var summ = summary_noimg;
 	if(img.length>=1) {	
-		imgtag = '<img src="'+img[0].src+'" class="responsive-img"/>';
+		imgtag = '<img src="'+img[0].src+'" class="featured-img"/>';
 		summ = summary_img;
 	}
 	
@@ -576,24 +566,14 @@ function createSummaryAndThumb(pID){
   </b:if>
 
   <b:if cond='data:blog.pageType == &quot;item&quot;'>
-    <div id="heroSectionItem"> This is a Hero Section for Item:
-      <div>data:blog.pageName: <data:blog.pageName/>
-      </div>
-      <div>data:blog.title <data:blog.title/>
-      </div>
-      <div>data:blog.pageTitle: <data:blog.pageTitle/>
-      </div>
+    <div id="heroSectionItem">
+      <h1><data:blog.pageName/></h1>
     </div>
   </b:if>
 
   <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
-    <div id="heroSectionStaticPage"> This is a Hero Section for Static Page:
-      <div>data:blog.pageName: <data:blog.pageName/>
-      </div>
-      <div>data:blog.title <data:blog.title/>
-      </div>
-      <div>data:blog.pageTitle: <data:blog.pageTitle/>
-      </div>
+    <div id="heroSectionStaticPage">
+      <h1><data:blog.pageName/></h1>
     </div>
   </b:if>
 </header>
@@ -1193,28 +1173,36 @@ function createSummaryAndThumb(pID){
   <div class='clear'/>
 </b:includable>
     <b:includable id='post' var='post'>
-<article class='post hentry'>
-
+<article>
 <a expr:name='data:post.id'/>
-	
-<div class='entry-header'>
-      <h2 class='post-title entry-title'>
-     <b:if cond='data:post.link'>
-       <a expr:href='data:post.link'><data:post.title/></a>
-     <b:else/>
-        <b:if cond='data:post.url'>
-          <a expr:href='data:post.url'><data:post.title/></a>
+<b:if cond='data:blog.pageType == &quot;index&quot;'>
+  <div>
+    <h2>
+      <b:if cond='data:post.link'>
+        <a expr:href='data:post.link'><data:post.title/></a>
         <b:else/>
-          <data:post.title/>
-        </b:if>
-     </b:if>
-      </h2>
-<b:if cond='data:blog.pageType != &quot;static_page&quot;'>
-<div class='entry-metabwrap'>
-<span>Posted on <data:post.timestamp/></span><span>&amp;nbsp;by&amp;nbsp;<b:if cond='data:post.authorProfileUrl'><a expr:href='data:post.authorProfileUrl' rel='author' title='author profile'><data:post.author/></a><b:else/><data:post.author/></b:if><b:if cond='data:post.allowComments'>&amp;nbsp;with&amp;nbsp;<a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><b:if cond='data:post.numComments == 0'>No comments</b:if><b:if cond='data:post.numComments == 1'>1 comment</b:if><b:if cond='data:post.numComments &gt;= 2'><data:post.numComments/> comments</b:if></a></b:if></span>
-</div>
+          <b:if cond='data:post.url'>
+            <a expr:href='data:post.url'><data:post.title/></a>
+              <b:else/>
+                <data:post.title/>
+          </b:if>
+      </b:if>
+    </h2>
+    <div>
+      <span>Posted on <data:post.timestamp/></span><span>&amp;nbsp;by&amp;nbsp;<b:if cond='data:post.authorProfileUrl'><a expr:href='data:post.authorProfileUrl' rel='author' title='author profile'><data:post.author/></a><b:else/><data:post.author/></b:if><b:if cond='data:post.allowComments'>&amp;nbsp;with&amp;nbsp;<a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><b:if cond='data:post.numComments == 0'>No comments</b:if><b:if cond='data:post.numComments == 1'>1 comment</b:if><b:if cond='data:post.numComments &gt;= 2'><data:post.numComments/> comments</b:if></a></b:if></span>
+    </div>
+  </div>
 </b:if>
-</div>
+
+<b:if cond='data:blog.pageType == &quot;item&quot;'>
+  <div>
+    <span>Posted on <data:post.timestamp/></span><span>&amp;nbsp;by&amp;nbsp;<b:if cond='data:post.authorProfileUrl'><a expr:href='data:post.authorProfileUrl' rel='author' title='author profile'><data:post.author/></a><b:else/><data:post.author/></b:if><b:if cond='data:post.allowComments'>&amp;nbsp;with&amp;nbsp;<a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><b:if cond='data:post.numComments == 0'>No comments</b:if><b:if cond='data:post.numComments == 1'>1 comment</b:if><b:if cond='data:post.numComments &gt;= 2'><data:post.numComments/> comments</b:if></a></b:if></span>
+  </div>
+  <hr />
+  <div style="padding-bottom:20px;"></div>
+</b:if>
+	
+
 
 <div class='post-header-line-1'/>
 
@@ -1272,147 +1260,61 @@ function createSummaryAndThumb(pID){
       <b:widget-setting name='content'><![CDATA[<!-- Disqus comments gadget -->]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
-            <script type='text/javascript'>
-                var disqus_shortname = &#39;luisdavidgd&#39;;
-                var disqus_blogger_current_url = &quot;<data:blog.canonicalUrl/>&quot;;
+      <script type='text/javascript'>
+        var disqus_shortname = &#39;luisdavidgd&#39;;
+        var disqus_blogger_current_url = &quot;<data:blog.canonicalUrl/>&quot;;
 
-                if (!disqus_blogger_current_url.length) {
-                    disqus_blogger_current_url = &quot;<data:blog.url/>&quot;;
-                }
+        if (!disqus_blogger_current_url.length) {
+            disqus_blogger_current_url = &quot;<data:blog.url/>&quot;;
+        }
 
-                var disqus_blogger_homepage_url = &quot;<data:blog.homepageUrl/>&quot;;
-                var disqus_blogger_canonical_homepage_url = &quot;<data:blog.canonicalHomepageUrl/>&quot;;
-            </script>
+        var disqus_blogger_homepage_url = &quot;<data:blog.homepageUrl/>&quot;;
+        var disqus_blogger_canonical_homepage_url = &quot;<data:blog.canonicalHomepageUrl/>&quot;;
+      </script>
 
-            <b:if cond='data:blog.pageType == &quot;item&quot;'>
-                <style type='text/css'>
-                    #comments {display:none;}
-                </style>
+      <b:if cond='data:blog.pageType == &quot;item&quot;'>
+        <style type='text/css'>
+            #comments {display:none;}
+        </style>
 
-                <script type='text/javascript'>
-                    (function() {
-                        var bloggerjs = document.createElement(&#39;script&#39;);
-                        bloggerjs.type = &#39;text/javascript&#39;;
-                        bloggerjs.async = true;
-                        bloggerjs.src = &#39;//&#39;+disqus_shortname+&#39;.disqus.com/blogger_item.js&#39;;
-                        (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(bloggerjs);
-                    })();
+        <script type='text/javascript'>
+          (function() {
+            var bloggerjs = document.createElement(&#39;script&#39;);
+            bloggerjs.type = &#39;text/javascript&#39;;
+            bloggerjs.async = true;
+            bloggerjs.src = &#39;//&#39;+disqus_shortname+&#39;.disqus.com/blogger_item.js&#39;;
+            (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(bloggerjs);
+          })();
+        </script>
+      </b:if>
 
-                </script>
-            </b:if>
-                <style type='text/css'>
-                    .post-comment-link { visibility: hidden; }
-                </style>
+      <style type='text/css'>
+          .post-comment-link { visibility: hidden; }
+      </style>
 
-                <script type='text/javascript'>
-                (function() {
-                    var bloggerjs = document.createElement(&#39;script&#39;);
-                    bloggerjs.type = &#39;text/javascript&#39;;
-                    bloggerjs.async = true;
-                    bloggerjs.src = &#39;//&#39;+disqus_shortname+&#39;.disqus.com/blogger_index.js&#39;;
-                    (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(bloggerjs);
-                })();
-
-            </script>
-</b:includable>
+      <script type='text/javascript'>
+        (function() {
+          var bloggerjs = document.createElement(&#39;script&#39;);
+          bloggerjs.type = &#39;text/javascript&#39;;
+          bloggerjs.async = true;
+          bloggerjs.src = &#39;//&#39;+disqus_shortname+&#39;.disqus.com/blogger_index.js&#39;;
+          (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(bloggerjs);
+        })();
+      </script>
+    </b:includable>
   </b:widget>
 </b:section>
 </main>
 
 <aside>
-
-<div class='widget widget_search'>
-<form class='search-form' expr:action='data:blog.homepageUrl + &quot;search/&quot;' method='get' role='search'>
-<label>
-<span class='screen-reader-textbwrap'>Search for:</span>
-<input class='search-field' name='q' placeholder='Search' title='Search for:' type='search' value=''/>
-</label>
-<input class='search-submit' type='submit' value='Search'/>
-</form>
-</div>
-
-<b:section class='sidebarright' id='sidebarright' preferred='yes'>
-  <b:widget id='BlogArchive2' locked='false' title='Blog Archive' type='BlogArchive'>
-    <b:widget-settings>
-      <b:widget-setting name='showStyle'>HIERARCHY</b:widget-setting>
-      <b:widget-setting name='yearPattern'>yyyy</b:widget-setting>
-      <b:widget-setting name='showWeekEnd'>true</b:widget-setting>
-      <b:widget-setting name='monthPattern'>MMMM</b:widget-setting>
-      <b:widget-setting name='dayPattern'>MMM dd</b:widget-setting>
-      <b:widget-setting name='weekPattern'>MM/dd</b:widget-setting>
-      <b:widget-setting name='chronological'>false</b:widget-setting>
-      <b:widget-setting name='showPosts'>true</b:widget-setting>
-      <b:widget-setting name='frequency'>MONTHLY</b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <b:if cond='data:title != &quot;&quot;'>
-    <h2><data:title/></h2>
-  </b:if>
-  <div class='widget-content'>
-  <div id='ArchiveList'>
-  <div expr:id='data:widget.instanceId + &quot;_ArchiveList&quot;'>
-    <b:include cond='data:style == &quot;HIERARCHY&quot;' data='data' name='interval'/>
-    <b:include cond='data:style == &quot;FLAT&quot;' data='data' name='flat'/>
-    <b:include cond='data:style == &quot;MENU&quot;' data='data' name='menu'/>
-  </div>
-  </div>
-  <b:include name='quickedit'/>
-  </div>
-</b:includable>
-    <b:includable id='flat' var='data'>
-  <ul class='flat'>
-    <b:loop values='data:data' var='i'>
-      <li class='archivedate'>
-        <a expr:href='data:i.url'><data:i.name/></a> (<data:i.post-count/>)
-      </li>
-    </b:loop>
-  </ul>
-</b:includable>
-    <b:includable id='interval' var='intervalData'>
-  <b:loop values='data:intervalData' var='interval'>
-    <ul class='hierarchy'>
-      <li expr:class='&quot;archivedate &quot; + data:interval.expclass'>
-        <b:include cond='data:interval.toggleId' data='interval' name='toggle'/>
-        <a class='post-count-link' expr:href='data:interval.url'>
-          <data:interval.name/>
-        </a>
-        <span class='post-count' dir='ltr'>(<data:interval.post-count/>)</span>
-        <b:include cond='data:interval.data' data='interval.data' name='interval'/>
-        <b:include cond='data:interval.posts' data='interval.posts' name='posts'/>
-      </li>
-    </ul>
-  </b:loop>
-</b:includable>
-    <b:includable id='menu' var='data'>
-  <select expr:id='data:widget.instanceId + &quot;_ArchiveMenu&quot;'>
-    <option value=''><data:title/></option>
-    <b:loop values='data:data' var='i'>
-      <option expr:value='data:i.url'><data:i.name/> (<data:i.post-count/>)</option>
-    </b:loop>
-  </select>
-</b:includable>
-    <b:includable id='posts' var='posts'>
-  <ul class='posts'>
-    <b:loop values='data:posts' var='post'>
-      <li><a expr:href='data:post.url'><data:post.title/></a></li>
-    </b:loop>
-  </ul>
-</b:includable>
-    <b:includable id='toggle' var='interval'>
-  <a class='toggle' href='javascript:void(0)'>
-    <span expr:class='&quot;zippy&quot; + (data:interval.expclass == &quot;expanded&quot; ? &quot; toggle-open&quot; : &quot;&quot;)'>
-      <b:if cond='data:interval.expclass == &quot;expanded&quot;'>
-        &#9660;&#160;
-      <b:elseif cond='data:blog.languageDirection == &quot;rtl&quot;'/>
-        &#9668;&#160;
-      <b:else/>
-        &#9658;&#160;
-      </b:if>
-    </span>
-  </a>
-</b:includable>
-  </b:widget>
-</b:section>
+  <form expr:action='data:blog.homepageUrl + &quot;search/&quot;' method='get' role='search'>
+    <label>
+      <span>Search for:</span>
+      <input name='q' placeholder='Search' title='Search for:' type='search' value=''/>
+    </label>
+    <input type='submit' value='Search'/>
+  </form>
+  <b:section id='Aside' preferred='yes' />
 </aside>
 </div>
 
