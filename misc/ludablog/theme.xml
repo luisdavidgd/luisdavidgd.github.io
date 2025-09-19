@@ -135,25 +135,24 @@ html {
 /*--------------------------------------------------------------
 3.0 - Layout
 --------------------------------------------------------------*/
-main {
-  padding: 65px 0px 65px;
-}
-
-.container {
+.layout {
+  display: grid;
+  grid-template-areas: "main    sidebar";
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 30px 0px 65px;
 }
 
-.grid {
-  display: grid;
-  gap: 1rem;
-  grid-auto-flow: dense;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
-}
-
-.featured {
-  grid-column: span 2;
+@media (max-width: 768px) {
+  .layout {
+    grid-template-areas:
+      "main"
+      "sidebar";
+    grid-template-columns: 1fr;
+  }
 }
 
 .responsive-img {
@@ -558,7 +557,7 @@ function createSummaryAndThumb(pID){
 <!-- /Menu Navigator (Pages) -->
 
 <!-- Hero Section -->
-<section id="heroSection">
+<header id="heroSection">
   <b:if cond='data:blog.pageType == &quot;index&quot;'>
     <div class="index-header">
       <div class="index-header-container">
@@ -597,7 +596,7 @@ function createSummaryAndThumb(pID){
       </div>
     </div>
   </b:if>
-</section>
+</header>
 <!-- /Hero Section -->
 
 <!-- Theme Button -->
@@ -609,11 +608,8 @@ function createSummaryAndThumb(pID){
 </button>
 <!-- /Theme Button -->
 
-<div class='wide contenitor'>
-<div class='site-contentbwrap container' id='contentbwrap'>
-
-<div class='content-areabwrap' id='primarybwrap'>
-<div class='site-mainbwrap' id='mainbwrap' role='main'>
+<div class="layout">
+<main>
 <b:section class='mainblogsec' id='mainblogsec' showaddelement='no'>
   <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' version='1'>
     <b:widget-settings>
@@ -1201,7 +1197,7 @@ function createSummaryAndThumb(pID){
 
 <a expr:name='data:post.id'/>
 	
-<header class='entry-header'>
+<div class='entry-header'>
       <h2 class='post-title entry-title'>
      <b:if cond='data:post.link'>
        <a expr:href='data:post.link'><data:post.title/></a>
@@ -1218,7 +1214,7 @@ function createSummaryAndThumb(pID){
 <span>Posted on <data:post.timestamp/></span><span>&amp;nbsp;by&amp;nbsp;<b:if cond='data:post.authorProfileUrl'><a expr:href='data:post.authorProfileUrl' rel='author' title='author profile'><data:post.author/></a><b:else/><data:post.author/></b:if><b:if cond='data:post.allowComments'>&amp;nbsp;with&amp;nbsp;<a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><b:if cond='data:post.numComments == 0'>No comments</b:if><b:if cond='data:post.numComments == 1'>1 comment</b:if><b:if cond='data:post.numComments &gt;= 2'><data:post.numComments/> comments</b:if></a></b:if></span>
 </div>
 </b:if>
-</header>
+</div>
 
 <div class='post-header-line-1'/>
 
@@ -1321,10 +1317,9 @@ function createSummaryAndThumb(pID){
 </b:includable>
   </b:widget>
 </b:section>
-</div><!-- #main -->
-</div><!-- #primary -->
+</main>
 
-<div class='widget-area' id='secondarybwrap' role='complementary'>
+<aside>
 
 <div class='widget widget_search'>
 <form class='search-form' expr:action='data:blog.homepageUrl + &quot;search/&quot;' method='get' role='search'>
@@ -1418,10 +1413,8 @@ function createSummaryAndThumb(pID){
 </b:includable>
   </b:widget>
 </b:section>
-
-</div><!-- #secondary -->
-</div><!-- #content -->
-</div><!-- wide contenitor-->
+</aside>
+</div>
 
 <footer style="text-align:center;">
 Copyright &#169; <script type='text/javascript'>var creditsyear = new Date();document.write(creditsyear.getFullYear());</script> <a expr:href='data:blog.homepageUrl'><data:blog.title/></a> | Powered by <a href='http://www.blogger.com/'>Blogger</a>
