@@ -138,8 +138,10 @@ html {
 /*--------------------------------------------------------------
 3.0 - Layout
 --------------------------------------------------------------*/
-#layout {
+.index-layout {
   display: grid;
+  grid-template-areas: "main sidebar";
+  grid-template-columns: 3fr 1fr;
   gap: 1.5rem;
   min-height: 100vh;
   max-width: 72rem;
@@ -147,13 +149,8 @@ html {
   padding: 30px 15px 65px;
 }
 
-#layout.index-layout {
-  grid-template-areas: "main sidebar";
-  grid-template-columns: 3fr 1fr;
-}
-
 @media (max-width: 768px) {
-  #layout.index-layout {
+  .index-layout {
     grid-template-areas:
       "main"
       "sidebar";
@@ -161,21 +158,33 @@ html {
   }
 }
 
-#layout.item-layout {
+.item-layout {
+  display: grid;
   grid-template-areas:
       "main"
       "sidebar";
   grid-template-columns: 1fr;
+  gap: 1.5rem;
+  min-height: 100vh;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 30px 15px 65px;
 }
 
-#layout.static_page-layout {
+.static_page-layout {
+  display: grid;
   grid-template-areas:
       "main"
       "sidebar";
   grid-template-columns: 1fr;
+  gap: 1.5rem;
+  min-height: 100vh;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 30px 15px 65px;
 }
 
-#layout.static_page-layout > aside {
+.static_page-layout > aside {
   display: none;
 }
 
@@ -673,7 +682,7 @@ function addClassToTagId(tagId, className) {
 </button>
 <!-- /Theme Button -->
 
-<div id='layout'>
+<div id='content-layout'>
   <main>
   <b:section class='mainblogsec' id='mainblogsec' showaddelement='no'>
     <b:widget id='Blog1' locked='true' title='Entradas del blog' type='Blog' version='1'>
@@ -1402,19 +1411,19 @@ function addClassToTagId(tagId, className) {
 
 <b:if cond='data:blog.pageType == &quot;index&quot; || data:blog.pageType == &quot;archive&quot;'>
   <script type='text/javascript'>
-    addClassToTagId(&quot;layout&quot;,&quot;index-layout&quot;);
+    addClassToTagId(&quot;content-layout&quot;,&quot;index-layout&quot;);
     addClassToTag(&quot;article&quot;,&quot;index-item&quot;);
   </script>
 </b:if>
 <b:if cond='data:blog.pageType == &quot;item&quot;'>
   <script type='text/javascript'>
-    addClassToTagId(&quot;layout&quot;,&quot;item-layout&quot;);
+    addClassToTagId(&quot;content-layout&quot;,&quot;item-layout&quot;);
     addClassToTag(&quot;article&quot;,&quot;item&quot;);
   </script>
 </b:if>
 <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
   <script type='text/javascript'>
-    addClassToTagId(&quot;layout&quot;,&quot;static_page-layout&quot;);
+    addClassToTagId(&quot;content-layout&quot;,&quot;static_page-layout&quot;);
     addClassToTag(&quot;article&quot;,&quot;static-page&quot;);
   </script>
 </b:if>
