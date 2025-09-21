@@ -8,7 +8,8 @@
   --header-bg-color: #e2e8f0;
   --pre-bg-color: #e2e8f0;
   --heading-text-color: #555555;
-  --accent: #FF9900;
+  --accent: #2288df;
+  --ring: #414ddb;
 }
 
 .dark {
@@ -30,7 +31,9 @@
   4.1 - Theme Icon
 5.0 - Navigation
 6.0 - Hero Section
-7.0 - Alignments
+7.0 - Content
+	7.1 - Posts and pages
+  7.2 - Asides
 8.0 - Clearings
 9.0 - Widgets
 10.0 - Content
@@ -101,32 +104,60 @@ html {
 /*--------------------------------------------------------------
 3.0 - Layout
 --------------------------------------------------------------*/
-main {
-  padding: 65px 0px 65px;
-}
-
-.container {
+.index-layout {
+  display: grid;
+  grid-template-areas: "main sidebar";
+  grid-template-columns: 3fr 1fr;
+  gap: 1.5rem;
+  min-height: 100vh;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 30px 15px 65px;
 }
 
-.grid {
+@media (max-width: 768px) {
+  .index-layout {
+    grid-template-areas:
+      "main"
+      "sidebar";
+    grid-template-columns: 1fr;
+  }
+}
+
+.item-layout {
   display: grid;
-  gap: 1rem;
-  grid-auto-flow: dense;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  grid-template-areas:
+      "main"
+      "sidebar";
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  min-height: 100vh;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 30px 15px 65px;
 }
 
-.featured {
-  grid-column: span 2;
+.static_page-layout {
+  display: grid;
+  grid-template-areas:
+      "main"
+      "sidebar";
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  min-height: 100vh;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 30px 15px 65px;
 }
 
-.responsive-img {
+img {
   display: block;
   max-width: 100%;
   height: auto;
-  border-radius: 0.5rem;
+}
+
+.featured-img{
+    padding: 8px;
 }
 
 /*--------------------------------------------------------------
@@ -303,7 +334,7 @@ nav {
   }
 
 /*--------------------------------------------------------------
-6.0 Hero Section
+6.0 - Hero Section
 --------------------------------------------------------------*/
 /* Hero base */
 #heroSection {
@@ -316,7 +347,7 @@ nav {
 .index-header {
   min-height: 320px;
   padding-top: 80px; /* navbar offset */
-  background: linear-gradient(90deg, var(--accent), #ffb84d 70%);
+  background: linear-gradient(90deg, var(--accent), var(--ring) 70%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -344,32 +375,66 @@ nav {
 #heroSectionItem {
   min-height: 120px;
   padding-top: 80px;
-  background: var(--header-bg-color);
-  color: var(--text-color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-#heroSectionItem div {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  align-items: center;
 }
 
 /* Static Page Hero */
 #heroSectionStaticPage {
   min-height: 120px;
   padding-top: 80px;
-  background: var(--pre-bg-color);
-  color: var(--text-color);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
-#heroSectionStaticPage div {
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+
+/*--------------------------------------------------------------
+7.1 - Posts and pages
+--------------------------------------------------------------*/
+article.index-item {
+    /* background-color: red; */
+    margin-bottom: 20px;
+    border: 1px solid;
+    padding: 20px;
+}
+
+/*--------------------------------------------------------------
+7.2 - Asides
+--------------------------------------------------------------*/
+div#Aside {
+  display: flex;
+  flex-direction: row;      /* horizontal por defecto */
+  gap: 1.5rem;
+  padding: 1rem;
+  flex-wrap: wrap;          /* permite que los hijos bajen si no caben */
+}
+
+div#Aside > div {
+  padding: 1rem;
+  margin-bottom: 0;         /* quita el margen vertical */
+  margin-right: 1rem;       /* espacio horizontal entre widgets */
+  flex: 1 1 330px;          /* los hijos crecen y se encogen */
+}
+
+/* Responsive: vertical en móvil */
+@media (max-width: 768px) {
+  div#Aside {
+    flex-direction: column;
+    max-width: 100%;
+    min-width: 0;
+    margin-top: 2rem;
+    padding: 0;
+    border-radius: 0;
+  }
+  div#Aside > div {
+    margin-bottom: 1rem;
+    margin-right: 0;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 1rem 0.5rem;
+    min-width: 0;
+  }
 }
 
 /*--------------------------------------------------------------
