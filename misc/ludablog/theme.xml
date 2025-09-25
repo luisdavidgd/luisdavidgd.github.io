@@ -181,21 +181,14 @@ License        : This template is free for both personal and commercial use.
               &lt;div class=&quot;date-posts&quot;&gt;
             </b:if>
             <div class='post-outer'>
-            <b:include data='post' name='post'/>
-            <b:if cond='data:blog.pageType == "static_page"'>
-              <b:if cond='data:post.showThreadedComments'>
-                <b:include data='post' name='threaded_comments'/>
-              <b:else/>
-                <b:include data='post' name='comments'/>
+              <b:include data='post' name='post'/>
+              <b:if cond='data:blog.pageType == "item" || data:blog.pageType == "static_page"'>
+                <b:if cond='data:post.showThreadedComments'>
+                  <b:include data='post' name='threaded_comments'/>
+                <b:else/>
+                  <b:include data='post' name='comments'/>
+                </b:if>
               </b:if>
-            </b:if>
-            <b:if cond='data:blog.pageType == "item"'>
-              <b:if cond='data:post.showThreadedComments'>
-                <b:include data='post' name='threaded_comments'/>
-              <b:else/>
-                <b:include data='post' name='comments'/>
-              </b:if>
-            </b:if>
             </div>
             <b:if cond='data:post.includeAd'>
               <b:if cond='data:post.isFirstPost'>
@@ -354,7 +347,7 @@ License        : This template is free for both personal and commercial use.
           var disqus_blogger_canonical_homepage_url = &quot;<data:blog.canonicalHomepageUrl/>&quot;;
         </script>
 
-        <b:if cond='data:blog.pageType == "item"'>
+        <b:if cond='data:blog.pageType == "item" || data:blog.pageType == "static_page"'>
           <style type='text/css'>
               #comments {display:none;}
           </style>
