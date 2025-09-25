@@ -164,7 +164,6 @@ License        : This template is free for both personal and commercial use.
 
           <b:include data='top' name='status-message'/>
 
-          <data:defaultAdStart/>
           <b:loop values='data:posts' var='post'>
             <b:if cond='data:post.isDateStart'>
               <b:if cond='data:post.isFirstPost == "false"'>
@@ -183,29 +182,17 @@ License        : This template is free for both personal and commercial use.
             <div class='post-outer'>
               <b:include data='post' name='post'/>
               <b:if cond='data:blog.pageType == "item" || data:blog.pageType == "static_page"'>
-                <b:if cond='data:post.showThreadedComments'>
-                  <b:include data='post' name='threaded_comments'/>
-                <b:else/>
+                <b:if cond='data:post.allowComments'>
                   <b:include data='post' name='comments'/>
                 </b:if>
               </b:if>
             </div>
-            <b:if cond='data:post.includeAd'>
-              <b:if cond='data:post.isFirstPost'>
-                <data:defaultAdEnd/>
-              <b:else/>
-                <data:adEnd/>
-              </b:if>
-              <div class='inline-ad'>
-                <data:adCode/>
-              </div>
-              <data:adStart/>
-            </b:if>
           </b:loop>
+
           <b:if cond='data:numPosts != 0'>
             &lt;/div&gt;&lt;/div&gt;
           </b:if>
-          <data:adEnd/>
+          
         </div>
 
         <div style='clear: both;'/>
@@ -216,10 +203,6 @@ License        : This template is free for both personal and commercial use.
 
       </b:includable>
 
-      <b:includable id='comments' var='post'>
-        <div class='comments' id='comments'></div>
-      </b:includable>
-  
       <b:includable id='post' var='post'>
         <article expr:id='data:post.id'>
           <a expr:name='data:post.id'/>
