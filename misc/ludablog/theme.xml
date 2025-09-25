@@ -160,55 +160,26 @@ License        : This template is free for both personal and commercial use.
       
       <b:includable id='main' var='top'>
         <!-- posts -->
-        <div class='blog-posts hfeed'>
+        <b:loop values='data:posts' var='post'>
+          <b:include data='post' name='post'/>
 
-          <b:include data='top' name='status-message'/>
-
-          <b:loop values='data:posts' var='post'>
-            <b:if cond='data:post.isDateStart'>
-              <b:if cond='data:post.isFirstPost == "false"'>
-                &lt;/div&gt;&lt;/div&gt;
-              </b:if>
+          <b:if cond='data:blog.pageType == "item" || data:blog.pageType == "static_page"'>
+            <!-- navigation -->
+            <b:include name='nextprev'/>
+            <b:if cond='data:post.allowComments'>
+              <!-- comment-form anchor -->
+              <div id="comment-form"></div>
+              <b:include data='post' name='comments'/>
             </b:if>
-            <b:if cond='data:post.isDateStart'>
-              &lt;div class=&quot;date-outer&quot;&gt;
-            </b:if>
-            <b:if cond='data:post.dateHeader'>
-              <h2 class='date-header'><span><data:post.dateHeader/></span></h2>
-            </b:if>
-            <b:if cond='data:post.isDateStart'>
-              &lt;div class=&quot;date-posts&quot;&gt;
-            </b:if>
-            <div class='post-outer'>
-              <b:include data='post' name='post'/>
-              <b:if cond='data:blog.pageType == "item" || data:blog.pageType == "static_page"'>
-                <b:if cond='data:post.allowComments'>
-                  <b:include data='post' name='comments'/>
-                </b:if>
-              </b:if>
-            </div>
-          </b:loop>
-
-          <b:if cond='data:numPosts != 0'>
-            &lt;/div&gt;&lt;/div&gt;
           </b:if>
-          
-        </div>
-
-        <div style='clear: both;'/>
-        <b:if cond='data:blog.pageType != "item"'>
-          <!-- navigation -->
-          <b:include name='nextprev'/>
-        </b:if>
+        </b:loop>
 
       </b:includable>
 
       <b:includable id='post' var='post'>
         <article expr:id='data:post.id'>
-          <a expr:name='data:post.id'/>
           <b:if cond='data:blog.pageType == "index" || data:blog.pageType == "archive"'>
-            <div>
-              <h2>
+          <h2>
                 <b:if cond='data:post.link'>
                   <a expr:href='data:post.link'><data:post.title/></a>
                   <b:else/>
@@ -219,7 +190,7 @@ License        : This template is free for both personal and commercial use.
                     </b:if>
                 </b:if>
               </h2>
-              <div>
+            <div>
                 <span>Posted on <data:post.timestamp/></span>
                 <span>by
                   <b:if cond='data:post.authorProfileUrl'>
@@ -236,7 +207,6 @@ License        : This template is free for both personal and commercial use.
                   </b:if>
                 </span>
               </div>
-            </div>
           </b:if>
 
           <b:if cond='data:blog.pageType == "item"'>
@@ -261,8 +231,6 @@ License        : This template is free for both personal and commercial use.
             <div style="padding-bottom:20px;"></div>
           </b:if>
           
-          <div class='post-header-line-1'/>
-
           <div class='post-body entry-content'>
             <b:if cond='data:blog.pageType == "index" || data:blog.pageType == "archive"'>
               <!-- Summary -->
@@ -301,15 +269,6 @@ License        : This template is free for both personal and commercial use.
             </footer><!-- .entry-meta -->
           </b:if>
         </article>
-
-        <div style='clear: both;'/>
-
-        <b:if cond='data:blog.pageType == "item"'>
-          <!-- navigation -->
-          <b:include name='nextprev'/>
-          <!-- comment-form anchor -->
-          <div id="comment-form"></div>
-        </b:if>
       </b:includable>
     </b:widget>
   
