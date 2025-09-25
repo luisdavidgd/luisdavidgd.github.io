@@ -5,7 +5,7 @@
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <b:include data='blog' name='all-head-content'/>
 
-  <b:if cond='data:blog.pageType == &quot;index&quot;'>
+  <b:if cond='data:blog.pageType == "index"'>
     <title><data:blog.pageTitle/></title>
     <b:else/>
     <title><data:blog.pageName/> - <data:blog.title/></title>
@@ -68,7 +68,8 @@ License        : This template is free for both personal and commercial use.
 7.0 - Content
 	7.1 - Posts and pages
   7.2 - Asides
-8.0 - Clearings
+8.0 - Animations
+	8.1 - Posts and pages
 9.0 - Widgets
 10.0 - Content
 	10.1 - Posts and pages
@@ -426,7 +427,9 @@ nav {
   flex-direction: column;
   align-items: center;
 }
-
+/*--------------------------------------------------------------
+7.0 - Content
+--------------------------------------------------------------*/
 /*--------------------------------------------------------------
 7.1 - Posts and pages
 --------------------------------------------------------------*/
@@ -474,6 +477,46 @@ aside > form {
     border-radius: 0;
     padding: 1rem 0.5rem;
     min-width: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+8.0 - Animations
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+8.1 - Transitions
+--------------------------------------------------------------*/
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.5s;
+}
+
+::view-transition-old(root){
+  animation: slide-out-to-left 0.5s forwards;
+}
+
+::view-transition-new(root){
+  animation: slide-in-from-right 0.5s forwards;
+}
+
+@keyframes slide-out-to-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
@@ -575,18 +618,29 @@ function removeHtmlTag(strx,chop){
 	return strx+'...'; 
 }
 
-function createSummaryAndThumb(pID){
-	var div = document.getElementById(pID);
-	var imgtag = "";
-	var img = div.getElementsByTagName("img");
-	var summ = summary_noimg;
-	if(img.length>=1) {	
-		imgtag = '<img src="'+img[0].src+'" class="featured-img"/>';
-		summ = summary_img;
-	}
-	
-	var summary = imgtag + '<div>' + removeHtmlTag(div.innerHTML,summ) + '</div>';
-	div.innerHTML = summary;
+function createSummaryAndThumb(pID) {
+  let article = document.getElementById(pID);
+  let summary = article.getElementsByTagName('summary')[0];
+  let imgtag = "";
+  let img = summary.getElementsByTagName("img");
+  if (img) {
+    let summ = summary_noimg;
+    if (img.length >= 1) {
+      imgtag = `<img src="${img[0].src}" class="featured-image"/>`;
+      summ = summary_img;
+    }
+
+    let result = imgtag + '<p>' + removeHtmlTag(summary.innerHTML, summ) + '</p>';
+    summary.innerHTML = result;
+  }
+}
+
+function setViewTransitionName(pID) {
+  let article = document.getElementById(pID);
+  let img = article.getElementsByTagName('img')[0];
+  if (img) {
+    img.setAttribute('style', `view-transition-name: featured-${pID}`)
+  }
 }
 
 function addClassToTag(tagName, className) {
@@ -642,7 +696,7 @@ function addClassToTagId(tagId, className) {
 
 <!-- Hero Section -->
 <header id="heroSection">
-  <b:if cond='data:blog.pageType == &quot;index&quot; || data:blog.pageType == &quot;archive&quot;'>
+  <b:if cond='data:blog.pageType == "index" || data:blog.pageType == "archive"'>
     <div class="index-header">
       <div class="index-header-container">
         <div class="index-header-grid">
@@ -659,13 +713,13 @@ function addClassToTagId(tagId, className) {
     </div>
   </b:if>
 
-  <b:if cond='data:blog.pageType == &quot;item&quot;'>
+  <b:if cond='data:blog.pageType == "item"'>
     <div id="heroSectionItem">
       <h1><data:blog.pageName/></h1>
     </div>
   </b:if>
 
-  <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+  <b:if cond='data:blog.pageType == "static_page"'>
     <div id="heroSectionStaticPage">
       <h1><data:blog.pageName/></h1>
     </div>
@@ -712,7 +766,7 @@ function addClassToTagId(tagId, className) {
         <b:widget-setting name='showReactions'>false</b:widget-setting>
       </b:widget-settings>
       <b:includable id='main' var='top'>
-    <b:if cond='data:mobile == &quot;false&quot;'>
+    <b:if cond='data:mobile == "false"'>
 
       <!-- posts -->
       <div class='blog-posts hfeed'>
@@ -722,7 +776,7 @@ function addClassToTagId(tagId, className) {
         <data:defaultAdStart/>
         <b:loop values='data:posts' var='post'>
           <b:if cond='data:post.isDateStart'>
-            <b:if cond='data:post.isFirstPost == &quot;false&quot;'>
+            <b:if cond='data:post.isFirstPost == "false"'>
               &lt;/div&gt;&lt;/div&gt;
             </b:if>
           </b:if>
@@ -737,14 +791,14 @@ function addClassToTagId(tagId, className) {
           </b:if>
           <div class='post-outer'>
           <b:include data='post' name='post'/>
-          <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+          <b:if cond='data:blog.pageType == "static_page"'>
             <b:if cond='data:post.showThreadedComments'>
               <b:include data='post' name='threaded_comments'/>
             <b:else/>
               <b:include data='post' name='comments'/>
             </b:if>
           </b:if>
-          <b:if cond='data:blog.pageType == &quot;item&quot;'>
+          <b:if cond='data:blog.pageType == "item"'>
             <b:if cond='data:post.showThreadedComments'>
               <b:include data='post' name='threaded_comments'/>
             <b:else/>
@@ -771,7 +825,7 @@ function addClassToTagId(tagId, className) {
       </div>
 
   <div style='clear: both;'/>
-  <b:if cond='data:blog.pageType != &quot;item&quot;'>
+  <b:if cond='data:blog.pageType != "item"'>
   <!-- navigation -->
   <b:include name='nextprev'/>
   </b:if>
@@ -1000,7 +1054,7 @@ function addClassToTagId(tagId, className) {
       </b:if>
 
       <div id='backlinks-container'>
-      <div expr:id='data:widget.instanceId + &quot;_backlinks-container&quot;'>
+      <div expr:id='data:widget.instanceId + "_backlinks-container"'>
         <b:if cond='data:post.showBacklinks'>
           <b:include data='post' name='backlinks'/>
         </b:if>
@@ -1009,7 +1063,7 @@ function addClassToTagId(tagId, className) {
     </div>
   </b:includable>
       <b:includable id='feedLinks'>
-    <b:if cond='data:blog.pageType != &quot;item&quot;'> <!-- Blog feed links -->
+    <b:if cond='data:blog.pageType != "item"'> <!-- Blog feed links -->
       <b:if cond='data:feedLinks'>
         <div class='blog-feeds'>
           <b:include data='feedLinks' name='feedLinksBody'/>
@@ -1042,7 +1096,7 @@ function addClassToTagId(tagId, className) {
       <script expr:src='data:post.commentSrc' type='text/javascript'/>
       <div class='cmt_iframe_holder'/>
 
-      <b:if cond='data:post.embedCommentForm == &quot;false&quot;'>
+      <b:if cond='data:post.embedCommentForm == "false"'>
         <a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><data:postCommentMsg/></a>
       </b:if>
     </b:if>
@@ -1081,7 +1135,7 @@ function addClassToTagId(tagId, className) {
         </a>
 
         <div class='mobile-index-comment'>
-          <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+          <b:if cond='data:blog.pageType != "static_page"'>
             <b:if cond='data:post.allowComments'>
               <b:if cond='data:post.numComments != 0'>
                 <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><b:if cond='data:post.numComments == 1'>1 <data:top.commentLabel/><b:else/><data:post.numComments/> <data:top.commentLabelPlural/></b:if></a>
@@ -1098,7 +1152,7 @@ function addClassToTagId(tagId, className) {
 
         <b:include data='top' name='status-message'/>
 
-        <b:if cond='data:blog.pageType == &quot;index&quot;'>
+        <b:if cond='data:blog.pageType == "index"'>
           <b:loop values='data:posts' var='post'>
             <b:include data='post' name='mobile-index-post'/>
           </b:loop>
@@ -1199,8 +1253,8 @@ function addClassToTagId(tagId, className) {
                 </span>
 
                 <span class='post-comment-link'>
-                  <b:if cond='data:blog.pageType != &quot;item&quot;'>
-                    <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+                  <b:if cond='data:blog.pageType != "item"'>
+                    <b:if cond='data:blog.pageType != "static_page"'>
                       <b:if cond='data:post.allowComments'>
                         <a class='comment-link' expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><b:if cond='data:post.numComments == 1'>1 <data:top.commentLabel/><b:else/><data:post.numComments/> <data:top.commentLabelPlural/></b:if></a>
                       </b:if>
@@ -1223,14 +1277,14 @@ function addClassToTagId(tagId, className) {
             </div>
           </div>
 
-          <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+          <b:if cond='data:blog.pageType == "static_page"'>
             <b:if cond='data:post.showThreadedComments'>
               <b:include data='post' name='threaded_comments'/>
             <b:else/>
               <b:include data='post' name='comments'/>
             </b:if>
           </b:if>
-          <b:if cond='data:blog.pageType == &quot;item&quot;'>
+          <b:if cond='data:blog.pageType == "item"'>
             <b:if cond='data:post.showThreadedComments'>
               <b:include data='post' name='threaded_comments'/>
             <b:else/>
@@ -1268,9 +1322,9 @@ function addClassToTagId(tagId, className) {
   </b:includable>
       <b:includable id='post' var='post'>
       
-  <article>
+  <article expr:id='data:post.id'>
   <a expr:name='data:post.id'/>
-  <b:if cond='data:blog.pageType == &quot;index&quot; || data:blog.pageType == &quot;archive&quot;'>
+  <b:if cond='data:blog.pageType == "index" || data:blog.pageType == "archive"'>
     <div>
       <h2>
         <b:if cond='data:post.link'>
@@ -1289,7 +1343,7 @@ function addClassToTagId(tagId, className) {
     </div>
   </b:if>
 
-  <b:if cond='data:blog.pageType == &quot;item&quot;'>
+  <b:if cond='data:blog.pageType == "item"'>
     <div>
       <span>Posted on <data:post.timestamp/></span><span>&amp;nbsp;by&amp;nbsp;<b:if cond='data:post.authorProfileUrl'><a expr:href='data:post.authorProfileUrl' rel='author' title='author profile'><data:post.author/></a><b:else/><data:post.author/></b:if><b:if cond='data:post.allowComments'>&amp;nbsp;with&amp;nbsp;<a expr:href='data:post.addCommentUrl' expr:onclick='data:post.addCommentOnclick'><b:if cond='data:post.numComments == 0'>No comments</b:if><b:if cond='data:post.numComments == 1'>1 comment</b:if><b:if cond='data:post.numComments &gt;= 2'><data:post.numComments/> comments</b:if></a></b:if></span>
     </div>
@@ -1300,13 +1354,12 @@ function addClassToTagId(tagId, className) {
   <div class='post-header-line-1'/>
 
   <div class='post-body entry-content'>
-    <b:if cond='data:blog.pageType == &quot;index&quot; || data:blog.pageType == &quot;archive&quot;'>
+    <b:if cond='data:blog.pageType == "index" || data:blog.pageType == "archive"'>
       <!-- Summary -->
-      <summary expr:id='&quot;summary&quot; + data:post.id'>
-        <data:post.body/>
-      </summary>
+      <summary><data:post.body/></summary>
       <script type='text/javascript'>
-        createSummaryAndThumb(&quot;summary<data:post.id/>&quot;);
+        createSummaryAndThumb('<data:post.id/>');
+        setViewTransitionName('<data:post.id/>');
       </script>
       <!-- Read More -->
       <div style='float:right;padding-right:10px;margin-top:10px;font-size:0.8em;'>
@@ -1314,11 +1367,14 @@ function addClassToTagId(tagId, className) {
       </div>
     </b:if>
 
-    <b:if cond='data:blog.pageType == &quot;item&quot; || data:blog.pageType == &quot;static_page&quot;'>
+    <b:if cond='data:blog.pageType == "item" || data:blog.pageType == "static_page"'>
       <data:post.body/>
+      <script type='text/javascript'>
+        setViewTransitionName('<data:post.id/>');
+      </script>
     </b:if>
 
-    <b:if cond='data:blog.pageType == &quot;item&quot;'>
+    <b:if cond='data:blog.pageType == "item"'>
       <div style='clear:both;'/>
       <div class='post-share-buttons'>
         <b:include data='post' name='shareButtons'/>
@@ -1329,7 +1385,7 @@ function addClassToTagId(tagId, className) {
     <div style='clear: both;'/>
   </div>
 
-  <b:if cond='data:blog.pageType != &quot;static_page&quot;'>
+  <b:if cond='data:blog.pageType != "static_page"'>
   <footer class='entry-metabwrap'>
   <b:if cond='data:post.labels'>Posted in&amp;nbsp;<b:loop values='data:post.labels' var='label'><a expr:href='data:label.url' rel='tag'><data:label.name/></a><b:if cond='data:label.isLast != &quot;true&quot;'>, </b:if></b:loop></b:if>
   </footer><!-- .entry-meta -->
@@ -1339,7 +1395,7 @@ function addClassToTagId(tagId, className) {
 
   <div style='clear: both;'/>
 
-  <b:if cond='data:blog.pageType == &quot;item&quot;'>
+  <b:if cond='data:blog.pageType == "item"'>
   <!-- navigation -->
   <b:include name='nextprev'/>
   <!-- comment-form anchor -->
@@ -1366,7 +1422,7 @@ function addClassToTagId(tagId, className) {
           var disqus_blogger_canonical_homepage_url = &quot;<data:blog.canonicalHomepageUrl/>&quot;;
         </script>
 
-        <b:if cond='data:blog.pageType == &quot;item&quot;'>
+        <b:if cond='data:blog.pageType == "item"'>
           <style type='text/css'>
               #comments {display:none;}
           </style>
@@ -1409,22 +1465,24 @@ function addClassToTagId(tagId, className) {
   </aside>
 </div>
 
-<b:if cond='data:blog.pageType == &quot;index&quot; || data:blog.pageType == &quot;archive&quot;'>
+<b:if cond='data:blog.pageType == "index" || data:blog.pageType == "archive"'>
   <script type='text/javascript'>
-    addClassToTagId(&quot;content-layout&quot;,&quot;index-layout&quot;);
-    addClassToTag(&quot;article&quot;,&quot;index-item&quot;);
+    addClassToTagId('content-layout', 'index-layout');
+    addClassToTag('article', 'index-item');
   </script>
 </b:if>
-<b:if cond='data:blog.pageType == &quot;item&quot;'>
+
+<b:if cond='data:blog.pageType == "item"'>
   <script type='text/javascript'>
-    addClassToTagId(&quot;content-layout&quot;,&quot;item-layout&quot;);
-    addClassToTag(&quot;article&quot;,&quot;item&quot;);
+    addClassToTagId('content-layout', 'item-layout');
+    addClassToTag('article', 'item');
   </script>
 </b:if>
-<b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+
+<b:if cond='data:blog.pageType == "static_page"'>
   <script type='text/javascript'>
-    addClassToTagId(&quot;content-layout&quot;,&quot;static_page-layout&quot;);
-    addClassToTag(&quot;article&quot;,&quot;static-page&quot;);
+    addClassToTagId('content-layout', 'static_page-layout');
+    addClassToTag('article', 'static-page');
   </script>
 </b:if>
 

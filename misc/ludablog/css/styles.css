@@ -9,7 +9,7 @@
   --pre-bg-color: #e2e8f0;
   --heading-text-color: #555555;
   --accent: #2288df;
-  --ring: #414ddb;
+  --ring: #414ddb
 }
 
 .dark {
@@ -34,7 +34,8 @@
 7.0 - Content
 	7.1 - Posts and pages
   7.2 - Asides
-8.0 - Clearings
+8.0 - Animations
+	8.1 - Posts and pages
 9.0 - Widgets
 10.0 - Content
 	10.1 - Posts and pages
@@ -148,6 +149,10 @@ html {
   max-width: 72rem;
   margin: 0 auto;
   padding: 30px 15px 65px;
+}
+
+.static_page-layout > aside {
+  display: none;
 }
 
 img {
@@ -388,7 +393,9 @@ nav {
   flex-direction: column;
   align-items: center;
 }
-
+/*--------------------------------------------------------------
+7.0 - Content
+--------------------------------------------------------------*/
 /*--------------------------------------------------------------
 7.1 - Posts and pages
 --------------------------------------------------------------*/
@@ -406,15 +413,18 @@ div#Aside {
   display: flex;
   flex-direction: row;      /* horizontal por defecto */
   gap: 1.5rem;
-  padding: 1rem;
   flex-wrap: wrap;          /* permite que los hijos bajen si no caben */
 }
 
 div#Aside > div {
-  padding: 1rem;
   margin-bottom: 0;         /* quita el margen vertical */
   margin-right: 1rem;       /* espacio horizontal entre widgets */
   flex: 1 1 330px;          /* los hijos crecen y se encogen */
+}
+
+aside > form {
+    padding: 15px 0 20px;
+    text-align: center;
 }
 
 /* Responsive: vertical en móvil */
@@ -424,7 +434,6 @@ div#Aside > div {
     max-width: 100%;
     min-width: 0;
     margin-top: 2rem;
-    padding: 0;
     border-radius: 0;
   }
   div#Aside > div {
@@ -434,6 +443,46 @@ div#Aside > div {
     border-radius: 0;
     padding: 1rem 0.5rem;
     min-width: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+8.0 - Animations
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+8.1 - Transitions
+--------------------------------------------------------------*/
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-group(*) {
+  animation-duration: 0.5s;
+}
+
+::view-transition-old(root){
+  animation: slide-out-to-left 0.5s forwards;
+}
+
+::view-transition-new(root){
+  animation: slide-in-from-right 0.5s forwards;
+}
+
+@keyframes slide-out-to-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
