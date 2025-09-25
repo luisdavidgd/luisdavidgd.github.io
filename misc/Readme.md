@@ -3,7 +3,7 @@
 cd /home/luda/Dev/github/luisdavidgd.github.io/misc/ludablog/js
 ```
 ```bash
-cat themeIcon.js stickyNav.js removeHtmlTag.js menuToggle.js createSummaryAndThumb.js > bundle.js
+cat themeIcon.js removeHtmlTag.js createSummaryAndThumb.js setViewTransitionName.js addClassToTag.js > bundle.js
 ```
 
 ```bash
@@ -14,13 +14,7 @@ uglifyjs bundle.js -o bundle.min.js -c -m
 ```bash
 cd /home/luda/Dev/github/luisdavidgd.github.io/misc/ludablog/css
 ```
+
 ```bash
-cat base/reset.css base/variables.css base/typography.css \
-components/layout.css components/table.css components/card.css \
-components/buttons.css components/about.css components/footer.css \
-components/themeIcon.css components/thumbnails.css \
-global.css > bundle.css
-```
-```bash
-cleancss -o bundle.min.css bundle.css
+cleancss -o bundle.min.css styles.css
 ```
