@@ -223,19 +223,11 @@ License        : This template is free for both personal and commercial use.
 
       </b:includable>
 
-      <b:includable id='comment-form' var='post'>
-        <div class='comment-form'>
-          <h4 id='comment-post-message'><data:postCommentMsg/></h4>
-          <iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' frameborder='0' height='410' id='comment-editor' name='comment-editor' src='' width='100%'/>
-        </div>
-      </b:includable>
-     
       <b:includable id='comments' var='post'>
         <div class='comments' id='comments'></div>
       </b:includable>
   
       <b:includable id='post' var='post'>
-      
         <article expr:id='data:post.id'>
           <a expr:name='data:post.id'/>
           <b:if cond='data:blog.pageType == "index" || data:blog.pageType == "archive"'>
