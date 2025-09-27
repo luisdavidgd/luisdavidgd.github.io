@@ -35,7 +35,7 @@
 	7.1 - Posts and pages
   7.2 - Asides
 8.0 - Animations
-	8.1 - Posts and pages
+	8.1 - Transitions
 9.0 - Widgets
 10.0 - Content
 	10.1 - Posts and pages
@@ -78,7 +78,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 700;
   color: var(--text-color);
   margin-bottom: 1rem;
 }
@@ -375,24 +374,6 @@ nav {
   color: #fff;
   opacity: 0.85;
 }
-
-/* Item Hero */
-#heroSectionItem {
-  min-height: 120px;
-  padding: 80px 10px 0px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-/* Static Page Hero */
-#heroSectionStaticPage {
-  min-height: 120px;
-  padding-top: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 /*--------------------------------------------------------------
 7.0 - Content
 --------------------------------------------------------------*/
@@ -400,10 +381,32 @@ nav {
 7.1 - Posts and pages
 --------------------------------------------------------------*/
 article.index-item {
-    /* background-color: red; */
     margin-bottom: 20px;
     border: 1px solid;
     padding: 20px;
+}
+
+/* Item */
+
+article.item .post-header {
+  padding-top: 60px;
+}
+
+article.item .post-header h1 {
+  font-size: 2rem;
+}
+
+.post-meta {
+  padding-bottom: 1rem;
+}
+
+/** Static Page */
+
+article.static-page .post-header {
+  min-height: 120px;
+  padding-top: 80px;
+  font-size: 2rem;
+  text-align: center;
 }
 
 /*--------------------------------------------------------------
