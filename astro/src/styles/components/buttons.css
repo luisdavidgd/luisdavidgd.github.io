@@ -14,17 +14,17 @@
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: var(--color-accent);
   color: #fff;
 }
 
 .btn-primary:hover {
-  background: var(--ring);
+  background: var(--color-accent-hover);
 }
 
 .link-btn {
   background: none;
   border: none;
-  color: var(--accent);
+  color: var(--color-accent);
   cursor: pointer;
 }

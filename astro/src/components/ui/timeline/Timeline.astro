@@ -45,7 +45,7 @@ const { items, centered = true } = props;
 {centered ? (
   <div class="relative mx-auto max-w-5xl px-0 md:px-0">
     <!-- Center vertical line -->
-    <div class="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-[var(--border)]"></div>
+    <div class="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-[var(--color-border)]"></div>
 
     <div class="space-y-12">
       {items.map((item, index) => {
@@ -56,7 +56,7 @@ const { items, centered = true } = props;
             isLeft ? 'justify-start' : 'justify-end',
           ]}>
             <!-- Dot on the center line -->
-            <div class="absolute left-1/2 -translate-x-1/2 top-4 size-3 rounded-full bg-[var(--accent)] ring-4 ring-[color:var(--background)]"></div>
+            <div class="absolute left-1/2 -translate-x-1/2 top-4 size-3 rounded-full bg-[var(--color-accent)] ring-4 ring-[color:var(--color-bg)]"></div>
 
             <div class:list={[
               'w-full md:w-1/2',
@@ -81,7 +81,7 @@ const { items, centered = true } = props;
                 {item.technologies && item.technologies.length > 0 && (
                   <div class="mt-3 flex flex-wrap gap-2">
                     {item.technologies.map((tech) => (
-                      <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium" style="background: rgba(var(--accent-rgb),0.1); color: var(--accent); border: 1px solid rgba(var(--accent-rgb),0.3);">
+                      <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium" style="background: rgba(var(--color-accent-rgb),0.1); color: var(--color-accent); border: 1px solid rgba(var(--color-accent-rgb),0.3);">
                         {tech}
                       </span>
                     ))}
@@ -97,11 +97,11 @@ const { items, centered = true } = props;
 ) : (
     <div class="relative mx-auto max-w-5xl px-0 md:px-0">
     <!-- Left vertical line -->
-    <div class="pointer-events-none absolute inset-y-0 left-0 md:left-5 w-px bg-[var(--border)]"></div>
+    <div class="pointer-events-none absolute inset-y-0 left-0 md:left-5 w-px bg-[var(--color-border)]"></div>
     <div class="space-y-8 md:space-y-12">
       {items.map((item) => (
         <div class="relative pl-5 md:pl-16">
-          <div class="absolute left-0 md:left-5 top-3 md:top-4 size-2 md:size-3 rounded-full bg-[var(--accent)] ring-2 md:ring-4 ring-[color:var(--background)]"></div>
+          <div class="absolute left-0 md:left-5 top-3 md:top-4 size-2 md:size-3 rounded-full bg-[var(--color-accent)] ring-2 md:ring-4 ring-[color:var(--color-bg)]"></div>
           <div class="card-surface p-4 md:p-6 w-full min-w-0">
             <div class="mb-2 space-y-1">
               <h3 class="text-xs leading-snug font-semibold m-0 flex items-center gap-2">
@@ -121,7 +121,7 @@ const { items, centered = true } = props;
             {item.technologies && item.technologies.length > 0 && (
               <div class="mt-3 flex flex-wrap gap-2">
                 {item.technologies.map((tech) => (
-                  <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium" style="background: rgba(var(--accent-rgb),0.1); color: var(--accent); border: 1px solid rgba(var(--accent-rgb),0.3);">
+                  <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium" style="background: rgba(var(--color-accent-rgb),0.1); color: var(--color-accent); border: 1px solid rgba(var(--color-accent-rgb),0.3);">
                     {tech}
                   </span>
                 ))}

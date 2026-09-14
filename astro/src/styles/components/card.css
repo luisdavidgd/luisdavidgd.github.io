@@ -1,5 +1,5 @@
 .card {
-  background: var(--panel-color);
+  background: var(--color-surface);
   border-radius: var(--radius);
   padding: var(--spacing);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -36,5 +36,5 @@
 }
 
 .card-meta a.author-link:hover {
-  color: var(--accent);
+  color: var(--color-accent);
 }

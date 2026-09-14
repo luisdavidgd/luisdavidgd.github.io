@@ -1,24 +1,21 @@
 {
   "name": "luisdavidgd.github.io",
   "version": "1.0.0",
-  "description": "![Website](https://img.shields.io/website/https/luisdavidgd.github.io.svg?down_message=Down&label=Status&style=for-the-badge&up_message=Live)",
-  "main": "index.js",
+  "description": "Personal developer digital garden",
   "scripts": {
-    "dev:astro": "npm run dev --prefix astro",
-    "dev:vue": "npm run dev --prefix vue",
-    "dev:svelte": "npm run dev --prefix svelte",
-    "dev:react": "npm run dev --prefix react"
+    "dev": "npm run dev --prefix astro",
+    "build": "npm run build --prefix astro",
+    "preview": "npm run preview --prefix astro"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luisdavidgd/luisdavidgd.github.io.git"
   },
   "keywords": [],
-  "author": "Luis Gallo",
+  "author": "Luis David Gallo Dawson",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/luisdavidgd/luisdavidgd.github.io/issues"
   },
-  "homepage": "https://luisdavidgd.github.io",
-  "dependencies": {}
+  "homepage": "https://luisdavidgd.github.io"
 }

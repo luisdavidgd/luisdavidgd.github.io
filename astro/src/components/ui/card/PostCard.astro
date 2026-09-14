@@ -91,7 +91,7 @@ try {
     gap: 0.75rem;
     padding: 1rem;
     border-radius: 0.75rem;
-    background: var(--panel-color, #fff);
+    background: var(--color-surface, #fff);
     border: 1px solid rgba(0, 0, 0, 0.05);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     transition:
@@ -117,7 +117,7 @@ try {
     margin: 0;
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--foreground);
+    color: var(--color-text);
     line-height: 1.3;
   }
 
@@ -148,7 +148,7 @@ try {
   }
 
   .author-link:hover {
-    color: var(--accent);
+    color: var(--color-accent);
   }
 
   .reading-time {
@@ -166,8 +166,8 @@ try {
     padding: 0.25rem 0.6rem;
     font-size: 0.75rem;
     border-radius: 9999px;
-    background: rgba(var(--accent-rgb), 0.1);
-    color: var(--accent);
+    background: rgba(var(--color-accent-rgb), 0.1);
+    color: var(--color-accent);
     text-decoration: none;
     font-weight: 500;
     transition:
@@ -176,7 +176,7 @@ try {
   }
 
   .tag:hover {
-    background: rgba(var(--accent-rgb), 0.2);
+    background: rgba(var(--color-accent-rgb), 0.2);
     transform: translateY(-1px);
   }
 </style>
