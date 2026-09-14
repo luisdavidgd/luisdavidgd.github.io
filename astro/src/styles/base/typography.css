@@ -6,13 +6,26 @@ h5,
 h6 {
   font-weight: 700;
   color: var(--color-text);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h3 {
+  font-size: 1.25rem;
 }
 
 p {
   margin-bottom: 1rem;
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 span {
@@ -22,4 +35,29 @@ span {
 a {
   color: var(--color-accent);
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.875em;
+  padding: 0.125rem 0.25rem;
+  background: var(--color-surface);
+  border-radius: 0.25rem;
+}
+
+pre {
+  padding: 1rem;
+  background: var(--color-surface);
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+pre code {
+  padding: 0;
+  background: none;
 }
