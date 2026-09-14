@@ -459,15 +459,15 @@ Personal, not professional. No resume elements, no GitHub stats widgets, no plac
 - [x] Update site metadata (title, description)
 - [x] Remove template remnants (GitHub link to template repo)
 
-### Phase 2: Identity shift (content restructure)
+### Phase 2: Identity shift (content restructure) ✅
 
 **Goal:** Restructure content and routes to match the garden concept.
 
-- [ ] Create `/projects/` route (replace `/portfolio`)
-- [ ] Create `src/data/projects.ts` with project data
-- [ ] Create `src/data/exploring.ts` with curated exploring list
-- [ ] Update navigation links (remove "Portfolio", add "Projects")
-- [ ] Update all internal links across the site
+- [x] Create `/projects/` route (replace `/portfolio`)
+- [x] Create `src/data/projects.ts` with project data
+- [x] Create `src/data/exploring.ts` with curated exploring list
+- [x] Update navigation links (remove "Portfolio", add "Projects")
+- [x] Update all internal links across the site
 
 ### Phase 3: Homepage redesign
 

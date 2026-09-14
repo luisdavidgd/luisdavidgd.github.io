@@ -1,74 +1,45 @@
-import PhoenixIcon from '../assets/logos/Phoenix-logo.svg?raw';
-import N8nIcon from '../assets/logos/N8n-logo.svg?raw';
-import SupabaseIcon from '../assets/logos/Supabase-logo.svg?raw';
-import PosthogIcon from '../assets/logos/posthog-logo.svg?raw';
-import PythonIcon from '../assets/logos/Python-logo.svg?raw';
-import TailwindIcon from '../assets/logos/Tailwind-logo.svg?raw';
-import { AlpineIcon, SvelteIcon, ReactIcon, VueIcon, LudaIcon, ChaclaIcon, CheatSheetsIcon } from "./icons";
+export interface Project {
+  name: string;
+  description: string;
+  tech: string[];
+  url?: string;
+  source?: string;
+  featured?: boolean;
+  status: "active" | "archived" | "experiment";
+  date?: string;
+}
 
-
-export const projects = [
-	{
-		title: "Chacla.pe",
-		techStack: "SvelteKit • TypeScript • Hono • Supabase • Cloudflare",
-		description: "Digital hub for the district of Chaclacayo featuring a business directory, news, and community services.",
-		ctaText: "Visit →",
-		ctaLink: "https://chacla.pe",
-		ctaTarget: "_blank",
-		icon: ChaclaIcon
-	},
-	{
-		title: "Luda Pages",
-		techStack: "Svelte • Three.js • WebGL • TypeScript",
-		description: "Personal showcase with 2D and 3D explorations, including galleries and interactive demos.",
-		ctaText: "Explore →",
-		ctaLink: "https://luda.pages.dev",
-		ctaTarget: "_blank",
-		icon: LudaIcon
-	},
-	{
-		title: "Alpine JS Demo",
-		techStack: "Alpine.js • HTML • CSS",
-		description: "Basic project showcasing reactivity, directives, and some of Alpine.js’ main features.",
-		ctaText: "View Demo →",
-		ctaLink: "/demos/alpinejs",
-		ctaTarget: "_self",
-		icon: AlpineIcon
-	},
-	{
-		title: "Svelte Explorations",
-		techStack: "Svelte • TypeScript • Vite",
-		description: "Exploring the framework with practical examples of stores, components, and bindings.",
-		ctaText: "Explore →",
-		ctaLink: "/demos/svelte",
-		ctaTarget: "_self",
-		icon: SvelteIcon
-	},
-	{
-		title: "React Mini Apps",
-		techStack: "React • TypeScript • Vite",
-		description: "A collection of mini-apps like Simon Says, Todo App, Hangman, and more — all built with React.",
-		ctaText: "Try →",
-		ctaLink: "/demos/react",
-		ctaTarget: "_self",
-		icon: ReactIcon
-	},
-	{
-		title: "Vue Fixture Generator",
-		techStack: "Vue 3 • JavaScript • Vite",
-		description: "Fixture generator for creating random matchups, useful for TCG tournaments or other games.",
-		ctaText: "Generate →",
-		ctaLink: "/demos/vue",
-		ctaTarget: "_self",
-		icon: VueIcon
-	},
-	{
-		title: "Cheat Sheets",
-		techStack: "Markdown • Astro • Misc",
-		description: "A growing collection of quick reference notes and examples for different tools and frameworks.",
-		ctaText: "View →",
-		ctaLink: "/cheatsheets",
-		ctaTarget: "_self",
-		icon: CheatSheetsIcon
-	},
+export const projects: Project[] = [
+  {
+    name: "Chacla.pe",
+    description: "Digital hub for the district of Chaclacayo featuring a business directory, news, and community services.",
+    tech: ["SvelteKit", "TypeScript", "Hono", "Supabase", "Cloudflare"],
+    url: "https://chacla.pe",
+    featured: true,
+    status: "active",
+  },
+  {
+    name: "Luda Pages",
+    description: "Personal showcase with 2D and 3D explorations, including galleries and interactive demos.",
+    tech: ["Svelte", "Three.js", "WebGL", "TypeScript"],
+    url: "https://luda.pages.dev",
+    featured: true,
+    status: "active",
+  },
+  {
+    name: "luisdavidgd.github.io",
+    description: "This site. A personal developer digital garden built with Astro.",
+    tech: ["Astro", "TypeScript", "Alpine.js"],
+    source: "https://github.com/luisdavidgd/luisdavidgd.github.io",
+    featured: false,
+    status: "active",
+  },
+  {
+    name: "Cheat Sheets",
+    description: "A growing collection of quick reference notes and examples for different tools and frameworks.",
+    tech: ["Markdown", "Astro"],
+    url: "/cheatsheets",
+    featured: false,
+    status: "active",
+  },
 ];

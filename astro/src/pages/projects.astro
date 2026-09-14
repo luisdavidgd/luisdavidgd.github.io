@@ -1,0 +1,34 @@
+---
+import LandingPageLayout from "@layouts/LandingPage.astro";
+import Projects from "@components/sections/Projects.astro";
+
+const pageTitle = "Projects";
+---
+
+<LandingPageLayout pageTitle={pageTitle}>
+  <section class="projects-hero">
+    <h1>Projects</h1>
+    <p>Things I build, experiments, and explorations.</p>
+  </section>
+  <Projects />
+</LandingPageLayout>
+
+<style>
+  .projects-hero {
+    text-align: center;
+    padding: 6rem 1rem 2rem;
+  }
+
+  .projects-hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .projects-hero p {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 36rem;
+    margin: 0 auto;
+  }
+</style>
