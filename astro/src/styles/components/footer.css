@@ -1,6 +1,6 @@
 .footer {
   position: relative;
-  background-color: var(--panel-color);
+  background-color: var(--color-surface);
   padding: 2rem 0;
   font-family: system-ui, sans-serif;
   color: #1a202c;

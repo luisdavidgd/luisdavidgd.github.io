@@ -29,7 +29,7 @@ const { items, title } = Astro.props as Props;
           {study.tags && study.tags.length > 0 && (
             <div class="mt-4 flex flex-wrap gap-2">
               {study.tags.map((tag) => (
-                <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium" style="background: rgba(var(--accent-rgb),0.1); color: var(--accent); border: 1px solid rgba(var(--accent-rgb),0.3);">
+                <span class="inline-flex items-center rounded-full px-3 py-1 text-xs font-medium" style="background: rgba(var(--color-accent-rgb),0.1); color: var(--color-accent); border: 1px solid rgba(var(--color-accent-rgb),0.3);">
                   {tag}
                 </span>
               ))}

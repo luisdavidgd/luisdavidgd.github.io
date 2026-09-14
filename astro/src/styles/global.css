@@ -9,10 +9,9 @@
 @import "./components/about.css";
 @import "./components/footer.css";
 
-/* Extra global (si necesitas cosas pequeñas aquí) */
 body {
-  background: var(--bg-color);
-  color: var(--text-color);
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 .sr-only {

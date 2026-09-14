@@ -77,7 +77,7 @@ const { pubDate, readingTimeMin, authorName } = Astro.props as Props;
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    border: 1px solid var(--color-border-light);
+    border: 1px solid var(--color-border);
     flex-shrink: 0;
   }
 
@@ -89,13 +89,13 @@ const { pubDate, readingTimeMin, authorName } = Astro.props as Props;
   .author-name {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--color-text-primary);
+    color: var(--color-text);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
   .author-name:hover {
-    color: var(--accent);
+    color: var(--color-accent);
   }
 
   .meta {

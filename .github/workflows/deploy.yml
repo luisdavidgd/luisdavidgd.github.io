@@ -1,4 +1,4 @@
-name: Deploy Multi-Framework Monorepo
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -21,36 +21,16 @@ jobs:
         with:
           node-version: 20
 
-      # --- Build Astro landing (root) ---
-      - name: Build Landing Page (Astro)
+      - name: Build Astro site
         working-directory: ./astro
         run: |
           npm ci
           npm run build
-      - run: |
+
+      - name: Prepare deployment
+        run: |
           mkdir -p public
           cp -r astro/dist/* public/
-
-      # --- Build all other subprojects ---
-      - name: Build all subprojects
-        run: |
-          for dir in */ ; do
-            if [ "$dir" != "astro/" ] && [ -f "$dir/package.json" ]; then
-              echo "Building $dir..."
-              cd "$dir"
-              npm ci
-              npm run build || echo "⚠️ Build failed in $dir"
-              cd ..
-
-              if [ -d "$dir/dist" ]; then
-                cp -r "$dir/dist" "public/demos/${dir%/}"
-              elif [ -d "$dir/build" ]; then
-                cp -r "$dir/build" "public/demos/${dir%/}"
-              else
-                echo "⚠️ No se encontró carpeta dist/build en $dir"
-              fi
-            fi
-          done
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
