@@ -1,12 +1,16 @@
 ---
-import Button from "../ui/button/Button.astro";
 import { projects } from "../../data/projects";
 
 interface Props {
   title?: string;
+  showFeatured?: boolean;
 }
 
-const { title } = Astro.props as Props;
+const { title, showFeatured = false } = Astro.props as Props;
+
+const displayProjects = showFeatured
+  ? projects.filter((p) => p.featured)
+  : projects;
 ---
 
 <section class="projects-section">
@@ -15,21 +19,26 @@ const { title } = Astro.props as Props;
 
     <div class="projects-grid">
       {
-        projects.map((p) => (
+        displayProjects.map((p) => (
           <article class="project-card">
-            <div class="project-icon" set:html={p.icon} />
-            <h3 class="project-title">{p.title}</h3>
-            <p class="project-tech">{p.techStack}</p>
+            <h3 class="project-name">{p.name}</h3>
             <p class="project-description">{p.description}</p>
-            <div class="project-cta">
-              <Button
-                href={p.ctaLink}
-                variant="primary"
-                size="sm"
-                target={p.ctaTarget}
-              >
-                {p.ctaText}
-              </Button>
+            <div class="project-tech">
+              {p.tech.map((t) => (
+                <span class="tech-tag">{t}</span>
+              ))}
+            </div>
+            <div class="project-links">
+              {p.url && (
+                <a href={p.url} class="project-link" target={p.url.startsWith("http") ? "_blank" : "_self"}>
+                  {p.url.startsWith("http") ? "Live" : "View"} →
+                </a>
+              )}
+              {p.source && (
+                <a href={p.source} class="project-link" target="_blank">
+                  Source →
+                </a>
+              )}
             </div>
           </article>
         ))
@@ -37,112 +46,104 @@ const { title } = Astro.props as Props;
     </div>
   </div>
 </section>
+
 <style>
   .projects-section {
     width: 100%;
-    padding: 2.5rem 0; /* py-10 */
+    padding: 2.5rem 0;
   }
 
   .projects-container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 72rem; /* max-w-6xl */
-    padding-left: 1rem; /* px-4 */
+    max-width: 72rem;
+    padding-left: 1rem;
     padding-right: 1rem;
   }
 
   .projects-title {
-    font-size: 1.875rem; /* text-3xl */
-    font-weight: 600; /* font-semibold */
+    font-size: 1.875rem;
+    font-weight: 600;
     text-align: center;
-    margin-bottom: 2rem; /* mb-8 */
+    margin-bottom: 2rem;
   }
 
   @media (min-width: 768px) {
     .projects-title {
-      font-size: 2.25rem; /* md:text-4xl */
+      font-size: 2.25rem;
     }
   }
 
   .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem; /* gap-6 */
+    gap: 1.5rem;
   }
 
   @media (min-width: 768px) {
     .projects-grid {
-      grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
   .project-card {
-    position: relative;
     padding: 1.5rem;
     background: var(--color-surface);
     border-radius: 0.75rem;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;
   }
 
   .project-card:hover {
-    transform: translateY(-0.25rem); /* se levanta un poquito */
+    transform: translateY(-0.25rem);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   }
 
-  .project-icon {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 48px;
-    height: 48px;
-    opacity: 0.7;
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
-  }
-
-  .project-card:hover .project-icon {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-
-  .project-icon > svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-
-  .project-icon > svg {
-    width: 1.5rem; /* w-6 */
-    height: 1.5rem; /* h-6 */
-    display: none; /* asegura que no tenga espacio extra */
-  }
-
-  .project-title {
-    margin: 0;
-    font-size: 1.25rem; /* text-xl */
+  .project-name {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
     font-weight: 600;
     color: var(--color-text);
   }
 
-  .project-tech {
-    margin: 0;
-    font-size: 0.875rem; /* text-sm */
-    color: var(--color-text-muted);
-  }
-
   .project-description {
-    margin-top: 0.75rem; /* mt-3 */
-    color: var(--color-text);
+    margin: 0 0 0.75rem 0;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
-  .project-cta {
-    margin-top: 1.5rem; /* mt-6 */
+  .project-tech {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    border-radius: 9999px;
+    border: 1px solid var(--color-border);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .project-link {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .project-link:hover {
+    text-decoration: underline;
   }
 </style>

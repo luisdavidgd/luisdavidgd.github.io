@@ -29,4 +29,4 @@ If you’ve read along, you’ve basically walked through the architecture that 
 The blog doesn’t end here; I’ll keep writing when I learn or build something new.  
 But with these posts, I’ve drawn the outline of my portfolio stack.  
 
-If you want to see it in action, you’re already here: this site is the [portfolio](/portfolio).
+If you want to see it in action, you’re already here: this site is the [project](/projects).
