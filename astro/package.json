@@ -9,11 +9,11 @@
 		"astro": "astro"
 	},
 	"devDependencies": {
-		"@astrojs/alpinejs": "^0.4.8",
-		"@astrojs/rss": "^4.0.12",
+		"@astrojs/alpinejs": "^1.0.0",
+		"@astrojs/rss": "^4.0.19",
 		"@types/alpinejs": "^3.13.11",
 		"alpinejs": "^3.14.9",
-		"astro": "^5.13.3",
+		"astro": "^7.3.2",
 		"typescript": "^5.9.2"
 	}
 }
