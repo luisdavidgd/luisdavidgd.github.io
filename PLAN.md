@@ -469,15 +469,15 @@ Personal, not professional. No resume elements, no GitHub stats widgets, no plac
 - [x] Update navigation links (remove "Portfolio", add "Projects")
 - [x] Update all internal links across the site
 
-### Phase 3: Homepage redesign
+### Phase 3: Homepage redesign ✅
 
 **Goal:** Replace portfolio homepage with garden overview.
 
-- [ ] Replace hero section with personal intro
-- [ ] Add "Currently exploring" section
-- [ ] Replace skills section with latest blog posts + projects
-- [ ] Simplify footer (remove CTA, keep identity + social links)
-- [ ] Remove `SkillsSection.astro` and `Carousel.astro`
+- [x] Replace hero section with personal intro
+- [x] Add "Currently exploring" section
+- [x] Replace skills section with latest blog posts + projects
+- [x] Simplify footer (remove CTA, keep identity + social links)
+- [x] Remove `SkillsSection.astro` and `Carousel.astro`
 
 ### Phase 4: About page rewrite
 

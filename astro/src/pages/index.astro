@@ -2,29 +2,167 @@
 import { getCollection } from "astro:content";
 import LandingPageLayout from "@layouts/LandingPage.astro";
 import LatestPosts from "@components/landing/LatestPosts.astro";
-import ArrowSeparator from "@components/ui/separator/ArrowSeparator.astro";
-import SkillsSection from "@components/landing/SkillsSection.astro";
-import { skills } from "../data/skills";
-import HeroSection from "@components/sections/HeroSection.astro";
-import GlowLineSeparator from "@components/ui/separator/GlowLineSeparator.astro";
+import Projects from "@components/sections/Projects.astro";
+import { exploring } from "../data/exploring";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-const pageTitle = "Landing Page";
+const pageTitle = "Home";
 ---
 
 <LandingPageLayout title={pageTitle}>
-  <HeroSection
-    title="Your Headline Goes Here!"
-    subtitle="I build softwares that brings you loyal subscribers."
-    showCTA
-    primaryCTA={{ text: "View Projects", href: "/projects" }}
-    secondaryCTA={{ text: "Read Blog", href: "/blog" }}
-  />
-  <ArrowSeparator />
-  <SkillsSection title="Skills & Tools" skills={skills} />
+  <section class="hero">
+    <div class="hero-container">
+      <h1>Hi, I'm Luis.</h1>
+      <p class="hero-subtitle">This is my corner of the internet.</p>
+      <p class="hero-tagline">Things I build, things I learn, and notes along the way.</p>
+      <div class="hero-links">
+        <a href="/projects" class="hero-link">Projects</a>
+        <a href="/blog" class="hero-link">Blog</a>
+        <a href="/cheatsheets" class="hero-link">Cheatsheets</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="exploring">
+    <div class="container">
+      <h2>Currently exploring</h2>
+      <div class="exploring-tags">
+        {exploring.map((item) => (
+          <a href={item.url} class="exploring-tag" target={item.url.startsWith("http") ? "_blank" : "_self"}>
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <LatestPosts {posts} />
-  <GlowLineSeparator />
+
+  <section class="home-projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <Projects />
+      <div class="see-all">
+        <a href="/projects">See all projects →</a>
+      </div>
+    </div>
+  </section>
 </LandingPageLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 6rem 1rem 3rem;
+  }
+
+  .hero-container {
+    max-width: 42rem;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .hero-link:hover {
+    text-decoration: underline;
+  }
+
+  .exploring {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  .exploring h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-text-muted);
+  }
+
+  .exploring-tags {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .exploring-tag {
+    padding: 0.5rem 1rem;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    text-decoration: none;
+    border: 1px solid var(--color-border);
+    transition: all 0.2s ease;
+  }
+
+  .exploring-tag:hover {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+  }
+
+  .home-projects {
+    padding: 2rem 1rem;
+  }
+
+  .home-projects h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .see-all {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .see-all a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .see-all a:hover {
+    text-decoration: underline;
+  }
+</style>
