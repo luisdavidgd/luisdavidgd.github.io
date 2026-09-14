@@ -1,123 +1,103 @@
 ---
-
+const gitHubUrl = `https://github.com/luisdavidgd`;
+const twitterUrl = `https://x.com/guihubie`;
 ---
 
-<section class="container">
-  <div class="profile">
-    <div class="card">
-      <div class="avatar">
-        <img src="/img/profile.jpg" alt="Profile" />
-      </div>
+<section class="about">
+  <div class="about-container">
+    <div class="about-avatar">
+      <img src="/img/profile.jpg" alt="Luis David Gallo Dawson" />
+    </div>
 
-      <div class="stats">
-        <div>
-          <strong id="repoCount">0</strong><br />Repos
-        </div>
-        <div>
-          <strong id="commitCount">0</strong><br />Commits
-        </div>
-      </div>
+    <h1>Luis David Gallo Dawson</h1>
+    <p class="about-location">Lima, Peru</p>
 
-      <div class="info">
-        <h3>Luis David Gallo Dawson</h3>
-        <p class="location">📍 Lima, Perú</p>
-        <p>💻 Software Developer</p>
-        <p>🏫 Universidad Ricardo Palma</p>
-      </div>
+    <div class="about-bio">
+      <p>
+        Developer. I build things, learn in public, and occasionally write about it.
+      </p>
+      <p>
+        Software development is something I enjoy as a hobby. This site is my personal
+        corner of the internet — a place to publish things I build, things I learn,
+        experiments, technical notes, and ideas.
+      </p>
+    </div>
 
-      <div class="bio">
-        <p>
-          I've always been passionate about tech and programming. I truly enjoy
-          creating software and turning ideas into real solutions. I believe
-          it's important to stay updated with the latest tools and trends in
-          development — that's what keeps it exciting for me.
-        </p>
-        <p id="extraBio" hidden>
-          I'm currently working on multiple projects, constantly learning new
-          frameworks and improving my skills. I believe that great software
-          comes from collaboration, creativity, and curiosity.
-        </p>
-        <button id="toggleBio" class="link-btn">Show more</button>
+    <div class="about-links">
+      <h2>Where to find me</h2>
+      <div class="links">
+        <a href={gitHubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href={twitterUrl} target="_blank" rel="noopener noreferrer">X / Twitter</a>
+        <a href="/rss.xml">RSS</a>
       </div>
     </div>
   </div>
 </section>
 
-<script is:inline>
-  const username = "luisdavidgd";
-  const repoCountEl = document.getElementById("repoCount");
-  const commitCountEl = document.getElementById("commitCount");
-  const toggleBioBtn = document.getElementById("toggleBio");
-  const extraBio = document.getElementById("extraBio");
-
-  async function fetchGitHubStats() {
-    const cacheKey = "githubStats";
-    const cacheTTL = 1000 * 60 * 60 * 6; // 6 horas en ms
-    const cached = localStorage.getItem(cacheKey);
-
-    if (cached) {
-      const { timestamp, repos, totalCommits } = JSON.parse(cached);
-      if (Date.now() - timestamp < cacheTTL) {
-        repoCountEl.textContent = repos.length;
-        commitCountEl.textContent = totalCommits;
-        return; // usamos cache
-      }
-    }
-
-    // si no hay cache válido, pedimos de la API
-    const perPage = 100;
-    let totalCommits = 0;
-    let repos = [];
-    let page = 1;
-    let hasMore = true;
-
-    while (hasMore) {
-      const res = await fetch(
-        `https://api.github.com/users/${username}/repos?per_page=${perPage}&page=${page}`,
-      );
-      const data = await res.json();
-      repos = repos.concat(data);
-      hasMore = data.length === perPage;
-      page++;
-    }
-    repoCountEl.textContent = repos.length;
-
-    for (const repo of repos) {
-      let pageCommits = 1;
-      let moreCommits = true;
-      while (moreCommits) {
-        const res = await fetch(
-          `https://api.github.com/repos/${username}/${repo.name}/commits?per_page=${perPage}&page=${pageCommits}`,
-        );
-        const commits = await res.json();
-        totalCommits += Array.isArray(commits) ? commits.length : 0;
-        moreCommits = Array.isArray(commits) && commits.length === perPage;
-        pageCommits++;
-      }
-    }
-    commitCountEl.textContent = totalCommits;
-
-    // guardamos en cache
-    localStorage.setItem(
-      cacheKey,
-      JSON.stringify({
-        timestamp: Date.now(),
-        repos,
-        totalCommits,
-      }),
-    );
+<style>
+  .about {
+    padding: 6rem 1rem 3rem;
+    text-align: center;
   }
 
-  fetchGitHubStats();
+  .about-container {
+    max-width: 36rem;
+    margin: 0 auto;
+  }
 
-  // Show more toggle
-  toggleBioBtn.addEventListener("click", () => {
-    if (extraBio.hidden) {
-      extraBio.hidden = false;
-      toggleBioBtn.textContent = "Show less";
-    } else {
-      extraBio.hidden = true;
-      toggleBioBtn.textContent = "Show more";
-    }
-  });
-</script>
+  .about-avatar {
+    margin-bottom: 1.5rem;
+  }
+
+  .about-avatar img {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .about-location {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .about-bio {
+    text-align: left;
+    margin-bottom: 3rem;
+  }
+
+  .about-bio p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .about-links h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .links a {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .links a:hover {
+    text-decoration: underline;
+  }
+</style>

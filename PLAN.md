@@ -479,23 +479,23 @@ Personal, not professional. No resume elements, no GitHub stats widgets, no plac
 - [x] Simplify footer (remove CTA, keep identity + social links)
 - [x] Remove `SkillsSection.astro` and `Carousel.astro`
 
-### Phase 4: About page rewrite
+### Phase 4: About page rewrite ✅
 
 **Goal:** Personal page, not resume.
 
-- [ ] Remove GitHub stats widget
-- [ ] Remove placeholder work/education data
-- [ ] Write genuine about content
-- [ ] Simplify component structure
+- [x] Remove GitHub stats widget
+- [x] Remove placeholder work/education data
+- [x] Write genuine about content
+- [x] Simplify component structure
 
-### Phase 5: Projects page
+### Phase 5: Projects page ✅
 
 **Goal:** Replace portfolio with project collection.
 
-- [ ] Restructure 7 existing projects with proper data model
-- [ ] Create project card component
-- [ ] Mark featured projects
-- [ ] Add project status (active/archived/experiment)
+- [x] Restructure 7 existing projects with proper data model
+- [x] Create project card component
+- [x] Mark featured projects
+- [x] Add project status (active/archived/experiment)
 
 ### Phase 6: Polish
 
